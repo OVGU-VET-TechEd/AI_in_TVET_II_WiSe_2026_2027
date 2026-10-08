@@ -62,7 +62,7 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 | No. | Date       | Format             | Topic                                                                        |
 | --- | ---------- | ------------------ | ---------------------------------------------------------------------------- |
-| 1   | 03.12.2026 | 🔵 Self-learning   | Orientation & organisation · **Introduction to AI & Prompting**: how AI works, tool usage, limitations, ethics · overview of AI in TVET |
+| 1   | 03.12.2026 | 🟢 Live            | Orientation & organisation · **Introduction to AI & Prompting**: how AI works, tool usage, limitations, ethics · overview of AI in TVET |
 | 2   | 10.12.2026 | 🔵 Self-learning   | AI vocabulary, models and workflows                                          |
 | 3   | 17.12.2026 | 🟢 Live            | Pedagogical trends and AI-enhanced didactics · AI tools for assessment and feedback · human-centred mindset and ethics in AI pedagogy |
 | –   | 21.12.2026 – 01.01.2027 | ⚪ Break | Christmas break (university closed 28–30 Dec 2026)                  |
@@ -77,27 +77,26 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 {{1}}
 <section>
 
-### 🟢 Live sessions (3)
+### 🟢 Live sessions (4)
 
-17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–12:00, room as listed in LSF
+03.12. · 17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–12:00, room as listed in LSF
 
 </section>
 
 {{2}}
 <section>
 
-### 🔵 Self-learning sessions (3, I am not on site)
+### 🔵 Self-learning sessions (2, I am not on site)
 
 | Date       | Task                                                                                     | Hand-in (Moodle)   |
 | ---------- | ---------------------------------------------------------------------------------------- | ------------------ |
-| 03.12.2026 | Kick-off as self-learning: work through this **organisational overview** + LiaScript module **Introduction to AI & Prompting** + choose your UNESCO learning objective (Competency 3, 4 or 5) | 09.12.2026, 23:59 |
-| 10.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + first draft of your competency matrix | 16.12.2026, 23:59 |
+| 10.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + choose your UNESCO learning objective (Competency 3, 4 or 5) + first draft of your competency matrix | 16.12.2026, 23:59 |
 | 14.01.2027 | **Project development**: continue your LiaScript course + written peer review of one other group's course | 18.01.2027, 23:59 |
 
 </section>
 
                                   --{{2}}--
-On three dates I am travelling. Please work through the self-learning nuggets in Moodle and upload your result by the deadline.
+On two dates I am travelling. Please work through the self-learning nuggets in Moodle and upload your result by the deadline.
 
 ## Start: Introduction to AI & Prompting
 
@@ -282,4 +281,4 @@ Which UNESCO competency do you want to work on?
 
 ---
 
-**Next session:** Thursday, 10.12.2026: 🔵 self-learning, AI vocabulary, models and workflows. Hand-in by 16.12.2026. First live session: Thursday, 17.12.2026, 09:00–12:00.
+**Next session:** Thursday, 10.12.2026: 🔵 self-learning, AI vocabulary, models and workflows. Hand-in by 16.12.2026.
