@@ -7,7 +7,7 @@ narrator:  UK English Female
 mode:      Presentation
 classroom: enable
 
-title:     «Title of your self-learning course»
+title:     «Title of your learning concept»
 comment:   «One sentence: which UNESCO learning objective, which target group?»
 -->
 
@@ -15,7 +15,7 @@ comment:   «One sentence: which UNESCO learning objective, which target group?�
 ================================================================================
 INSTRUCTIONS FOR THE AI MODEL – keep this block in the result
 ================================================================================
-You fill in this template to create a LiaScript presentation of a self-learning course. Rules:
+You fill in this template to create a 20-minute LiaScript group presentation of a learning concept for one UNESCO learning objective. Rules:
 1. Keep the structure, heading levels and slide order. You may add slides (one `##` heading
    each), but no mandatory slide may be removed.
 2. Replace everything in «angle quotes». Delete `<!-- AI: … -->` comments after filling in.
@@ -30,7 +30,7 @@ You fill in this template to create a LiaScript presentation of a self-learning 
 ================================================================================
 -->
 
-# «Title of your self-learning course»
+# «Title of your learning concept»
 
 **«Group N»** · 21.01.2027 · AI in TVET II, OVGU Magdeburg
 
@@ -60,12 +60,12 @@ You fill in this template to create a LiaScript presentation of a self-learning 
 | Deepen | «…» | «…» | «…» |
 | Create | «…» | «…» | «…» |
 
-## Live Walkthrough: One Nugget
+## Sample Learning Material
 
                 --{{0}}--
-«Open one nugget live and show the interactive elements.»
+«Show the AI-supported sample material (e.g. a short nugget section, quiz or case) and its interactive elements.»
 
-[«Nugget title»](https://liascript.github.io/course/?«raw link to your .md file»)
+[«Title of the sample material»](https://liascript.github.io/course/?«raw link to your .md file – or show the material directly on the next slides»)
 
 {{1}}
 **What learners do:** «…»

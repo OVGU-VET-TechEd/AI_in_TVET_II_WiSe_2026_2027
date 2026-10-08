@@ -54,7 +54,7 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 {{3}}
 <section>
 
-**Your product:** an AI-generated **LiaScript self-learning course** for one UNESCO competency, published as OER.
+**Your product:** a **20-minute group presentation in LiaScript** on one UNESCO learning objective: concept, competency matrix and sample learning material created with AI. It does not have to be a complete stand-alone course.
 
 </section>
 
@@ -91,7 +91,7 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 | Date       | Task                                                                                     | Hand-in (Moodle)   |
 | ---------- | ---------------------------------------------------------------------------------------- | ------------------ |
 | 10.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + choose your UNESCO learning objective (Competency 3, 4 or 5) + first draft of your competency matrix | 16.12.2026, 23:59 |
-| 14.01.2027 | **Project development**: continue your LiaScript course + written peer review of one other group's course | 18.01.2027, 23:59 |
+| 14.01.2027 | **Project development**: continue your group presentation + written peer review of one other group's draft | 18.01.2027, 23:59 |
 
 </section>
 
@@ -183,39 +183,42 @@ By the end of the seminar, **you will be able to** …
 
 ## Assessment: How to Pass
 
+**Group work.** One group presentation is enough – you do not need to build a complete stand-alone self-learning course.
+
 {{1}}
 <section>
 
 | Component                         | Deliverable                                                                                       |
 | --------------------------------- | ------------------------------------------------------------------------------------------------- |
-| **1. LiaScript self-learning course** | Generated with AI, based on **one specific learning objective** from UNESCO Competency 3 (AI Foundations & Applications), 4 (AI Pedagogy) or 5 (AI for Professional Development) |
-| **2. Competency matrix**          | Aligns your learning objective across **Acquire, Deepen, Create**: content, workflow and AI tool for each level |
-| **3. Final presentation**         | LiaScript presentation of your course (21.01.2027)                                                |
+| **1. Group presentation (LiaScript)** | 20-minute presentation on **one specific learning objective** from UNESCO Competency 3 (AI Foundations & Applications), 4 (AI Pedagogy) or 5 (AI for Professional Development) |
+| **2. Competency matrix**          | Part of the presentation: aligns your learning objective across **Acquire, Deepen, Create** (content, workflow and AI tool for each level) |
+| **3. Sample learning material**   | Part of the presentation: at least one AI-supported learning element (e.g. short nugget section, quiz, case, diagram) shown live |
+| **4. AI workflow documentation**  | Part of the presentation: tools, prompts, what you kept and changed (short AI tools log, last slide or appendix) |
 
 </section>
 
 {{2}}
 <section>
 
-**Final submission (provisional): 15.02.2027.** GitHub link to your LiaScript course + competency matrix in Moodle
+**Final submission (provisional): 15.02.2027.** GitHub link to your group's LiaScript presentation (incl. competency matrix) in Moodle
 
 </section>
 
                                   --{{1}}--
-Your main product is a LiaScript self-learning course for one UNESCO learning objective, together with a competency matrix across the three progression levels.
+You work in groups. Your product is one twenty-minute LiaScript presentation for a UNESCO learning objective. The competency matrix, a sample of AI-supported learning material and a short documentation of your AI workflow are part of that presentation.
 
 ## Expectations for the Final Presentation
 
-On **21.01.2027** you present your self-learning course as a **LiaScript presentation**.
+On **21.01.2027** each group presents as a **LiaScript presentation**.
 
 {{1}}
 <section>
 
 | Frame         |                                                                                  |
 | ------------- | -------------------------------------------------------------------------------- |
-| Duration      | 10 minutes presentation + 5 minutes discussion                                   |
-| Content       | Chosen learning objective · competency matrix · live walkthrough of one nugget · AI workflow · lessons learned |
-| Format        | LiaScript file (`.md`) in your GitHub repository, opened via the LiaScript link   |
+| Duration      | 20 minutes group presentation + 5 minutes discussion                             |
+| Content       | Chosen learning objective · competency matrix · walkthrough of sample material · AI workflow · lessons learned |
+| Format        | LiaScript file (`.md`) in your group's GitHub repository, opened via the LiaScript link |
 | File hand-in  | 20.01.2027, 23:59 (link in Moodle)                                                |
 
 </section>
@@ -225,7 +228,7 @@ On **21.01.2027** you present your self-learning course as a **LiaScript present
 
 | Criterion             | Expectation                                                              |
 | --------------------- | ------------------------------------------------------------------------ |
-| Content               | Learning objective, matrix and course are consistent                     |
+| Content               | Learning objective, matrix and sample material are consistent           |
 | Pedagogy              | Progression Acquire → Deepen → Create is visible                          |
 | LiaScript use         | Slides, step-by-step animations, at least one interactive element         |
 | Reflection            | Critical view on AI output and your human contribution                   |
