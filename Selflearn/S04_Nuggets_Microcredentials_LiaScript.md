@@ -6,10 +6,10 @@ language:  en
 narrator:  UK English Female
 mode:      Textbook
 
-title:     S04 – AI tools for assessment and feedback · ethics in AI pedagogy (Self-learning unit)
+title:     S04 – Designing self-learning nuggets and micro-credentials with LiaScript (Self-learning unit)
 comment:   AI in TVET II – Self-learning unit for session 4.
 -->
 
-# S04 – AI tools for assessment and feedback · ethics in AI pedagogy
+# S04 – Designing self-learning nuggets and micro-credentials with LiaScript
 
 > This self-learning unit is in preparation. Content will be added during the term.

@@ -14,7 +14,7 @@ tags:      AI, TVET, AI Pedagogy, LiaScript, OER, Micro-credentials, Organisatio
 # AI in TVET II – Organisational Overview
 
 **AI in TVET II (6 CP) – AI Pedagogy: Creating Learning Material with LiaScript**
-Seminar · Winter term 2026/27 · Thursdays, 09:00–11:00 · 26.11.2026 – 21.01.2027
+Seminar · Winter term 2026/27 · Thursdays, 09:00–12:00 · 03.12.2026 – 21.01.2027
 
 | Contact         |                                                         |
 | --------------- | ------------------------------------------------------- |
@@ -62,25 +62,24 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 | No. | Date       | Format             | Topic                                                                        |
 | --- | ---------- | ------------------ | ---------------------------------------------------------------------------- |
-| 1   | 26.11.2026 | 🟢 Live            | Orientation & organisation · **Introduction to AI & Prompting**: how AI works, tool usage, limitations, ethics · overview of AI in TVET |
-| 2   | 03.12.2026 | 🔵 Self-learning   | AI vocabulary, models and workflows                                          |
-| 3   | 10.12.2026 | 🔵 Self-learning   | Pedagogical trends and AI-enhanced didactics                                 |
-| 4   | 17.12.2026 | 🟢 Live            | AI tools for assessment and feedback · human-centred mindset and ethics in AI pedagogy |
-| –   | 21.12.2026 – 01.01.2027 | ⚪ Break | Christmas break                                                     |
-| 5   | 07.01.2027 | 🟢 Live            | Designing self-learning nuggets and micro-credentials with LiaScript · competency matrix workshop |
-| 6   | 14.01.2027 | 🔵 Self-learning   | Project development and peer review                                          |
-| 7   | 21.01.2027 | 🟢 Live            | **Final presentations** and reflection                                       |
+| 1   | 03.12.2026 | 🔵 Self-learning   | Orientation & organisation · **Introduction to AI & Prompting**: how AI works, tool usage, limitations, ethics · overview of AI in TVET |
+| 2   | 10.12.2026 | 🔵 Self-learning   | AI vocabulary, models and workflows                                          |
+| 3   | 17.12.2026 | 🟢 Live            | Pedagogical trends and AI-enhanced didactics · AI tools for assessment and feedback · human-centred mindset and ethics in AI pedagogy |
+| –   | 21.12.2026 – 01.01.2027 | ⚪ Break | Christmas break (university closed 28–30 Dec 2026)                  |
+| 4   | 07.01.2027 | 🟢 Live            | Designing self-learning nuggets and micro-credentials with LiaScript · competency matrix workshop |
+| 5   | 14.01.2027 | 🔵 Self-learning   | Project development and peer review                                          |
+| 6   | 21.01.2027 | 🟢 Live            | **Final presentations** and reflection                                       |
 
-<small>Term: 12.10.2026 – 27.01.2027. Holiday: Epiphany 06.01.2027.</small>
+<small>Term: 12.10.2026 – 27.01.2027. No classes 21.12.2026 – 01.01.2027 and on 06.01.2027 (Epiphany).</small>
 
 ## Live and Self-Learning Sessions
 
 {{1}}
 <section>
 
-### 🟢 Live sessions (4)
+### 🟢 Live sessions (3)
 
-26.11. · 17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–11:00, room as listed in LSF
+17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–12:00, room as listed in LSF
 
 </section>
 
@@ -91,8 +90,8 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 | Date       | Task                                                                                     | Hand-in (Moodle)   |
 | ---------- | ---------------------------------------------------------------------------------------- | ------------------ |
-| 03.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + choose your UNESCO learning objective (Competency 3, 4 or 5) | 09.12.2026, 23:59 |
-| 10.12.2026 | Self-learning nugget **Pedagogical trends & AI-enhanced didactics** + first draft of your competency matrix | 16.12.2026, 23:59 |
+| 03.12.2026 | Kick-off as self-learning: work through this **organisational overview** + LiaScript module **Introduction to AI & Prompting** + choose your UNESCO learning objective (Competency 3, 4 or 5) | 09.12.2026, 23:59 |
+| 10.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + first draft of your competency matrix | 16.12.2026, 23:59 |
 | 14.01.2027 | **Project development**: continue your LiaScript course + written peer review of one other group's course | 18.01.2027, 23:59 |
 
 </section>
@@ -283,4 +282,4 @@ Which UNESCO competency do you want to work on?
 
 ---
 
-**Next session:** Thursday, 03.12.2026: 🔵 self-learning, AI vocabulary, models and workflows. Hand-in by 09.12.2026.
+**Next session:** Thursday, 10.12.2026: 🔵 self-learning, AI vocabulary, models and workflows. Hand-in by 16.12.2026. First live session: Thursday, 17.12.2026, 09:00–12:00.
