@@ -1,7 +1,7 @@
 <!--
 author:    Hannes Tegelbeckers
 email:     hannes.tegelbeckers@ovgu.de
-version:   1.0.0
+version:   1.1.0
 language:  en
 narrator:  UK English Female
 mode:      Textbook
@@ -58,6 +58,23 @@ comment:   AI in TVET II – Self-learning unit for session 2 (10.12.2026): AI v
 | Image / diagram models | Illustrations, infographics | Copyright, stereotypes, technical accuracy |
 | Speech models | Text-to-speech, transcription, language practice | Voice data, accessibility benefits |
 | Specialised educational tools | Adaptive practice, tutoring, assessment | Evidence of effectiveness, EU AI Act risk level |
+
+### Prompting techniques: from basic to advanced
+
+A review of prompt engineering distinguishes foundational and advanced techniques (Chen et al., 2025):
+
+| Level | Technique | Use in learning design |
+| --- | --- | --- |
+| Basic | Clear, precise instructions; **role prompting** | "As a trainer for mechatronics apprentices …" |
+| Basic | **Delimiters** (e.g. `"""` or `«»`) to separate instructions from source text | Paste a regulation text without it being read as an instruction |
+| Basic | **One-/few-shot** examples | Show one model quiz item before asking for ten |
+| Basic | **Temperature / top-p** | Low temperature for consistent answers keys, higher for creative case ideas |
+| Advanced | **Chain of thought** ("Let's think step by step") | Worked solutions for calculation tasks |
+| Advanced | **Self-consistency** – several reasoning paths, take the most consistent answer | Checking a solution key |
+| Advanced | **Least-to-most** – split a problem into simpler sub-problems | Scaffolded tasks for weaker learners |
+| Advanced | **Generated knowledge**, tree of thoughts, retrieval augmentation, ReAct | Grounded and tool-using assistants (→ agents) |
+
+The review also treats prompt engineering as a **security** issue: adversarial prompts (e.g. *prompt injection* hidden in uploaded documents) can manipulate a model – delimiters and robust instructions reduce the risk (Chen et al., 2025).
 
 ## 3. Agentic AI
 
@@ -147,6 +164,7 @@ We discuss your drafts in the live session on **17.12.2026**.
 
 ## References
 
+- Chen, B., Zhang, Z., Langrené, N., & Zhu, S. (2025). Unleashing the potential of prompt engineering for large language models. *Patterns, 6*, 101260. https://doi.org/10.1016/j.patter.2025.101260
 - Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., & Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. In *Advances in Neural Information Processing Systems 33*. https://arxiv.org/abs/2005.11401
 - Ning, Y., Zhang, C., Xu, B., Zhou, Y., & Wijaya, T. T. (2024). Teachers’ AI-TPACK: Exploring the relationship between knowledge elements. *Sustainability, 16*(3), 978. https://doi.org/10.3390/su16030978
 - UNESCO. (2024). *AI competency framework for teachers*. https://doi.org/10.54675/ZJTE2084

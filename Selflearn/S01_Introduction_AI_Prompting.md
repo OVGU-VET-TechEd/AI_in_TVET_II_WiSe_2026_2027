@@ -1,7 +1,7 @@
 <!--
 author:    Hannes Tegelbeckers
 email:     hannes.tegelbeckers@ovgu.de
-version:   1.0.0
+version:   1.1.0
 language:  en
 narrator:  UK English Female
 mode:      Textbook
@@ -90,6 +90,8 @@ comment:   AI in TVET II – Self-learning unit for session 1 (live, 03.12.2026)
 - **Transparency:** declare AI use.
 - **Human-centred pedagogy:** decide consciously where AI supports learning and where learners must think themselves.
 
+**Human-centred AI as a design lens.** A systematic review defines human-centred AI by its **purpose** (augmentation, AI autonomy, automation), the **values** it respects (ethical, protection, performance) and the **properties** it needs (oversight, comprehension, integrity). The core aim: AI should *augment* human capabilities while humans stay in control – developed iteratively with user involvement (Schmager et al., 2025). Use these three questions for every AI element in your self-learning course: *What is its purpose? Which values could it touch? Can learners and teachers understand and override it?*
+
 ## 6. Your Task in This Seminar
 
 **Group work.** Each group prepares a **20-minute LiaScript presentation** (+ 5 minutes discussion) on 21.01.2027 for **one learning objective** from the UNESCO AI Competency Framework for Teachers:
@@ -119,6 +121,7 @@ A complete, stand-alone self-learning course is **not** required.
 
 - Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., & Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. In *Advances in Neural Information Processing Systems 33* (NeurIPS 2020). https://arxiv.org/abs/2005.11401
 - Lo, L. S. (2023). The CLEAR path: A framework for enhancing information literacy through prompt engineering. *The Journal of Academic Librarianship, 49*(4), 102720. https://doi.org/10.1016/j.acalib.2023.102720
+- Schmager, S., Pappas, I. O., & Vassilakopoulou, P. (2025). Understanding human-centred AI: A review of its defining elements and a research agenda. *Behaviour & Information Technology, 44*(15), 3771–3810. https://doi.org/10.1080/0144929X.2024.2448719
 - UNESCO. (2023). *Guidance for generative AI in education and research*. https://doi.org/10.54675/EWZM9535
 - UNESCO. (2024). *AI competency framework for teachers*. https://doi.org/10.54675/ZJTE2084
 - White, J., Fu, Q., Hays, S., Sandborn, M., Olea, C., Gilbert, H., Elnashar, A., Spencer-Smith, J., & Schmidt, D. C. (2023). *A prompt pattern catalog to enhance prompt engineering with ChatGPT* (arXiv:2302.11382). https://arxiv.org/abs/2302.11382

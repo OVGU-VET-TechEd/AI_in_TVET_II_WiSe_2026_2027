@@ -1,7 +1,7 @@
 <!--
 author:    Hannes Tegelbeckers
 email:     hannes.tegelbeckers@ovgu.de
-version:   1.0.0
+version:   1.1.0
 language:  en
 narrator:  UK English Female
 mode:      Textbook
@@ -45,7 +45,15 @@ AI adapts content, pace and feedback to learners. Reviews show benefits for enga
 
 ### 1.3 Heutagogy: self-determined learning
 
-Heutagogy puts the learner in charge of *what* and *how* to learn. Ng and Lai (2025) propose **AI-augmented heutagogy**: AI supports learners in setting goals, finding resources and reflecting – while learners keep agency.
+Heutagogy puts the learner in charge of *what* and *how* to learn – up to the design of curriculum and assessment. Ng and Lai (2025) propose **AI-augmented heutagogy** and map three AI paradigms to rising learner autonomy and the SOLO taxonomy:
+
+| AI paradigm | Role of AI | SOLO level | Learner autonomy |
+| --- | --- | --- | --- |
+| **AI-informed** | Information, identifying learning needs | Pre-/uni-structural | Low – teachers guide strongly |
+| **AI-supported** | Adaptive feedback, tailored content, recommendations | Multi-structural, relational | Growing |
+| **AI-empowered** | Partner for complex, open-ended problems | Extended abstract | Full autonomy and agency |
+
+AI's computational strengths should complement the emotional and ethical dimensions of human cognition. The authors stress that this requires deliberate changes in pedagogy and assessment, staff development and infrastructure. **For your self-learning course:** which paradigm fits your target group – and how do learners move to the next one?
 
 ### 1.4 Self-regulated learning (SRL)
 
