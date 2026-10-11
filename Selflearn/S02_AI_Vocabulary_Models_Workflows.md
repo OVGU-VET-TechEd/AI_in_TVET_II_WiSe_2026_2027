@@ -80,6 +80,16 @@ The review also treats prompt engineering as a **security** issue: adversarial p
 
 **Agentic AI** describes systems that pursue a goal with some autonomy: they **plan**, use **tools**, keep **memory** and **adapt** based on results.
 
+> **Reading for this section:** *Agentic AI in Higher Education and TVET: A New Era for Professional Development* (OpenAI, 2025). **This report was generated with ChatGPT Deep Research** – it is an AI-generated text, not a peer-reviewed source. We use it deliberately: declaring the AI tool used is best practice, and the report is itself a case for critical reading (see the task below).
+
+**Generative AI creates, extractive AI finds, agentic AI acts** (OpenAI, 2025):
+
+| Type | Role | Example |
+| --- | --- | --- |
+| Generative AI | Content creator – acts only when prompted | Writes an essay on request |
+| Extractive AI | Information retriever – finds and summarises existing information | Answers "What does this report conclude?" |
+| Agentic AI | Autonomous problem-solver – plans sub-tasks, calls generative and extractive functions and tools | "Research this topic and write an essay": searches literature, takes notes, drafts and revises |
+
 ``` ascii
         ┌──────────── Goal (set by human) ────────────┐
         ▼                                             │
@@ -98,6 +108,31 @@ The review also treats prompt engineering as a **security** issue: adversarial p
 | Support for continuous professional development | Data protection, security (prompt injection) |
 
 **Principle:** keep a **human in the loop** at every step where pedagogical or high-stakes decisions are made.
+
+### Setting up an agentic workflow
+
+The report describes six design steps (OpenAI, 2025) – use them for your own project:
+
+1. **Goal and scope** – what should the agent achieve, and what must it *not* do?
+2. **Knowledge and tools** – curriculum documents, textbooks, LMS, search, code interpreter …
+3. **Plan the workflow** – stepwise instructions, e.g. *(a) analyse the learning objectives, (b) gather materials, (c) draft a lesson plan, (d) ask for approval, (e) refine*.
+4. **Execute and iterate** – the *plan → act → observe → adjust* loop.
+5. **User interaction and oversight** – pause, review, redirect mid-stream.
+6. **Outcome and feedback** – the result is a draft that the teacher reviews.
+
+**Mitigations named in the report:** require sources for factual claims, build validation steps into the workflow, let the agent say "I don't know" or ask for help when confidence is low, and treat all agent output as a **draft that needs teacher approval**.
+
+**Link to the UNESCO framework:** At the *Create* level of "AI for professional development", teachers customise and build AI solutions for their own and their peers' growth (UNESCO, 2024) – for example an agent that keeps a team of automotive trainers up to date on electric-vehicle technology. Orchestrating several specialised agents may become a new teacher competency: **delegating tasks and supervising agents**.
+
+### Critical reading task (20 min)
+
+The AI-generated report has 62 footnotes, but more than half of them point to **one** web guide by a publisher (Elsevier). Others point to blogs and preprints.
+
+1. Pick **two** claims from the report and trace them to the original source. Does the source say what the report claims?
+2. Which claims would you only use after finding a peer-reviewed source?
+3. How would you declare AI use if you used this report in your own course?
+
+Note the results in your group's AI tools log.
 
 **Check:** Which feature is typical for an AI agent but not for a single chat answer?
 
@@ -167,6 +202,7 @@ We discuss your drafts in the live session on **17.12.2026**.
 - Chen, B., Zhang, Z., Langrené, N., & Zhu, S. (2025). Unleashing the potential of prompt engineering for large language models. *Patterns, 6*, 101260. https://doi.org/10.1016/j.patter.2025.101260
 - Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., & Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. In *Advances in Neural Information Processing Systems 33*. https://arxiv.org/abs/2005.11401
 - Ning, Y., Zhang, C., Xu, B., Zhou, Y., & Wijaya, T. T. (2024). Teachers’ AI-TPACK: Exploring the relationship between knowledge elements. *Sustainability, 16*(3), 978. https://doi.org/10.3390/su16030978
+- OpenAI. (2025). *Agentic AI in higher education and TVET: A new era for professional development* [AI-generated report, created with ChatGPT Deep Research; course material, not peer-reviewed].
 - UNESCO. (2024). *AI competency framework for teachers*. https://doi.org/10.54675/ZJTE2084
 - Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. In *International Conference on Learning Representations (ICLR 2023)*. https://arxiv.org/abs/2210.03629
 
