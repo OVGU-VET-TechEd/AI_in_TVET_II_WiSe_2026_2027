@@ -132,6 +132,7 @@ Every seminar starts with an introduction to Artificial Intelligence, today as a
 | ------- | ------- | ----- |
 | 1 | Schmager, Pappas & Vassilakopoulou (2025): *Understanding human-centred AI* | Purpose · values · properties of human-centred AI – the lens for your design |
 | 2 | Chen, Zhang, Langrené & Zhu (2025): *Unleashing the potential of prompt engineering for large language models* | Basic and advanced prompting techniques, prompt security |
+| 2 | *Agentic AI in Higher Education and TVET* – AI-generated report (ChatGPT Deep Research, declared) | Generative vs. extractive vs. agentic AI; critical reading of AI-generated sources |
 | 3 | Ng & Lai (2025): *AI-augmented heutagogy* | Self-determined learning: AI-informed → AI-supported → AI-empowered |
 
 <small>Full references in the self-learning units S01–S03.</small>
