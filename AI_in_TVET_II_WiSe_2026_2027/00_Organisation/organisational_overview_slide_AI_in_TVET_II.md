@@ -1,7 +1,7 @@
 <!--
 author:    Hannes Tegelbeckers
 email:     hannes.tegelbeckers@ovgu.de
-version:   0.1.0
+version:   0.2.0
 language:  en
 narrator:  UK English Female
 mode:      Presentation
@@ -125,6 +125,16 @@ Every seminar starts with an introduction to Artificial Intelligence, today as a
 - Declare AI use and licence your course openly (e.g. CC BY 4.0).
 
 </section>
+
+## Readings for this Seminar
+
+| Session | Reading | Focus |
+| ------- | ------- | ----- |
+| 1 | Schmager, Pappas & Vassilakopoulou (2025): *Understanding human-centred AI* | Purpose · values · properties of human-centred AI – the lens for your design |
+| 2 | Chen, Zhang, Langrené & Zhu (2025): *Unleashing the potential of prompt engineering for large language models* | Basic and advanced prompting techniques, prompt security |
+| 3 | Ng & Lai (2025): *AI-augmented heutagogy* | Self-determined learning: AI-informed → AI-supported → AI-empowered |
+
+<small>Full references in the self-learning units S01–S03.</small>
 
 ## Learning Objectives
 

@@ -68,7 +68,7 @@ A review of prompt engineering distinguishes foundational and advanced technique
 | Basic | Clear, precise instructions; **role prompting** | "As a trainer for mechatronics apprentices …" |
 | Basic | **Delimiters** (e.g. `"""` or `«»`) to separate instructions from source text | Paste a regulation text without it being read as an instruction |
 | Basic | **One-/few-shot** examples | Show one model quiz item before asking for ten |
-| Basic | **Temperature / top-p** | Low temperature for consistent answers keys, higher for creative case ideas |
+| Basic | **Temperature / top-p** | Low temperature for consistent answer keys, higher for creative case ideas |
 | Advanced | **Chain of thought** ("Let's think step by step") | Worked solutions for calculation tasks |
 | Advanced | **Self-consistency** – several reasoning paths, take the most consistent answer | Checking a solution key |
 | Advanced | **Least-to-most** – split a problem into simpler sub-problems | Scaffolded tasks for weaker learners |
