@@ -1,20 +1,20 @@
 <!--
 author:    Hannes Tegelbeckers
 email:     hannes.tegelbeckers@ovgu.de
-version:   0.2.0
+version:   0.4.0
 language:  en
 narrator:  UK English Female
 mode:      Presentation
 
 title:     AI in TVET II – Organisational Overview WiSe 2026/27
-comment:   Kick-off session of the seminar "AI in TVET II (6 CP) – AI Pedagogy: Creating Learning Material with LiaScript": schedule, learning objectives, assessment, presentation expectations, introduction to AI and prompting.
+comment:   Organisational overview of the seminar "AI in TVET II (6 CP) – AI Pedagogy: Creating Learning Material with LiaScript": schedule (7 sessions from 26.11.2026), pass requirements incl. obligatory SCORM units, learning objectives, assessment, presentation expectations.
 tags:      AI, TVET, AI Pedagogy, LiaScript, OER, Micro-credentials, Organisation
 -->
 
 # AI in TVET II – Organisational Overview
 
 **AI in TVET II (6 CP) – AI Pedagogy: Creating Learning Material with LiaScript**
-Seminar · Winter term 2026/27 · Thursdays, 09:00–12:00 · 03.12.2026 – 21.01.2027
+Seminar · Winter term 2026/27 · Thursdays, 09:00–12:00 · 26.11.2026 – 21.01.2027 · 7 sessions
 
 | Contact         |                                                         |
 | --------------- | ------------------------------------------------------- |
@@ -27,7 +27,7 @@ Seminar · Winter term 2026/27 · Thursdays, 09:00–12:00 · 03.12.2026 – 21.
 | Course material | [GitHub / LiaScript](https://github.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027) |
 
                                   --{{0}}--
-Welcome to AI in TVET two. Today we cover the organisation, dates, assessment and presentation expectations, and we refresh the foundations of artificial intelligence and prompting.
+Welcome to AI in TVET two. This overview is the key reference for dates, pass requirements, assessment and presentation expectations. Important: completing all seven SCORM units in Moodle is obligatory to pass.
 
 ## Introduction to the Seminar
 
@@ -58,17 +58,27 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 </section>
 
+{{4}}
+<section>
+
+**📦 Obligatory to pass:** every session has one **self-learning unit as SCORM package in Moodle**. Completing **all 7 SCORM units by 15.02.2027** is a pass requirement.
+
+</section>
+
 ## Course Outline with Dates
 
 | No. | Date       | Format             | Topic                                                                        |
 | --- | ---------- | ------------------ | ---------------------------------------------------------------------------- |
-| 1   | 03.12.2026 | 🟢 Live            | Orientation & organisation · **Introduction to AI & Prompting**: how AI works, tool usage, limitations, ethics · overview of AI in TVET |
-| 2   | 10.12.2026 | 🔵 Self-learning   | AI vocabulary, models and workflows                                          |
-| 3   | 17.12.2026 | 🟢 Live            | Pedagogical trends and AI-enhanced didactics · AI tools for assessment and feedback · human-centred mindset and ethics in AI pedagogy |
+| 1   | 26.11.2026 | 🟢 Live            | Orientation and organisation · **from AI in TVET I to II: LiaScript Level 2** – quizzes that teach, playgrounds, macros, professional GitHub hosting, SCORM export |
+| 2   | 03.12.2026 | 🔵 Self-learning   | **AI and prompting Level 2**: reliability of AI-generated material, grounding, prompt pipelines, bias audit, human-centred AI applied |
+| 3   | 10.12.2026 | 🔵 Self-learning   | AI vocabulary, models and workflows · choose your learning objective · first competency matrix |
+| 4   | 17.12.2026 | 🟢 Live            | Pedagogical trends and AI-enhanced didactics · AI tools for assessment and feedback · human-centred mindset and ethics |
 | –   | 21.12.2026 – 01.01.2027 | ⚪ Break | Christmas break (university closed 28–30 Dec 2026)                  |
-| 4   | 07.01.2027 | 🟢 Live            | Designing self-learning nuggets and micro-credentials with LiaScript · competency matrix workshop |
-| 5   | 14.01.2027 | 🔵 Self-learning   | Project development and peer review                                          |
-| 6   | 21.01.2027 | 🟢 Live            | **Final presentations** and reflection                                       |
+| 5   | 07.01.2027 | 🟢 Live            | Designing self-learning nuggets and micro-credentials with LiaScript · competency matrix workshop · open licensing |
+| 6   | 14.01.2027 | ⚪ Format tbc      | Project development and peer review on GitHub (live or self-learning – announced in Moodle) |
+| 7   | 21.01.2027 | 🟢 Live            | **Final presentations** and reflection                                       |
+
+Every session has one **obligatory SCORM unit** in [Moodle](https://elearning.ovgu.de/course/section.php?id=202215) (self-learning unit S01–S07).
 
 <small>Term: 12.10.2026 – 27.01.2027. No classes 21.12.2026 – 01.01.2027 and on 06.01.2027 (Epiphany).</small>
 
@@ -79,7 +89,9 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 ### 🟢 Live sessions (4)
 
-03.12. · 17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–12:00, room as listed in LSF
+26.11. · 17.12.2026 · 07.01. · 21.01.2027: Thursdays, 09:00–12:00, room as listed in LSF
+
+⚪ **14.01.2027:** format (live or self-learning) to be confirmed in Moodle – the tasks in unit S06 work for both.
 
 </section>
 
@@ -88,30 +100,32 @@ This seminar builds on *AI in TVET I* and focuses on the **pedagogical integrati
 
 ### 🔵 Self-learning sessions (2, I am not on site)
 
-| Date       | Task                                                                                     | Hand-in (Moodle)   |
+| Date       | Task                                                                                     | Hand-in (inside the SCORM unit) |
 | ---------- | ---------------------------------------------------------------------------------------- | ------------------ |
-| 10.12.2026 | Self-learning nugget **AI vocabulary, models and workflows** + choose your UNESCO learning objective (Competency 3, 4 or 5) + first draft of your competency matrix | 16.12.2026, 23:59 |
-| 14.01.2027 | **Project development**: continue your group presentation + written peer review of one other group's draft | 18.01.2027, 23:59 |
+| 03.12.2026 | Unit **S02 – AI and prompting Level 2**: reliability experiment, grounding test, prompt pipeline, bias audit, your group's reusable assistant | in the unit, by 15.02.2027 (recommended before 10.12.) |
+| 10.12.2026 | Unit **S03 – AI vocabulary, models and workflows** + choose your UNESCO learning objective (Competency 3, 4 or 5) + first draft of your competency matrix + workflow map | 16.12.2026, 23:59 |
+| 14.01.2027 ⚪ | Unit **S06 – Project development** (format tbc): continue your group presentation + peer review of one other group's draft as GitHub issue | 18.01.2027, 23:59 |
 
 </section>
 
                                   --{{2}}--
-On two dates I am travelling. Please work through the self-learning nuggets in Moodle and upload your result by the deadline.
+On the third and tenth of December I am travelling. Please work through the self-learning unit in Moodle and enter your results in the unit – no separate upload. The format of the fourteenth of January will be announced in Moodle.
 
-## Start: Introduction to AI & Prompting
+## AI & Prompting Level 2 (Session 2)
 
-Every seminar starts with an introduction to Artificial Intelligence, today as a **compact refresher** that goes further than AI in TVET I.
+AI in TVET I covered the basics (how LLMs work, prompting, limitations, ethics). AI in TVET II **builds on them and does not repeat them**: session 1 takes LiaScript to Level 2, session 2 (self-learning) asks how **reliable** AI-generated learning material is and how to build workflows that catch its errors.
 
 {{1}}
 <section>
 
-| Building block       | Content                                                                                       |
-| -------------------- | --------------------------------------------------------------------------------------------- |
-| **How AI works**     | LLMs: tokens, weights, training data, context window; retrieval and grounding; agents         |
-| **Prompting**        | Role · Task · Context · Format · Examples; prompt patterns for learning material (quizzes, case studies, diagrams, LiaScript syntax) |
-| **Tool usage**       | Text and structure (ChatGPT, Claude) · research (Perplexity, Consensus) · images and diagrams · LiaScript generation workflows |
-| **Limitations**      | Hallucinations, fabricated references, didactically weak output, bias, cultural blind spots    |
-| **Ethics**           | Data protection, copyright and CC licensing of AI output, transparency, automation vs. human-centred pedagogy |
+| Building block | AI in TVET I (known) | AI in TVET II (Level 2) |
+| --- | --- | --- |
+| **How AI works** | tokens, next token, temperature, weights, training data | attention, context window ("lost in the middle"), reliability of repeated runs |
+| **Prompting** | five building blocks, CLEAR, prompt patterns | prompt pipelines: grounded outline, few-shot, structured output, chain-of-verification, rubric check |
+| **Tools** | choosing tools, NotebookLM, agents as a development | grounded vs. ungrounded test, reusable group assistant, architecture choice, agent specification |
+| **Limitations** | hallucinations, fake references, bias | measuring error rates, bias audit of generated material |
+| **Ethics** | principles, EU AI Act, human-centred mindset | AI grading mini-study, co-creating ethical rules with learners |
+| **LiaScript / OER** | syntax basics, GitHub upload, CC licences, micro-credential card | Level-2 features, pull requests, pinned links, SCORM export, licence compatibility, constructive alignment |
 
 </section>
 
@@ -130,12 +144,12 @@ Every seminar starts with an introduction to Artificial Intelligence, today as a
 
 | Session | Reading | Focus |
 | ------- | ------- | ----- |
-| 1 | Schmager, Pappas & Vassilakopoulou (2025): *Understanding human-centred AI* | Purpose · values · properties of human-centred AI – the lens for your design |
-| 2 | Chen, Zhang, Langrené & Zhu (2025): *Unleashing the potential of prompt engineering for large language models* | Basic and advanced prompting techniques, prompt security |
-| 2 | *Agentic AI in Higher Education and TVET* – AI-generated report (ChatGPT Deep Research, declared) | Generative vs. extractive vs. agentic AI; critical reading of AI-generated sources |
-| 3 | Ng & Lai (2025): *AI-augmented heutagogy* | Self-determined learning: AI-informed → AI-supported → AI-empowered |
+| 2 | Schmager, Pappas & Vassilakopoulou (2025): *Understanding human-centred AI* | Purpose · values · properties of human-centred AI – the lens for your design |
+| 3 | Chen, Zhang, Langrené & Zhu (2025): *Unleashing the potential of prompt engineering for large language models* | Basic and advanced prompting techniques, prompt security |
+| 3 | *Agentic AI in Higher Education and TVET* – AI-generated report (ChatGPT Deep Research, declared) | Generative vs. extractive vs. agentic AI; critical reading of AI-generated sources |
+| 4 | Ng & Lai (2025): *AI-augmented heutagogy* | Self-determined learning: AI-informed → AI-supported → AI-empowered |
 
-<small>Full references in the self-learning units S01–S03.</small>
+<small>Full references in the self-learning units S02–S04.</small>
 
 ## Learning Objectives
 
@@ -192,7 +206,22 @@ By the end of the seminar, **you will be able to** …
 
 </section>
 
-## Assessment: How to Pass
+## How to Pass: Three Requirements
+
+You need **all three** – they are not alternatives:
+
+| Requirement | What exactly | Deadline |
+| --- | --- | --- |
+| **1 · 📦 SCORM units (obligatory)** | All **7 self-learning units** completed in [Moodle](https://elearning.ovgu.de/course/section.php?id=202215) (S01–S07); units S03 and S06 contain the group hand-ins | **15.02.2027** (hand-ins: 16.12.2026 and 18.01.2027) |
+| **2 · 🎤 Group presentation** | 20 minutes + 5 minutes discussion in LiaScript (graded, see below) | 21.01.2027 |
+| **3 · 📤 Final submission** | GitHub link to your group's final LiaScript presentation (incl. competency matrix) in Moodle | 15.02.2027 |
+
+> [!IMPORTANT] Without all 7 completed SCORM units you cannot pass – even with an excellent presentation.
+
+                                  --{{0}}--
+Three requirements. New this year: completing all seven SCORM units in Moodle is obligatory. The SCORM units are not graded, the group presentation is.
+
+## Assessment: The Group Presentation
 
 **Group work.** One group presentation is enough – you do not need to build a complete stand-alone self-learning course.
 
@@ -211,7 +240,7 @@ By the end of the seminar, **you will be able to** …
 {{2}}
 <section>
 
-**Final submission (provisional): 15.02.2027.** GitHub link to your group's LiaScript presentation (incl. competency matrix) in Moodle
+**Final submission: 15.02.2027.** GitHub link to your group's LiaScript presentation (incl. competency matrix) in Moodle · **and all 7 SCORM units completed**
 
 </section>
 
@@ -295,4 +324,4 @@ Which UNESCO competency do you want to work on?
 
 ---
 
-**Next session:** Thursday, 10.12.2026: 🔵 self-learning, AI vocabulary, models and workflows. Hand-in by 16.12.2026.
+**Next session:** Thursday, 03.12.2026: 🔵 self-learning (I am travelling), AI and prompting Level 2 – unit **S02**. Before that: complete the SCORM unit **S01** in Moodle.

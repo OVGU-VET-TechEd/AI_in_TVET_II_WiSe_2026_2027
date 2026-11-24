@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en" class="present-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P03 – AI Vocabulary, Models and Workflows</title>
+<meta name="description" content="AI in TVET II – Slides for session 3 (self-learning, 10.12.2026, 180 min): AI vocabulary for pedagogy, model types incl. local open-weight models, advanced prompting, agentic AI, mapping an AI-enhanced pedagogical workflow, choosing the UNESCO learning objective, first competency matrix draft. Interactive: Embedding Atlas, term matcher, agent checkpoint playground, matrix builder.">
+<link rel="icon" href="../../assets/ovgu_logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --main:#7a003f; --main-dark:#5c002f; --second:#bc7f9f; --third:#f5ebf0; --ink:#111; --ink-2:#3e3f40; --ink-3:#5f6163;
+  --line:#cfd3d6; --soft:#e7e9ea; --bg:#fff; --bg-2:#f8f8f8; --s1:#2a78d6; --good:#0ca30c; --good-bg:#e2f4e2; --crit:#d03b3b; --crit-bg:#fbe3e3; --warn:#fab219; --hb:3.1rem; --fb:3rem; }
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+html.present-root { font-size: clamp(13px, min(1.1vw, 2.05vh), 30px); }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Barlow","Helvetica Neue",Arial,sans-serif; line-height:1.45; overflow-wrap:anywhere; }
+a { color:var(--main); } a:hover { color:var(--main-dark); }
+h1,h2,h3 { font-family:"Barlow Semi Condensed","Barlow",sans-serif; font-weight:600; line-height:1.12; }
+button,input,textarea,select { font:inherit; }
+:focus-visible { outline:3px solid var(--s1); outline-offset:2px; }
+small,.small { font-size:.82em; } .muted { color:var(--ink-3); }
+.topbar { position:fixed; top:0; left:0; right:0; height:var(--hb); z-index:30; display:flex; align-items:center; gap:.9rem; padding:0 1.1rem; background:#fff; border-bottom:1px solid var(--line); }
+.topbar img { height:2.1rem; display:block; }
+.topbar .deck-title { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; color:var(--main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topbar .lia-link { margin-left:auto; font-size:.85rem; white-space:nowrap; }
+.botbar { position:fixed; left:0; right:0; bottom:0; height:var(--fb); z-index:30; display:flex; align-items:center; gap:.5rem; padding:0 1rem; background:#fff; border-top:1px solid var(--line); }
+.progress { position:absolute; top:-1px; left:0; height:3px; background:var(--main); transition:width .3s; }
+.counter { font-variant-numeric:tabular-nums; font-size:.9rem; color:var(--ink-2); min-width:4.2rem; text-align:center; }
+.steps { display:flex; gap:.25rem; } .steps i { width:.45rem; height:.45rem; border-radius:50%; background:var(--soft); display:block; } .steps i.on { background:var(--main); }
+.spacer { flex:1; } .stitle { font-size:.85rem; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40vw; }
+.cbtn { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:.35rem; padding:.25rem .6rem; font-size:.85rem; cursor:pointer; white-space:nowrap; }
+.cbtn:hover { border-color:var(--main); color:var(--main); } .cbtn[aria-pressed="true"] { background:var(--main); color:#fff; border-color:var(--main); }
+#deck { position:fixed; top:var(--hb); bottom:var(--fb); left:0; right:0; }
+.slide { position:absolute; inset:0; display:none; } .slide.active { display:block; }
+body.prerender .slide { display:block; visibility:hidden; }
+.slide > .inner { height:100%; overflow-y:auto; max-width:80rem; margin:0 auto; padding:1.3rem 2.6rem 1.8rem; }
+.slide .notes { display:none; }
+.notes-panel { position:fixed; left:0; right:0; bottom:var(--fb); z-index:25; max-height:32vh; overflow:auto; background:#fffdf2; border-top:3px solid var(--warn); padding:.7rem 1.4rem; font-size:.95rem; display:none; }
+.notes-panel.open { display:block; } .notes-panel h4 { margin:0 0 .3rem; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+.overview { position:fixed; inset:0; z-index:60; background:rgba(255,255,255,.98); overflow:auto; padding:1.4rem 2rem 2rem; display:none; }
+.overview.open { display:block; } .ov-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; } .overview h2 { margin:0; color:var(--main); }
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(15rem,100%),1fr)); gap:.7rem; }
+.ov-item { text-align:left; border:1px solid var(--line); border-top:4px solid var(--second); background:#fff; border-radius:.3rem; padding:.55rem .7rem; cursor:pointer; font-size:.9rem; }
+.ov-item:hover,.ov-item.cur { border-top-color:var(--main); box-shadow:0 2px 8px rgba(122,0,63,.15); } .ov-item b { display:block; color:var(--ink-3); font-size:.75rem; font-weight:500; }
+.frag { opacity:0; visibility:hidden; transform:translateY(.35rem); transition:opacity .35s, transform .35s, visibility .35s; }
+.frag.on { opacity:1; visibility:visible; transform:none; }
+@media (prefers-reduced-motion: reduce) { .frag,.progress { transition:none; } }
+body.scroll .topbar { position:sticky; } body.scroll #deck { position:static; }
+body.scroll .slide { position:static; display:block; border-bottom:8px solid var(--third); }
+body.scroll .slide > .inner { height:auto; overflow:visible; padding:1.4rem 16px 2.2rem; }
+body.scroll .frag { opacity:1; visibility:visible; transform:none; }
+body.scroll .botbar, body.scroll .notes-panel, body.scroll .hide-scroll { display:none; }
+body.scroll .slide .notes { display:block; max-width:80rem; margin:0 auto 1.2rem; font-size:.9rem; color:var(--ink-3); border-left:3px solid var(--warn); padding:.3rem .8rem; background:#fffdf2; }
+body.scroll .slide .notes:empty { display:none; }
+body.scroll .slide .notes::before { content:"Speaker notes · "; font-weight:600; }
+.kicker { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; color:var(--main); margin:0 0 .25rem; }
+.slide h2 { margin:0 0 .8rem; font-size:2.05rem; color:var(--main); }
+.slide p { margin:0 0 .7rem; } .slide ul,.slide ol { margin:0 0 .7rem; padding-left:1.3rem; } .slide li { margin:.2rem 0; }
+.body > * + *, .frag > * + * { margin-top:.2rem; }
+.card { border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.85rem 1rem; margin:.4rem 0 .8rem; }
+.card.pg { border-left:5px solid var(--main); background:var(--third); } .card.pg p { margin:.3rem 0 .5rem; }
+.callout { border-left:5px solid var(--s1); background:#f1f6fd; padding:.7rem .95rem; border-radius:0 .4rem .4rem 0; margin:.5rem 0 .8rem; }
+.callout.main { border-left-color:var(--main); background:var(--third); } .callout.crit { border-left-color:var(--crit); background:#fdf1f1; }
+.callout .lab { font-weight:600; display:block; margin-bottom:.2rem; } .callout > :last-child { margin-bottom:0; }
+.table-scroll { overflow-x:auto; margin:0 0 .8rem; }
+table.t { width:100%; border-collapse:collapse; font-size:.95rem; }
+table.t th { text-align:left; background:var(--soft); padding:.4rem .6rem; font-weight:600; }
+table.t td { padding:.45rem .6rem; border-bottom:1px solid var(--soft); vertical-align:top; }
+code { background:var(--bg-2); border:1px solid var(--soft); border-radius:.25rem; padding:0 .25rem; font-size:.9em; }
+pre.code { background:#1f1f24; color:#f4f4f5; padding:.8rem 1rem; border-radius:.4rem; overflow:auto; font-size:.85rem; line-height:1.4; margin:.3rem 0 .8rem; white-space:pre-wrap; }
+pre.code code { background:none; border:0; color:inherit; padding:0; }
+.mermaid-box { margin:.4rem 0 .9rem; text-align:center; } .mermaid-box svg { max-width:100%; height:auto; max-height:52vh; }
+body.scroll .mermaid-box svg { max-height:none; }
+.btn { border:1px solid var(--main); background:#fff; color:var(--main); border-radius:.35rem; padding:.35rem .85rem; cursor:pointer; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.35rem; }
+.btn:hover { background:var(--third); } .btn.primary { background:var(--main); color:#fff; } .btn.primary:hover { background:var(--main-dark); } .btn.small { padding:.2rem .6rem; font-size:.85rem; }
+.row-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.4rem 0 .6rem; }
+.quiz, .poll { margin:.3rem 0 .9rem; }
+.opts, .poll { display:flex; flex-direction:column; gap:.35rem; align-items:flex-start; }
+.opt { text-align:left; border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.35rem .8rem; cursor:pointer; min-width:min(28rem,100%); }
+.opt:hover { border-color:var(--main); } .opt[aria-pressed="true"] { border-color:var(--main); background:var(--third); }
+.opt.right { border-color:var(--good); background:var(--good-bg); } .opt.wrong { border-color:var(--crit); background:var(--crit-bg); }
+.fb { font-weight:600; } .fb.ok { color:var(--good); } .fb.no { color:var(--crit); }
+.hint { font-size:.9rem; background:#fff8e1; padding:.3rem .6rem; border-radius:.3rem; }
+.sol { border-left:4px solid var(--good); background:var(--good-bg); padding:.4rem .8rem; border-radius:0 .3rem .3rem 0; font-size:.92rem; }
+.gap { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .35rem; background:#fff; }
+.gap.right { border-color:var(--good); background:var(--good-bg); } .gap.wrong { border-color:var(--crit); background:var(--crit-bg); }
+textarea.free { width:min(40rem,100%); border:1px solid var(--line); border-radius:.35rem; padding:.4rem .6rem; display:block; margin:.2rem 0 .8rem; }
+ul.tasks { list-style:none; padding-left:0; } ul.tasks input { accent-color:var(--main); }
+input.rng { accent-color:var(--main); vertical-align:middle; } .rngv { display:inline-block; min-width:1.5rem; text-align:center; font-weight:600; color:var(--main); }
+input.txt { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .4rem; min-width:14rem; }
+.embed-head { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; justify-content:space-between; margin-bottom:.4rem; }
+.embed iframe { width:100%; height:58vh; border:0; border-radius:.3rem; }
+.refs { font-size:.82rem; } .refs ul { columns:2 22rem; column-gap:1.6rem; } .refs li { break-inside:avoid; }
+.slide.hero { background:var(--main); color:#fff; } .slide.hero a { color:#fff; }
+.hero-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:2rem; align-items:center; min-height:100%; }
+.hero h1 { font-size:3.1rem; margin:.2rem 0 .8rem; } .hero .kicker { color:#fff; opacity:.85; }
+.hero .btn { border-color:#fff; color:#fff; background:transparent; } .hero .btn.primary { background:#fff; color:var(--main); }
+.hero .keys { margin-top:1.4rem; font-size:.85rem; opacity:.85; }
+.hero-badge { justify-self:center; width:min(18rem,30vw); aspect-ratio:1; border-radius:50%; border:3px dashed rgba(255,255,255,.55); display:grid; place-items:center; font-family:"Barlow Semi Condensed",sans-serif; font-size:clamp(3rem,7vw,7rem); font-weight:600; background:rgba(255,255,255,.08); }
+kbd { font-family:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-width:2px; border-radius:.25rem; padding:0 .35rem; background:var(--bg-2); }
+.hero kbd { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.4); color:#fff; }
+@media (max-width:820px) { .hero-grid { grid-template-columns:1fr; } .hero-badge { display:none; } .hero h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .slide > .inner { padding:1rem 1rem 1.6rem; } .stitle { display:none; } }
+@media print { html.present-root { font-size:12px; } .topbar,.botbar,.notes-panel,.overview { display:none !important; } #deck { position:static; }
+  .slide { position:static !important; display:block !important; page-break-after:always; } .slide > .inner { height:auto; overflow:visible; }
+  .frag { opacity:1 !important; visibility:visible !important; transform:none !important; } .slide.hero { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body class="prerender">
+<header class="topbar">
+  <a href="../../index.html" title="Course website"><img src="../../assets/ovgu_logo.svg" alt="Otto von Guericke University Magdeburg – back to the course website"></a>
+  <span class="deck-title">AI in TVET II · P03 – AI Vocabulary, Models and Workflows</span>
+  <a class="lia-link" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.md" target="_blank" rel="noopener">LiaScript version ↗</a>
+</header>
+<main id="deck" aria-roledescription="slide deck">
+<section class="slide hero" data-title="AI Vocabulary, Models and Workflows">
+<div class="inner"><div class="hero-grid"><div><p class="kicker">AI in TVET II · OVGU Magdeburg</p><h1>AI Vocabulary, Models and Workflows</h1><p><strong>Session 3 · 10.12.2026 · 🔵 Self-learning</strong> · AI in TVET II, OVGU Magdeburg</p>
+<p>Vocabulary for AI pedagogy · model types · agentic AI · <strong>your workflow map, learning objective and first competency matrix</strong></p>
+<p><small><a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/S03_AI_Vocabulary_Models_Workflows.md">Self-learning unit S03 (with group hand-in)</a> · <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">Unit in Moodle (SCORM, obligatory)</a> · <a target="_blank" rel="noopener" href="https://ovgu-vet-teched.github.io/AI_in_TVET_II_WiSe_2026_2027/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.html">HTML slides</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/organisational_overview_slide_AI_in_TVET_II.md">Organisational overview</a></small></p><div class="row-actions"><a class="btn primary" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.md" target="_blank" rel="noopener">LiaScript version · classroom polls ↗</a></div><p class="keys hide-scroll"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> navigate · <kbd>O</kbd> overview · <kbd>N</kbd> notes · <kbd>S</kbd> document mode · <kbd>F</kbd> full screen</p></div><div class="hero-badge" aria-hidden="true">P03</div></div></div>
+<aside class="notes">Today I am travelling, so you work with these slides and the self-learning unit S03 in your group. At the end of today your group has chosen its learning objective and written the first draft of its competency matrix.</aside>
+</section>
+
+<section class="slide" data-title="Warm-up: Check In as a Group 👥">
+<div class="inner"><h2>Warm-up: Check In as a Group 👥</h2><div class="body"><p><strong>Which word from session 2 could you explain to a colleague right now?</strong></p>
+<div class="poll multi"><button class="opt" aria-pressed="false">Token</button><button class="opt" aria-pressed="false">Embedding</button><button class="opt" aria-pressed="false">Attention</button><button class="opt" aria-pressed="false">Temperature</button><button class="opt" aria-pressed="false">Retrieval / grounding</button><button class="opt" aria-pressed="false">Agent</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Which term is still unclear?</strong></p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">Tick every word you could explain. Write down the term that is still unclear: the vocabulary table on the next slides should answer it.</aside>
+</section>
+
+<section class="slide" data-title="Where We Are 🧭">
+<div class="inner"><h2>Where We Are 🧭</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  S1[&quot;&lt;b&gt;1 · 26.11.&lt;/b&gt;&lt;br&gt;Kick-off and&lt;br&gt;LiaScript Level 2&quot;]:::done
+  S1 --&gt; S2[&quot;&lt;b&gt;2 · 03.12.&lt;/b&gt; 🔵&lt;br&gt;AI and prompting&lt;br&gt;Level 2&quot;]:::done
+  S2 --&gt; S3[&quot;&lt;b&gt;3 · 10.12.&lt;/b&gt; 🔵&lt;br&gt;Vocabulary and&lt;br&gt;workflows&quot;]:::now
+  S3 --&gt; S4[&quot;&lt;b&gt;4 · 17.12.&lt;/b&gt;&lt;br&gt;Pedagogy, assessment,&lt;br&gt;ethics&quot;]:::live
+  S4 --&gt; S5[&quot;&lt;b&gt;5 · 07.01.&lt;/b&gt;&lt;br&gt;Nuggets and&lt;br&gt;matrix workshop&quot;]:::live
+  S5 --&gt; S6[&quot;&lt;b&gt;6 · 14.01.&lt;/b&gt; ⚪&lt;br&gt;Project and peer review&lt;br&gt;format tbc&quot;]:::tbc
+  S6 --&gt; S7[&quot;&lt;b&gt;7 · 21.01.&lt;/b&gt;&lt;br&gt;Final&lt;br&gt;presentations&quot;]:::live
+  classDef live fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef self fill:#e8f0fb,stroke:#1565c0,stroke-width:1.5px,color:#1f1f1f
+  classDef tbc fill:#fff8e1,stroke:#b7791f,stroke-width:1.5px,stroke-dasharray:4 3,color:#1f1f1f
+  classDef now fill:#7a003f,stroke:#7a003f,stroke-width:2px,color:#ffffff
+  classDef done fill:#eeeeee,stroke:#9ca3af,stroke-width:1px,color:#5f6163</pre></div>
+<p><strong>Building blocks today:</strong> <strong>learning objective</strong> (final choice) · <strong>competency matrix</strong> (first draft) · <strong>workflow map</strong> – all handed in <strong>inside unit S03 by 16.12.2026, 23:59</strong>.</p></div></div>
+<aside class="notes">Today is the first milestone of your group project. The hand-in is inside the SCORM unit S03, one entry per group member with the same group result.</aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Objectives 🎯">
+<div class="inner"><h2>Today's Objectives 🎯</h2><div class="body"><p>By the end of today you can …</p><div class="frag" data-f="1"><ol>
+<li><strong>justify</strong> design decisions with AI terminology – prompt only, grounding, fine-tuning, agent, local model,</li>
+<li><strong>evaluate</strong> an open-weight model for school use with its model card,</li>
+<li><strong>specify</strong> an agentic workflow with tools, checkpoints, stop condition and success check,</li>
+</ol></div><div class="frag" data-f="2"><ol start="4">
+<li><strong>map</strong> an AI-enhanced pedagogical workflow with human checkpoints,</li>
+<li><strong>choose</strong> your group's UNESCO learning objective and <strong>draft</strong> the competency matrix.</li>
+</ol></div></div></div>
+<aside class="notes">First the language of AI – used as arguments for design decisions, beyond the vocabulary of AI in TVET one. Then your project: workflow, learning objective and matrix.</aside>
+</section>
+
+<section class="slide" data-title="Suggested Time Plan 🗓️">
+<div class="inner"><h2>Suggested Time Plan 🗓️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00</td>
+<td>From vocabulary to design decisions · architecture chooser · embeddings</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>0:30</td>
+<td>Model types · model card · local models · advanced prompting</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>1:00</td>
+<td>Agentic AI · agent spec sheet · critical reading of an AI-generated report</td>
+<td>Individual, then group</td>
+</tr>
+<tr>
+<td>1:45</td>
+<td>Break</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>2:00</td>
+<td>Workflow map for your topic</td>
+<td>Group</td>
+</tr>
+<tr>
+<td>2:25</td>
+<td>Learning objective · competency matrix draft</td>
+<td>Group</td>
+</tr>
+<tr>
+<td>2:50</td>
+<td>Hand-in inside unit S03 · exit ticket</td>
+<td>Group + individual</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes">This is a suggestion. Questions go to the Moodle forum; we discuss open points at the start of session four.</aside>
+</section>
+
+<section class="slide" data-title="1. From Vocabulary to Design Decisions 📖">
+<div class="inner"><p class="kicker">Part 1 · From Vocabulary to Design Decisions</p><h2>1. From Vocabulary to Design Decisions 📖</h2><div class="body"><p><strong>Recap from AI in TVET I</strong> (session 3): data · algorithm · model · weights · training · neural network · agent. One quick check:</p>
+<p><strong>Decide:</strong> choose the right term for each description.</p>
+<p>Learned numbers inside a model: <select class="gap" data-answer="Weights"><option value="">…</option><option>Embedding</option><option>Weights</option><option>Workflow</option></select></p>
+<p>Answers based on documents that were searched first: <select class="gap" data-answer="Grounding"><option value="">…</option><option>Fine-tuning</option><option>Grounding</option><option>Hallucination</option></select></p>
+<p>Plans several steps and uses tools: <select class="gap" data-answer="Agent"><option value="">…</option><option>Model</option><option>Agent</option><option>Algorithm</option></select></p><div class="frag" data-f="1"><div class="callout main"><span class="lab">Level 2</span><p>Terms are not the goal – they are your <strong>arguments</strong>: <em>"We use grounding instead of fine-tuning, because the regulation changes every year and fine-tuning would freeze an old version."</em></p></div></div></div></div>
+<aside class="notes">In AI in TVET two the vocabulary has a new job: you use it to justify design decisions. Why grounding and not fine-tuning? Why no agent? That is the level the final presentation expects.</aside>
+</section>
+
+<section class="slide" data-title="Five Architectures for Learning Material 🏗️">
+<div class="inner"><p class="kicker">Part 1 · From Vocabulary to Design Decisions</p><h2>Five Architectures for Learning Material 🏗️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Architecture</th>
+<th>What it does</th>
+<th>Good when …</th>
+<th>Not good when …</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prompt only</strong></td>
+<td>Answer from the weights</td>
+<td>general explanations, creative cases</td>
+<td>facts must match a current regulation</td>
+</tr>
+<tr>
+<td><strong>Grounding / RAG</strong></td>
+<td>Search your documents, answer with passages</td>
+<td>material must follow <em>your</em> source</td>
+<td>the source itself is poor or missing</td>
+</tr>
+<tr>
+<td><strong>Fine-tuning</strong></td>
+<td>Further training on your data</td>
+<td>a stable special language or style at scale</td>
+<td>content changes often; small budget</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>Plans, uses tools, several steps</td>
+<td>multi-step routine work with checkpoints</td>
+<td>high stakes without human approval</td>
+</tr>
+<tr>
+<td><strong>Local open-weight model</strong></td>
+<td>Runs on your own hardware</td>
+<td>sensitive data (learner reports, company data)</td>
+<td>top quality is essential and hardware is weak</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes">These five architectures can be combined, for example a local model with grounding. The playground on the next slide asks four questions and suggests an architecture, with the argument you could use in your presentation.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Architecture Chooser 🧭">
+<div class="inner"><p class="kicker">Part 1 · From Vocabulary to Design Decisions</p><h2>Playground: Architecture Chooser 🧭</h2><div class="body"><p><strong>Does the material contain personal or company data?</strong> <select class="gap"><option selected>no</option><option>yes</option></select></p>
+<p><strong>Must the content follow a specific, changing source (regulation, manual)?</strong> <select class="gap"><option selected>yes</option><option>no</option></select></p>
+<p><strong>Does the task need several steps with tools (search, files, formatting)?</strong> <select class="gap"><option selected>no</option><option>yes</option></select></p>
+<p><strong>Do you need a stable special style for thousands of items?</strong> <select class="gap"><option selected>no</option><option>yes</option></select></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.md#8" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Answer the four questions for your group&#x27;s sample material. The generated sentence is a first draft of the design argument on your workflow slide. Check whether you agree with it.</aside>
+</section>
+
+<section class="slide" data-title="Try It: Explore an Embedding Space 🌌">
+<div class="inner"><p class="kicker">Part 1 · From Vocabulary to Design Decisions</p><h2>Try It: Explore an Embedding Space 🌌</h2><div class="body"><div class="embed card"><div class="embed-head"><b>🧪 Embedding Atlas – Apple</b><a class="btn small" href="https://apple.github.io/embedding-atlas/" target="_blank" rel="noopener">Open in new tab ↗</a></div><button class="btn small load" data-src="https://apple.github.io/embedding-atlas/">Load here</button></div><div class="frag" data-f="1"><p><strong>Task (10 min):</strong> open an example data set, zoom into one cluster and read 3–4 neighbouring texts.</p>
+<p><strong>What do the neighbours have in common? How could this help an AI find the right passage in your course material?</strong></p>
+<textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Open one of the example data sets. Every point is a text, and texts with similar meaning lie close together. This is how a retrieval system finds the passage in your training regulation that fits a question.</aside>
+</section>
+
+<section class="slide" data-title="2. Model Types and When to Use Them 🧠">
+<div class="inner"><p class="kicker">Part 2 · Model Types and When to Use Them</p><h2>2. Model Types and When to Use Them 🧠</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Model type</th>
+<th>Typical use in learning design</th>
+<th>Consider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large general LLM (cloud)</td>
+<td>Drafting text, cases, quizzes, feedback</td>
+<td>Data protection, cost, licence</td>
+</tr>
+<tr>
+<td>Reasoning model</td>
+<td>Complex planning, step-by-step solutions, checking logic</td>
+<td>Slower; still needs checking</td>
+</tr>
+<tr>
+<td>Small / local open-weight model</td>
+<td>Sensitive material offline</td>
+<td>Lower quality, technical set-up</td>
+</tr>
+<tr>
+<td>Image / diagram models</td>
+<td>Illustrations, infographics</td>
+<td>Copyright, stereotypes, technical accuracy</td>
+</tr>
+<tr>
+<td>Speech models</td>
+<td>Text-to-speech, transcription, language practice</td>
+<td>Voice data, accessibility benefits</td>
+</tr>
+<tr>
+<td>Specialised educational tools</td>
+<td>Adaptive practice, tutoring, assessment</td>
+<td>Evidence of effectiveness, EU AI Act risk level</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><div class="callout "><span class="lab">Offline AI for sensitive material</span><p><a target="_blank" rel="noopener" href="https://lmstudio.ai">LM Studio</a> and <a target="_blank" rel="noopener" href="https://ollama.com">Ollama</a> run open-weight models <strong>on your own laptop or school server</strong> – no learner data leaves the building. Optional try-out: install one, load a small model and compare its quiz items with a cloud model.</p></div></div></div></div>
+<aside class="notes">Local models are an important option for vocational schools: the data never leaves the computer. Two free tools make this easy.</aside>
+</section>
+
+<section class="slide" data-title="Try It: Read a Model Card 🪪">
+<div class="inner"><p class="kicker">Part 2 · Model Types and When to Use Them</p><h2>Try It: Read a Model Card 🪪</h2><div class="body"><p>Open-weight models come with a <strong>model card</strong>: intended use, training data, limitations, licence of the weights (<a target="_blank" rel="noopener" href="https://huggingface.co/docs/hub/model-cards">Hugging Face docs</a>).</p><div class="frag" data-f="1"><p><strong>Task (10 min):</strong> open one model card – e.g. <a target="_blank" rel="noopener" href="https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct">Llama 3.1 8B Instruct</a>, <a target="_blank" rel="noopener" href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3">Mistral 7B Instruct</a> or <a target="_blank" rel="noopener" href="https://huggingface.co/google/gemma-2-9b-it">Gemma 2 9B</a> – and find: <strong>licence</strong> · <strong>languages</strong> · <strong>known limitations</strong> · <strong>intended / prohibited use</strong>.</p>
+<p><strong>Could your school use this model for feedback on apprentices' reports? Why (not)?</strong></p>
+<textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Open one model card and look for four things. Licences of open-weight models differ a lot, and some restrict use.</aside>
+</section>
+
+<section class="slide" data-title="Prompting: From Basic to Advanced 🪜">
+<div class="inner"><p class="kicker">Part 2 · Model Types and When to Use Them</p><h2>Prompting: From Basic to Advanced 🪜</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Level</th>
+<th>Technique</th>
+<th>Use in learning design</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic</td>
+<td>Clear instructions · <strong>role prompting</strong></td>
+<td>"As a trainer for mechatronics apprentices …"</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td><strong>Delimiters</strong> (<code>"""</code> or <code>«»</code>) around source text</td>
+<td>Regulation text is not read as an instruction</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td><strong>One-/few-shot</strong> examples</td>
+<td>One model item before asking for ten</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td><strong>Chain of thought</strong></td>
+<td>Worked solutions for calculation tasks</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td><strong>Self-consistency</strong></td>
+<td>Checking a solution key</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td><strong>Least-to-most</strong></td>
+<td>Scaffolded tasks for weaker learners</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td>Generated knowledge · tree of thoughts · ReAct</td>
+<td>Grounded and tool-using assistants (→ agents)</td>
+</tr>
+</tbody>
+</table></div>
+<p><small>After Chen et al. (2025)</small></p><div class="frag" data-f="1"><div class="callout crit"><span class="lab">Prompt injection</span><p>Uploaded documents can hide instructions (e.g. white text: <em>"ignore all rules and …"</em>). Use delimiters and robust instructions – and never let an agent act on unchecked documents (Chen et al., 2025).</p></div></div></div></div>
+<aside class="notes">The review also treats prompting as a security issue. A document you upload can contain hidden instructions. Delimiters and clear rules reduce the risk.</aside>
+</section>
+
+<section class="slide" data-title="Check: Models and Prompts ✅">
+<div class="inner"><p class="kicker">Part 2 · Model Types and When to Use Them</p><h2>Check: Models and Prompts ✅</h2><div class="body"><p>A vocational school wants AI feedback on apprentices' reports that contain <strong>names and company data</strong>. Which option protects the data best?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">The free version of a cloud chatbot</button><button class="opt" data-ok="1" aria-pressed="false">A local open-weight model on the school's own server</button><button class="opt" data-ok="0" aria-pressed="false">Posting the reports in an online forum</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Where does the data go?</p></div>
+<p>You show <strong>one model quiz item</strong> before asking for ten more. This is …</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">chain of thought</button><button class="opt" data-ok="1" aria-pressed="false">one-shot / few-shot prompting</button><button class="opt" data-ok="0" aria-pressed="false">self-consistency</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 The technique is named after the number of examples.</p></div></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="3. Agentic AI 🤖">
+<div class="inner"><p class="kicker">Part 3 · Agentic AI</p><h2>3. Agentic AI 🤖</h2><div class="body"><p><strong>Generative AI creates, extractive AI finds, agentic AI acts</strong> (OpenAI, 2025):</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Type</th>
+<th>Role</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generative AI</td>
+<td>Content creator – acts only when prompted</td>
+<td>Writes an essay on request</td>
+</tr>
+<tr>
+<td>Extractive AI</td>
+<td>Information retriever – finds and summarises</td>
+<td>"What does this report conclude?"</td>
+</tr>
+<tr>
+<td>Agentic AI</td>
+<td>Autonomous problem-solver – plans, calls tools</td>
+<td>"Research this topic and write an essay"</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  G[&quot;Goal&lt;br&gt;set by human&quot;]:::human --&gt; P[&quot;Plan&quot;]:::sys --&gt; A[&quot;Act&lt;br&gt;search, files, code&quot;]:::sys --&gt; O[&quot;Observe&quot;]:::sys --&gt; J[&quot;Adjust&quot;]:::sys --&gt; C[&quot;Human&lt;br&gt;checkpoint&quot;]:::human
+  C -. next round .-&gt; P
+  classDef sys fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef human fill:#ffffff,stroke:#d03b3b,stroke-width:2px,color:#1f1f1f</pre></div></div></div></div>
+<aside class="notes">An agent works in a loop: plan, act with tools, observe the result, adjust. The human sets the goal and approves the result, and in between there must be checkpoints.</aside>
+</section>
+
+<section class="slide" data-title="Agents in TVET: Opportunities and Risks ⚖️">
+<div class="inner"><p class="kicker">Part 3 · Agentic AI</p><h2>Agents in TVET: Opportunities and Risks ⚖️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Opportunities for TVET and professional development</th>
+<th>Risks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personalised learning paths and practice partners</td>
+<td>Errors propagate across steps</td>
+</tr>
+<tr>
+<td>Automating routine work (formatting, material search)</td>
+<td>Lack of transparency: why did the agent do this?</td>
+</tr>
+<tr>
+<td>Teacher assistants for planning and differentiation</td>
+<td>Over-reliance, de-skilling of teachers</td>
+</tr>
+<tr>
+<td>Support for continuous professional development</td>
+<td>Data protection, security (prompt injection)</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><div class="callout main"><span class="lab">UNESCO link</span><p>At the <em>Create</em> level of "AI for professional development", teachers customise and build AI solutions for their own and their peers' growth (UNESCO, 2024) – e.g. an agent that keeps automotive trainers up to date on electric-vehicle technology.</p></div></div></div></div>
+<aside class="notes">At the Create level of competency five, teachers build AI solutions for their own and their peers&#x27; growth. Orchestrating several specialised agents may become a new teacher competency.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Agent Spec Sheet 📝">
+<div class="inner"><p class="kicker">Part 3 · Agentic AI</p><h2>Playground: Agent Spec Sheet 📝</h2><div class="body"><p>In AI in TVET I you watched an agent build a nugget. Now <strong>design</strong> one – for teachers' professional development (competency 5, <em>Create</em>):</p>
+<p><strong>Goal:</strong> <input class="txt" type="text" value="Keep our automotive trainers up to date on high-voltage vehicle safety" aria-label="input"></p>
+<p><strong>Tools and sources:</strong> <input class="txt" type="text" value="web search on manufacturer bulletins, our training manual, the LMS" aria-label="input"></p>
+<p><strong>Human checkpoints:</strong> <input class="txt" type="text" value="sources approved by head of training; final release by trainer" aria-label="input"></p>
+<p><strong>Stop condition:</strong> <input class="txt" type="text" value="stop and ask when a source contradicts the manual" aria-label="input"></p>
+<p><strong>Success check:</strong> <input class="txt" type="text" value="trainers rate usefulness monthly; error log reviewed" aria-label="input"></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.md#16" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Design the agent for your own context. A complete specification has a goal, tools, human checkpoints, a stop condition and a success check. The warnings show what is still missing.</aside>
+</section>
+
+<section class="slide" data-title="Critical Reading: An AI-Generated Report 🔍">
+<div class="inner"><p class="kicker">Part 3 · Agentic AI</p><h2>Critical Reading: An AI-Generated Report 🔍</h2><div class="body"><p><em>Agentic AI in Higher Education and TVET</em> (OpenAI, 2025) was <strong>generated with ChatGPT Deep Research</strong> – declared, not peer-reviewed. It is a case for critical reading: 62 footnotes, more than half point to <strong>one</strong> publisher web guide.</p><div class="frag" data-f="1"><p><strong>Task (20 min):</strong></p>
+<ol>
+<li>Pick <strong>two</strong> claims from the report and trace them to the original source. Does the source say what the report claims?</li>
+<li>Which claims would you only use after finding a peer-reviewed source?</li>
+<li>How would you declare AI use if you used this report in your own material?</li>
+</ol>
+<p><strong>Our finding in one sentence:</strong></p>
+<textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Do this task in your group. Note the results in your AI tools log.</aside>
+</section>
+
+<section class="slide" data-title="4. Mapping an AI-Enhanced Pedagogical Workflow 🗺️">
+<div class="inner"><p class="kicker">Part 4 · Mapping an AI-Enhanced Pedagogical Workflow</p><h2>4. Mapping an AI-Enhanced Pedagogical Workflow 🗺️</h2><div class="body"><p>For every step: <strong>who</strong> (human / AI), <strong>which tool</strong>, <strong>which check</strong>?</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Step</th>
+<th>Who</th>
+<th>Tool</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Define learning objective (UNESCO)</td>
+<td>Human</td>
+<td>Framework</td>
+<td>Measurable? Level?</td>
+</tr>
+<tr>
+<td>2 Collect and verify sources</td>
+<td>Human + AI</td>
+<td>Consensus, library</td>
+<td>Sources exist and fit?</td>
+</tr>
+<tr>
+<td>3 Draft structure / content</td>
+<td>AI</td>
+<td>LLM + template</td>
+<td>Matches objective?</td>
+</tr>
+<tr>
+<td>4 Fact check</td>
+<td>Human</td>
+<td>Primary sources</td>
+<td>Errors removed?</td>
+</tr>
+<tr>
+<td>5 Didactic revision</td>
+<td>Human</td>
+<td>Bloom, AI-TPACK</td>
+<td>Activating? Target group?</td>
+</tr>
+<tr>
+<td>6 Interactive elements</td>
+<td>AI + human</td>
+<td>LLM, LiaScript</td>
+<td>Quiz quality, feedback</td>
+</tr>
+<tr>
+<td>7 Test and publish</td>
+<td>Human</td>
+<td>LiveEditor, GitHub</td>
+<td>Renders? Licence?</td>
+</tr>
+<tr>
+<td>8 Evaluate</td>
+<td>Human + learners</td>
+<td>Feedback, quiz data</td>
+<td>What to improve?</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><p><strong>Group task (25 min):</strong> draw the workflow for <strong>your</strong> topic – e.g. as Mermaid code in the <a target="_blank" rel="noopener" href="https://mermaid.live">Mermaid Live Editor</a>. Mark where AI is used and where you deliberately do <strong>not</strong> use AI.</p></div></div></div>
+<aside class="notes">Draw this workflow for your own topic. Mermaid code works in LiaScript, and you can draft it in the Mermaid Live Editor.</aside>
+</section>
+
+<section class="slide" data-title="5. Choosing Your Learning Objective 🎯">
+<div class="inner"><p class="kicker">Part 5 · Choosing Your Learning Objective</p><h2>5. Choosing Your Learning Objective 🎯</h2><div class="body"><p>Open the <a target="_blank" rel="noopener" href="https://doi.org/10.54675/ZJTE2084">UNESCO AI Competency Framework for Teachers</a>, competencies <strong>3, 4 or 5</strong>.</p><div class="frag" data-f="1"><p><strong>Criteria for a good choice</strong></p>
+<ul>
+<li>relevant for a concrete TVET target group,</li>
+<li>can be shown across Acquire – Deepen – Create,</li>
+<li>realistic to illustrate with sample material in 20 minutes,</li>
+<li>your group finds it interesting.</li>
+</ul>
+<p>Use the <strong>exact wording</strong> and cite it. Never let an AI invent competency numbers.</p></div><div class="frag" data-f="2"><div class="callout "><span class="lab">Evidence for your target group</span><p><a target="_blank" rel="noopener" href="https://esco.ec.europa.eu/en">ESCO</a> – skills and occupations of the EU · <a target="_blank" rel="noopener" href="https://job-futuromat.iab.de">Job-Futuromat (IAB)</a> – which tasks of an occupation can be automated? (German) · <a target="_blank" rel="noopener" href="https://willrobotstakemyjob.com">Will Robots Take My Job?</a> – US estimates</p></div></div></div></div>
+<aside class="notes">These are the criteria. And two free tools help you to describe the target group with evidence instead of assumptions. For the target group: ESCO lists the skills of every occupation, and the Job-Futuromat estimates which tasks of an occupation can already be automated.</aside>
+</section>
+
+<section class="slide" data-title="6. The Competency Matrix 🧱">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>6. The Competency Matrix 🧱</h2><div class="body"><p>The matrix shows how your learning objective develops over the three levels:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Level</th>
+<th>Content (what?)</th>
+<th>Workflow (how do learners/teachers work?)</th>
+<th>AI tool (with which support?)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Acquire</strong></td>
+<td>Basic concepts</td>
+<td>Guided, step by step</td>
+<td>e.g. explanation chatbot, quiz</td>
+</tr>
+<tr>
+<td><strong>Deepen</strong></td>
+<td>Application to cases</td>
+<td>Problem-based, collaborative</td>
+<td>e.g. case generator, feedback tool</td>
+</tr>
+<tr>
+<td><strong>Create</strong></td>
+<td>Own products / transfer</td>
+<td>Project, design</td>
+<td>e.g. agent or workflow the learners design</td>
+</tr>
+</tbody>
+</table></div>
+<p>On which level do learners design their own AI-supported products or workflows?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">Acquire</button><button class="opt" data-ok="0" aria-pressed="false">Deepen</button><button class="opt" data-ok="1" aria-pressed="false">Create</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 The highest level of the UNESCO framework.</p></div></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Playground: Matrix Builder 🧮">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>Playground: Matrix Builder 🧮</h2><div class="body"><p><strong>Acquire – content:</strong> <input class="txt" type="text" value="What an AI chatbot is and how it can be wrong" aria-label="input"></p>
+<p><strong>Acquire – AI tool:</strong> <input class="txt" type="text" value="explanation chatbot + quiz" aria-label="input"></p>
+<p><strong>Deepen – content:</strong> <input class="txt" type="text" value="Check a chatbot answer on a safety rule in a workplace case" aria-label="input"></p>
+<p><strong>Deepen – AI tool:</strong> <input class="txt" type="text" value="case generator + feedback" aria-label="input"></p>
+<p><strong>Create – content:</strong> <input class="txt" type="text" value="Design rules for chatbot use in the workshop" aria-label="input"></p>
+<p><strong>Create – AI tool:</strong> <input class="txt" type="text" value="learners configure a grounded assistant" aria-label="input"></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/P03_AI_Vocabulary_Models_Workflows.md#21" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Replace the example with your own matrix. The tool produces a Markdown table you can paste directly into your LiaScript presentation. Add the workflow column yourself.</aside>
+</section>
+
+<section class="slide" data-title="Project Lab: Your Hand-in 📤">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>Project Lab: Your Hand-in 📤</h2><div class="body"><p><strong>Inside unit S03 · by 16.12.2026, 23:59</strong> · every group member submits the group result in their own unit</p><div class="frag" data-f="1"><ul class="tasks"><li><label><input type="checkbox"> <span><strong>Learning objective:</strong> UNESCO competency, exact wording and source; target group (3–5 sentences)</span></label></li><li><label><input type="checkbox"> <span><strong>First draft of the competency matrix</strong> (Acquire · Deepen · Create)</span></label></li><li><label><input type="checkbox"> <span><strong>Workflow map</strong> with human checkpoints</span></label></li><li><label><input type="checkbox"> <span><strong>Short AI tools log</strong> (tool, purpose, prompt, what you changed)</span></label></li></ul></div></div></div>
+<aside class="notes">Four parts. We discuss your drafts in session four on the seventeenth of December.</aside>
+</section>
+
+<section class="slide" data-title="Exit Ticket 🎟️">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>Exit Ticket 🎟️</h2><div class="body"><p><strong>Objective 1:</strong> A training regulation changes every year. Which architecture fits quiz generation from it?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="1" aria-pressed="false">Grounding (RAG) on the current regulation</button><button class="opt" data-ok="0" aria-pressed="false">Fine-tuning on last year's regulation</button><button class="opt" data-ok="0" aria-pressed="false">Prompt only</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Which architecture follows a changing source?</p></div>
+<p><strong>Objective 2:</strong> Best choice for sensitive learner data?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">Free cloud chatbot</button><button class="opt" data-ok="1" aria-pressed="false">Local open-weight model</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Where does the data stay?</p></div>
+<p><strong>Objectives 3–4:</strong> Which elements belong in an agent specification?</p>
+<div class="quiz" data-kind="multi"><div class="opts"><button class="opt" data-ok="1" aria-pressed="false">Human checkpoints</button><button class="opt" data-ok="1" aria-pressed="false">Stop condition</button><button class="opt" data-ok="0" aria-pressed="false">Font choice</button><button class="opt" data-ok="1" aria-pressed="false">Success check</button></div><div class="row-actions"><button class="btn small check">Check</button><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Remember the agent spec sheet.</p></div>
+<p><strong>Objective 5:</strong> Our learning objective in one line:</p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Your SCORM Unit and Next Steps 📦">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>Your SCORM Unit and Next Steps 📦</h2><div class="body"><p><strong>Obligatory:</strong> complete the self-learning unit <strong>S03</strong> in Moodle – it contains today's study text <strong>and the group hand-in fields</strong>.</p><div class="frag" data-f="1"><ul>
+<li>📦 <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">S03 in Moodle (SCORM)</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/03_AI_Vocabulary_Models_and_Workflows/S03_AI_Vocabulary_Models_Workflows.md">S03 in LiaScript</a> – <strong>hand-in by 16.12.2026, 23:59</strong></li>
+<li>➡️ <strong>Next: Thursday, 17.12.2026, 🟢 live</strong> – Pedagogical trends · AI for assessment and feedback · ethics in AI pedagogy</li>
+<li>📖 Reading for session 4: Ng &amp; Lai (2025), <em>AI-augmented heutagogy</em> (Moodle)</li>
+</ul></div></div></div>
+<aside class="notes">Next session is live again. Bring your matrix draft: we add assessment and ethics to it.</aside>
+</section>
+
+<section class="slide" data-title="References">
+<div class="inner"><p class="kicker">Part 6 · The Competency Matrix</p><h2>References</h2><div class="body refs"><ul>
+<li>Chen, B., Zhang, Z., Langrené, N., &amp; Zhu, S. (2025). Unleashing the potential of prompt engineering for large language models. <em>Patterns, 6</em>, 101260. https://doi.org/10.1016/j.patter.2025.101260</li>
+<li>European Commission. (n.d.). <em>ESCO – European Skills, Competences, Qualifications and Occupations</em>. https://esco.ec.europa.eu/en</li>
+<li>Institut für Arbeitsmarkt- und Berufsforschung. (n.d.). <em>Job-Futuromat</em> [Web application]. https://job-futuromat.iab.de</li>
+<li>Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., &amp; Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. In <em>Advances in Neural Information Processing Systems 33</em>. https://arxiv.org/abs/2005.11401</li>
+<li>OpenAI. (2025). <em>Agentic AI in higher education and TVET: A new era for professional development</em> [AI-generated report, created with ChatGPT Deep Research; course material, not peer-reviewed].</li>
+<li>UNESCO. (2024). <em>AI competency framework for teachers</em>. https://doi.org/10.54675/ZJTE2084</li>
+<li>Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. In <em>International Conference on Learning Representations (ICLR 2023)</em>. https://arxiv.org/abs/2210.03629</li>
+</ul>
+<p><strong>Tools:</strong> <a target="_blank" rel="noopener" href="https://apple.github.io/embedding-atlas/">Embedding Atlas</a> · <a target="_blank" rel="noopener" href="https://lmstudio.ai">LM Studio</a> · <a target="_blank" rel="noopener" href="https://ollama.com">Ollama</a> · <a target="_blank" rel="noopener" href="https://mermaid.live">Mermaid Live Editor</a></p>
+<p><small>Licence: CC BY 4.0 · Dr. Hannes Tegelbeckers, OVGU Magdeburg · Created with AI support (Claude), checked by the author.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+</main>
+<div class="notes-panel" id="notesPanel" aria-live="polite"><h4>Speaker notes</h4><div id="notesText"></div></div>
+<div class="overview" id="overview" role="dialog" aria-label="Slide overview"><div class="ov-head"><h2>Overview</h2><button class="cbtn" id="ovClose">Close (Esc)</button></div><div class="ov-grid" id="ovGrid"></div></div>
+<nav class="botbar" aria-label="Slide navigation">
+  <div class="progress" id="progress"></div>
+  <button class="cbtn" id="prev" aria-label="Previous">←</button>
+  <span class="counter" id="count"></span>
+  <button class="cbtn" id="next" aria-label="Next">→</button>
+  <span class="steps" id="steps"></span>
+  <span class="stitle" id="stitle"></span>
+  <span class="spacer"></span>
+  <button class="cbtn" id="ovBtn" title="Overview (O)">Overview</button>
+  <button class="cbtn" id="notesBtn" aria-pressed="false" title="Speaker notes (N)">Notes</button>
+  <button class="cbtn" id="scrollBtn" aria-pressed="false" title="Document mode (S)">Document</button>
+  <button class="cbtn" id="fsBtn" title="Full screen (F)">⛶</button>
+</nav>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad:false, securityLevel:"loose", theme:"base", fontFamily:"Barlow, Arial, sans-serif",
+  themeVariables:{ primaryColor:"#f7eef2", primaryBorderColor:"#7a003f", lineColor:"#3e3f40", fontSize:"15px" } });
+try { await mermaid.run({ querySelector:".mermaid" }); } catch (e) { console.warn(e); }
+document.body.classList.remove("prerender");
+window.dispatchEvent(new Event("deck-ready"));
+</script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const slides = $$(".slide");
+  let cur = 0, step = 0;
+  const maxStep = s => Math.max(0, ...$$(".frag", s).map(e => +e.dataset.f || 0));
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle("active", i === cur));
+    const s = slides[cur];
+    $$(".frag", s).forEach(e => e.classList.toggle("on", (+e.dataset.f || 0) <= step));
+    $("#count").textContent = `${cur + 1} / ${slides.length}`;
+    $("#stitle").textContent = s.dataset.title || "";
+    $("#progress").style.width = `${(cur / Math.max(1, slides.length - 1)) * 100}%`;
+    $("#steps").innerHTML = Array.from({ length: maxStep(s) }, (_, k) => `<i class="${k < step ? "on" : ""}"></i>`).join("");
+    $("#notesText").textContent = ($(".notes", s) || {}).textContent || "";
+    history.replaceState(null, "", `#${cur + 1}`);
+  }
+  function go(i, atEnd) { cur = Math.max(0, Math.min(slides.length - 1, i)); step = atEnd ? maxStep(slides[cur]) : 0; $(".inner", slides[cur]).scrollTop = 0; render(); }
+  function next() { if (step < maxStep(slides[cur])) { step++; render(); } else if (cur < slides.length - 1) go(cur + 1); }
+  function prev() { if (step > 0) { step--; render(); } else if (cur > 0) go(cur - 1, true); }
+  $("#next").onclick = next; $("#prev").onclick = prev;
+  const toggleNotes = () => { const p = $("#notesPanel"); p.classList.toggle("open"); $("#notesBtn").setAttribute("aria-pressed", p.classList.contains("open")); };
+  const toggleScroll = () => { document.body.classList.toggle("scroll"); $("#scrollBtn").setAttribute("aria-pressed", document.body.classList.contains("scroll")); if (!document.body.classList.contains("scroll")) go(cur); };
+  const fs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  const ov = $("#overview");
+  $("#ovGrid").innerHTML = slides.map((s, i) => `<button class="ov-item" data-i="${i}"><b>${i + 1}</b>${s.dataset.title}</button>`).join("");
+  $$(".ov-item").forEach(b => b.onclick = () => { ov.classList.remove("open"); go(+b.dataset.i); });
+  const toggleOv = () => { ov.classList.toggle("open"); $$(".ov-item").forEach(b => b.classList.toggle("cur", +b.dataset.i === cur)); };
+  $("#ovBtn").onclick = toggleOv; $("#ovClose").onclick = toggleOv;
+  $("#notesBtn").onclick = toggleNotes; $("#scrollBtn").onclick = toggleScroll; $("#fsBtn").onclick = fs;
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("textarea, input, select") || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Escape") { ov.classList.remove("open"); return; }
+    if (document.body.classList.contains("scroll") && !"sS".includes(e.key)) return;
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); next(); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === "Home") go(0); else if (e.key === "End") go(slides.length - 1);
+    else if ("nN".includes(e.key)) toggleNotes(); else if ("fF".includes(e.key)) fs();
+    else if ("oO".includes(e.key)) toggleOv(); else if ("sS".includes(e.key)) toggleScroll();
+  });
+  let tx = null;
+  $("#deck").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  $("#deck").addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 70 && !e.target.closest("textarea, input, iframe")) (dx < 0 ? next : prev)(); tx = null; });
+  if (window.matchMedia("(max-width: 600px)").matches) toggleScroll();
+
+  /* quizzes */
+  $$(".quiz[data-kind]").forEach(q => {
+    const opts = $$(".opt", q), fb = $(".fb", q), single = q.dataset.kind === "single";
+    let tries = 0;
+    const show = ok => {
+      fb.textContent = ok ? "✔ Correct" : "✘ Not yet – try again"; fb.className = "fb " + (ok ? "ok" : "no");
+      tries += ok ? 0 : 1;
+      if (tries >= 1) $$(".hint", q).forEach(h => h.hidden = false);
+      if (ok || tries >= 2) { const s = $(".sol", q); if (s) s.hidden = false; }
+      if (ok || tries >= 2) opts.forEach(o => o.classList.toggle("right", o.dataset.ok === "1"));
+    };
+    opts.forEach(o => o.onclick = () => {
+      if (single) { opts.forEach(x => { x.setAttribute("aria-pressed", x === o); x.classList.remove("wrong"); }); if (o.dataset.ok !== "1") o.classList.add("wrong"); show(o.dataset.ok === "1"); }
+      else o.setAttribute("aria-pressed", o.getAttribute("aria-pressed") !== "true");
+    });
+    const c = $(".check", q);
+    if (c) c.onclick = () => show(opts.every(o => (o.getAttribute("aria-pressed") === "true") === (o.dataset.ok === "1")));
+  });
+  $$(".quiz.matrix").forEach(q => $(".check", q).onclick = () => {
+    const rows = $$("tr", q).slice(1);
+    const ok = rows.every(r => $$("input", r).every(i => i.checked === (i.dataset.ok === "1")));
+    const fb = $(".fb", q); fb.textContent = ok ? "✔ Correct" : "✘ Not yet"; fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $$(".poll").forEach(p => { const multi = p.classList.contains("multi"); $$(".opt", p).forEach(b => b.onclick = () => {
+    if (multi) b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); else $$(".opt", p).forEach(x => x.setAttribute("aria-pressed", x === b)); }); });
+  $$(".gap[data-answer]").forEach(g => g.addEventListener("change", () => {
+    if (!g.dataset.answer) return;
+    const ok = g.value.trim().toLowerCase() === g.dataset.answer.trim().toLowerCase();
+    g.classList.toggle("right", ok); g.classList.toggle("wrong", !ok);
+  }));
+  $$("input.rng").forEach(r => r.addEventListener("input", () => { r.nextElementSibling.textContent = r.value; }));
+  $$("button.load").forEach(b => b.onclick = () => {
+    const f = document.createElement("iframe"); f.src = b.dataset.src; f.loading = "lazy"; f.allowFullscreen = true;
+    f.title = b.parentElement.querySelector("b").textContent; b.replaceWith(f);
+  });
+  const start = () => go((parseInt(location.hash.slice(1)) || 1) - 1);
+  start();
+  window.addEventListener("deck-ready", () => render());
+})();
+</script>
+</body>
+</html>

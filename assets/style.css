@@ -96,12 +96,15 @@ td.links { white-space: nowrap; }
 .badge.self { background: var(--self); }
 .badge.excursion { background: var(--excursion); }
 .badge.pause { background: var(--pause); }
+.badge.tbc { background: #b7791f; }
 .lia { display: inline-block; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid var(--main); padding: 2px 8px; margin: 2px 4px 2px 0; border-radius: 2px; }
 .lia:hover { background: var(--main); color: #fff; }
 .lia.solid { background: var(--main); color: #fff; }
 .lia.solid:hover { background: var(--main-dark); }
 .lia.soon { border-style: dashed; color: var(--grey-2); border-color: var(--grey-3); }
 .lia.soon:hover { background: var(--grey-5); color: #000; }
+.lia.moodle { display: table; border-color: var(--self); color: var(--self); }
+.lia.moodle:hover { background: var(--self); color: #fff; }
 .legend { font-size: 14px; color: var(--grey-2); margin-top: 8px; }
 
 ul.check { padding-left: 1.2em; }

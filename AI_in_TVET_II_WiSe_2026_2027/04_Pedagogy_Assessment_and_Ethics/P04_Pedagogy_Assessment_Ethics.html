@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en" class="present-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P04 – Pedagogy, Assessment and Ethics in AI-Supported TVET</title>
+<meta name="description" content="AI in TVET II – Slides for session 4 (live, 17.12.2026, 180 min): labour-market trends, AI-TPACK, personalisation, AI-augmented heutagogy, self-regulated learning; AI for formative and summative assessment and feedback; cognitive offloading, bias, EU AI Act, human-centred mindset. Interactive: Job-Futuromat, heutagogy slider, feedback lab, AI assessment tool evaluation grid, PAIR explorables.">
+<link rel="icon" href="../../assets/ovgu_logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --main:#7a003f; --main-dark:#5c002f; --second:#bc7f9f; --third:#f5ebf0; --ink:#111; --ink-2:#3e3f40; --ink-3:#5f6163;
+  --line:#cfd3d6; --soft:#e7e9ea; --bg:#fff; --bg-2:#f8f8f8; --s1:#2a78d6; --good:#0ca30c; --good-bg:#e2f4e2; --crit:#d03b3b; --crit-bg:#fbe3e3; --warn:#fab219; --hb:3.1rem; --fb:3rem; }
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+html.present-root { font-size: clamp(13px, min(1.1vw, 2.05vh), 30px); }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Barlow","Helvetica Neue",Arial,sans-serif; line-height:1.45; overflow-wrap:anywhere; }
+a { color:var(--main); } a:hover { color:var(--main-dark); }
+h1,h2,h3 { font-family:"Barlow Semi Condensed","Barlow",sans-serif; font-weight:600; line-height:1.12; }
+button,input,textarea,select { font:inherit; }
+:focus-visible { outline:3px solid var(--s1); outline-offset:2px; }
+small,.small { font-size:.82em; } .muted { color:var(--ink-3); }
+.topbar { position:fixed; top:0; left:0; right:0; height:var(--hb); z-index:30; display:flex; align-items:center; gap:.9rem; padding:0 1.1rem; background:#fff; border-bottom:1px solid var(--line); }
+.topbar img { height:2.1rem; display:block; }
+.topbar .deck-title { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; color:var(--main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topbar .lia-link { margin-left:auto; font-size:.85rem; white-space:nowrap; }
+.botbar { position:fixed; left:0; right:0; bottom:0; height:var(--fb); z-index:30; display:flex; align-items:center; gap:.5rem; padding:0 1rem; background:#fff; border-top:1px solid var(--line); }
+.progress { position:absolute; top:-1px; left:0; height:3px; background:var(--main); transition:width .3s; }
+.counter { font-variant-numeric:tabular-nums; font-size:.9rem; color:var(--ink-2); min-width:4.2rem; text-align:center; }
+.steps { display:flex; gap:.25rem; } .steps i { width:.45rem; height:.45rem; border-radius:50%; background:var(--soft); display:block; } .steps i.on { background:var(--main); }
+.spacer { flex:1; } .stitle { font-size:.85rem; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40vw; }
+.cbtn { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:.35rem; padding:.25rem .6rem; font-size:.85rem; cursor:pointer; white-space:nowrap; }
+.cbtn:hover { border-color:var(--main); color:var(--main); } .cbtn[aria-pressed="true"] { background:var(--main); color:#fff; border-color:var(--main); }
+#deck { position:fixed; top:var(--hb); bottom:var(--fb); left:0; right:0; }
+.slide { position:absolute; inset:0; display:none; } .slide.active { display:block; }
+body.prerender .slide { display:block; visibility:hidden; }
+.slide > .inner { height:100%; overflow-y:auto; max-width:80rem; margin:0 auto; padding:1.3rem 2.6rem 1.8rem; }
+.slide .notes { display:none; }
+.notes-panel { position:fixed; left:0; right:0; bottom:var(--fb); z-index:25; max-height:32vh; overflow:auto; background:#fffdf2; border-top:3px solid var(--warn); padding:.7rem 1.4rem; font-size:.95rem; display:none; }
+.notes-panel.open { display:block; } .notes-panel h4 { margin:0 0 .3rem; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+.overview { position:fixed; inset:0; z-index:60; background:rgba(255,255,255,.98); overflow:auto; padding:1.4rem 2rem 2rem; display:none; }
+.overview.open { display:block; } .ov-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; } .overview h2 { margin:0; color:var(--main); }
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(15rem,100%),1fr)); gap:.7rem; }
+.ov-item { text-align:left; border:1px solid var(--line); border-top:4px solid var(--second); background:#fff; border-radius:.3rem; padding:.55rem .7rem; cursor:pointer; font-size:.9rem; }
+.ov-item:hover,.ov-item.cur { border-top-color:var(--main); box-shadow:0 2px 8px rgba(122,0,63,.15); } .ov-item b { display:block; color:var(--ink-3); font-size:.75rem; font-weight:500; }
+.frag { opacity:0; visibility:hidden; transform:translateY(.35rem); transition:opacity .35s, transform .35s, visibility .35s; }
+.frag.on { opacity:1; visibility:visible; transform:none; }
+@media (prefers-reduced-motion: reduce) { .frag,.progress { transition:none; } }
+body.scroll .topbar { position:sticky; } body.scroll #deck { position:static; }
+body.scroll .slide { position:static; display:block; border-bottom:8px solid var(--third); }
+body.scroll .slide > .inner { height:auto; overflow:visible; padding:1.4rem 16px 2.2rem; }
+body.scroll .frag { opacity:1; visibility:visible; transform:none; }
+body.scroll .botbar, body.scroll .notes-panel, body.scroll .hide-scroll { display:none; }
+body.scroll .slide .notes { display:block; max-width:80rem; margin:0 auto 1.2rem; font-size:.9rem; color:var(--ink-3); border-left:3px solid var(--warn); padding:.3rem .8rem; background:#fffdf2; }
+body.scroll .slide .notes:empty { display:none; }
+body.scroll .slide .notes::before { content:"Speaker notes · "; font-weight:600; }
+.kicker { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; color:var(--main); margin:0 0 .25rem; }
+.slide h2 { margin:0 0 .8rem; font-size:2.05rem; color:var(--main); }
+.slide p { margin:0 0 .7rem; } .slide ul,.slide ol { margin:0 0 .7rem; padding-left:1.3rem; } .slide li { margin:.2rem 0; }
+.body > * + *, .frag > * + * { margin-top:.2rem; }
+.card { border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.85rem 1rem; margin:.4rem 0 .8rem; }
+.card.pg { border-left:5px solid var(--main); background:var(--third); } .card.pg p { margin:.3rem 0 .5rem; }
+.callout { border-left:5px solid var(--s1); background:#f1f6fd; padding:.7rem .95rem; border-radius:0 .4rem .4rem 0; margin:.5rem 0 .8rem; }
+.callout.main { border-left-color:var(--main); background:var(--third); } .callout.crit { border-left-color:var(--crit); background:#fdf1f1; }
+.callout .lab { font-weight:600; display:block; margin-bottom:.2rem; } .callout > :last-child { margin-bottom:0; }
+.table-scroll { overflow-x:auto; margin:0 0 .8rem; }
+table.t { width:100%; border-collapse:collapse; font-size:.95rem; }
+table.t th { text-align:left; background:var(--soft); padding:.4rem .6rem; font-weight:600; }
+table.t td { padding:.45rem .6rem; border-bottom:1px solid var(--soft); vertical-align:top; }
+code { background:var(--bg-2); border:1px solid var(--soft); border-radius:.25rem; padding:0 .25rem; font-size:.9em; }
+pre.code { background:#1f1f24; color:#f4f4f5; padding:.8rem 1rem; border-radius:.4rem; overflow:auto; font-size:.85rem; line-height:1.4; margin:.3rem 0 .8rem; white-space:pre-wrap; }
+pre.code code { background:none; border:0; color:inherit; padding:0; }
+.mermaid-box { margin:.4rem 0 .9rem; text-align:center; } .mermaid-box svg { max-width:100%; height:auto; max-height:52vh; }
+body.scroll .mermaid-box svg { max-height:none; }
+.btn { border:1px solid var(--main); background:#fff; color:var(--main); border-radius:.35rem; padding:.35rem .85rem; cursor:pointer; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.35rem; }
+.btn:hover { background:var(--third); } .btn.primary { background:var(--main); color:#fff; } .btn.primary:hover { background:var(--main-dark); } .btn.small { padding:.2rem .6rem; font-size:.85rem; }
+.row-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.4rem 0 .6rem; }
+.quiz, .poll { margin:.3rem 0 .9rem; }
+.opts, .poll { display:flex; flex-direction:column; gap:.35rem; align-items:flex-start; }
+.opt { text-align:left; border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.35rem .8rem; cursor:pointer; min-width:min(28rem,100%); }
+.opt:hover { border-color:var(--main); } .opt[aria-pressed="true"] { border-color:var(--main); background:var(--third); }
+.opt.right { border-color:var(--good); background:var(--good-bg); } .opt.wrong { border-color:var(--crit); background:var(--crit-bg); }
+.fb { font-weight:600; } .fb.ok { color:var(--good); } .fb.no { color:var(--crit); }
+.hint { font-size:.9rem; background:#fff8e1; padding:.3rem .6rem; border-radius:.3rem; }
+.sol { border-left:4px solid var(--good); background:var(--good-bg); padding:.4rem .8rem; border-radius:0 .3rem .3rem 0; font-size:.92rem; }
+.gap { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .35rem; background:#fff; }
+.gap.right { border-color:var(--good); background:var(--good-bg); } .gap.wrong { border-color:var(--crit); background:var(--crit-bg); }
+textarea.free { width:min(40rem,100%); border:1px solid var(--line); border-radius:.35rem; padding:.4rem .6rem; display:block; margin:.2rem 0 .8rem; }
+ul.tasks { list-style:none; padding-left:0; } ul.tasks input { accent-color:var(--main); }
+input.rng { accent-color:var(--main); vertical-align:middle; } .rngv { display:inline-block; min-width:1.5rem; text-align:center; font-weight:600; color:var(--main); }
+input.txt { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .4rem; min-width:14rem; }
+.embed-head { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; justify-content:space-between; margin-bottom:.4rem; }
+.embed iframe { width:100%; height:58vh; border:0; border-radius:.3rem; }
+.refs { font-size:.82rem; } .refs ul { columns:2 22rem; column-gap:1.6rem; } .refs li { break-inside:avoid; }
+.slide.hero { background:var(--main); color:#fff; } .slide.hero a { color:#fff; }
+.hero-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:2rem; align-items:center; min-height:100%; }
+.hero h1 { font-size:3.1rem; margin:.2rem 0 .8rem; } .hero .kicker { color:#fff; opacity:.85; }
+.hero .btn { border-color:#fff; color:#fff; background:transparent; } .hero .btn.primary { background:#fff; color:var(--main); }
+.hero .keys { margin-top:1.4rem; font-size:.85rem; opacity:.85; }
+.hero-badge { justify-self:center; width:min(18rem,30vw); aspect-ratio:1; border-radius:50%; border:3px dashed rgba(255,255,255,.55); display:grid; place-items:center; font-family:"Barlow Semi Condensed",sans-serif; font-size:clamp(3rem,7vw,7rem); font-weight:600; background:rgba(255,255,255,.08); }
+kbd { font-family:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-width:2px; border-radius:.25rem; padding:0 .35rem; background:var(--bg-2); }
+.hero kbd { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.4); color:#fff; }
+@media (max-width:820px) { .hero-grid { grid-template-columns:1fr; } .hero-badge { display:none; } .hero h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .slide > .inner { padding:1rem 1rem 1.6rem; } .stitle { display:none; } }
+@media print { html.present-root { font-size:12px; } .topbar,.botbar,.notes-panel,.overview { display:none !important; } #deck { position:static; }
+  .slide { position:static !important; display:block !important; page-break-after:always; } .slide > .inner { height:auto; overflow:visible; }
+  .frag { opacity:1 !important; visibility:visible !important; transform:none !important; } .slide.hero { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body class="prerender">
+<header class="topbar">
+  <a href="../../index.html" title="Course website"><img src="../../assets/ovgu_logo.svg" alt="Otto von Guericke University Magdeburg – back to the course website"></a>
+  <span class="deck-title">AI in TVET II · P04 – Pedagogy, Assessment and Ethics in AI-Supported TVET</span>
+  <a class="lia-link" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.md" target="_blank" rel="noopener">LiaScript version ↗</a>
+</header>
+<main id="deck" aria-roledescription="slide deck">
+<section class="slide hero" data-title="Pedagogy, Assessment and Ethics in AI-Supported TVET">
+<div class="inner"><div class="hero-grid"><div><p class="kicker">AI in TVET II · OVGU Magdeburg</p><h1>Pedagogy, Assessment and Ethics in AI-Supported TVET</h1><p><strong>Session 4 · 17.12.2026 · 🟢 Live · 09:00–12:00</strong> · AI in TVET II, OVGU Magdeburg</p>
+<p>Trends · AI-TPACK and heutagogy · <strong>AI for assessment and feedback</strong> · ethics and the human-centred mindset · your matrix gets assessment and safeguards</p>
+<p><small><a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/S04_Pedagogy_Assessment_Ethics.md">Self-learning unit S04</a> · <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">Unit in Moodle (SCORM, obligatory)</a> · <a target="_blank" rel="noopener" href="https://ovgu-vet-teched.github.io/AI_in_TVET_II_WiSe_2026_2027/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.html">HTML slides</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/organisational_overview_slide_AI_in_TVET_II.md">Organisational overview</a></small></p><div class="row-actions"><a class="btn primary" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.md" target="_blank" rel="noopener">LiaScript version · classroom polls ↗</a></div><p class="keys hide-scroll"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> navigate · <kbd>O</kbd> overview · <kbd>N</kbd> notes · <kbd>S</kbd> document mode · <kbd>F</kbd> full screen</p></div><div class="hero-badge" aria-hidden="true">P04</div></div></div>
+<aside class="notes">Welcome back. Last week you chose your learning objective and drafted your matrix. Today we ask the pedagogical questions: how do learners learn with AI, how do we know they have learned, and where must humans decide?</aside>
+</section>
+
+<section class="slide" data-title="Warm-up: Which Tasks Will AI Take Over? 🔮">
+<div class="inner"><h2>Warm-up: Which Tasks Will AI Take Over? 🔮</h2><div class="body"><div class="embed card"><div class="embed-head"><b>🧪 Job-Futuromat – IAB</b><a class="btn small" href="https://job-futuromat.iab.de" target="_blank" rel="noopener">Open in new tab ↗</a></div><button class="btn small load" data-src="https://job-futuromat.iab.de">Load here</button></div><div class="frag" data-f="1"><p><strong>Task (5 min):</strong> enter the occupation of <strong>your target group</strong> (German occupation names, e.g. <em>Mechatroniker/in</em>, <em>Pflegefachfrau/-mann</em>).</p>
+<p><strong>Share of automatable core tasks:</strong></p>
+<div class="poll"><button class="opt" aria-pressed="false">below 30 %</button><button class="opt" aria-pressed="false">30–50 %</button><button class="opt" aria-pressed="false">50–70 %</button><button class="opt" aria-pressed="false">above 70 %</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>What should apprentices in this occupation learn <em>because of</em> AI?</strong></p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Enter the occupation of your target group. The Job-Futuromat shows which share of its core tasks could already be automated with today&#x27;s technology.</aside>
+</section>
+
+<section class="slide" data-title="Where We Are 🧭">
+<div class="inner"><h2>Where We Are 🧭</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  S1[&quot;&lt;b&gt;1 · 26.11.&lt;/b&gt;&lt;br&gt;Kick-off and&lt;br&gt;LiaScript Level 2&quot;]:::done
+  S1 --&gt; S2[&quot;&lt;b&gt;2 · 03.12.&lt;/b&gt; 🔵&lt;br&gt;AI and prompting&lt;br&gt;Level 2&quot;]:::done
+  S2 --&gt; S3[&quot;&lt;b&gt;3 · 10.12.&lt;/b&gt; 🔵&lt;br&gt;Vocabulary and&lt;br&gt;workflows&quot;]:::done
+  S3 --&gt; S4[&quot;&lt;b&gt;4 · 17.12.&lt;/b&gt;&lt;br&gt;Pedagogy, assessment,&lt;br&gt;ethics&quot;]:::now
+  S4 --&gt; S5[&quot;&lt;b&gt;5 · 07.01.&lt;/b&gt;&lt;br&gt;Nuggets and&lt;br&gt;matrix workshop&quot;]:::live
+  S5 --&gt; S6[&quot;&lt;b&gt;6 · 14.01.&lt;/b&gt; ⚪&lt;br&gt;Project and peer review&lt;br&gt;format tbc&quot;]:::tbc
+  S6 --&gt; S7[&quot;&lt;b&gt;7 · 21.01.&lt;/b&gt;&lt;br&gt;Final&lt;br&gt;presentations&quot;]:::live
+  classDef live fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef self fill:#e8f0fb,stroke:#1565c0,stroke-width:1.5px,color:#1f1f1f
+  classDef tbc fill:#fff8e1,stroke:#b7791f,stroke-width:1.5px,stroke-dasharray:4 3,color:#1f1f1f
+  classDef now fill:#7a003f,stroke:#7a003f,stroke-width:2px,color:#ffffff
+  classDef done fill:#eeeeee,stroke:#9ca3af,stroke-width:1px,color:#5f6163</pre></div>
+<p><strong>Building blocks today:</strong> your matrix gets two new columns – <strong>assessment / feedback</strong> and <strong>human decision / ethical safeguard</strong> – and you sharpen the <strong>human role</strong> in your design.</p></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Objectives 🎯">
+<div class="inner"><h2>Today's Objectives 🎯</h2><div class="body"><p>By the end of today you can …</p><div class="frag" data-f="1"><ol>
+<li><strong>apply</strong> pedagogical trends – AI-augmented heutagogy, self-regulated learning, OECD evidence on learning vs. performance – to your competency matrix,</li>
+</ol></div><div class="frag" data-f="2"><ol start="2">
+<li><strong>design</strong> AI-supported formative feedback for your learning objective,</li>
+<li><strong>evaluate</strong> the reliability of AI grading with a mini-study and decide where AI may support assessment,</li>
+<li><strong>co-create</strong> ethical rules for AI use in your learning design and <strong>justify</strong> where humans decide.</li>
+</ol></div></div></div>
+<aside class="notes">First, pedagogy: what changes in teaching and learning. Second, assessment and feedback, and third, ethics.</aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Agenda 🗓️">
+<div class="inner"><h2>Today's Agenda 🗓️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:00</td>
+<td>Warm-up: Job-Futuromat · questions on your S03 hand-in</td>
+<td>Individual + plenary</td>
+</tr>
+<tr>
+<td>09:20</td>
+<td>Pedagogical trends applied: heutagogy planner, SRL coach</td>
+<td>Input + playground</td>
+</tr>
+<tr>
+<td>10:00</td>
+<td>AI for assessment and feedback · feedback lab</td>
+<td>Input + individual</td>
+</tr>
+<tr>
+<td>10:35</td>
+<td>Break</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>10:45</td>
+<td>Grading reliability mini-study</td>
+<td>Pairs → plenary</td>
+</tr>
+<tr>
+<td>11:10</td>
+<td>Ethics: offloading, EC guidelines, co-creating ethical rules</td>
+<td>Input + playground</td>
+</tr>
+<tr>
+<td>11:35</td>
+<td>Project lab: matrix + assessment + safeguards · exit ticket</td>
+<td>Groups</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="1. Pedagogical Trends 📈">
+<div class="inner"><p class="kicker">Part 1 · Pedagogical Trends</p><h2>1. Pedagogical Trends 📈</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  T[&quot;&lt;b&gt;AI-TPACK&lt;/b&gt;&lt;br&gt;what teachers&lt;br&gt;need to know&quot;]:::sys --&gt; P[&quot;&lt;b&gt;Personalisation&lt;/b&gt;&lt;br&gt;adaptive content,&lt;br&gt;pace, feedback&quot;]:::sys
+  P --&gt; H[&quot;&lt;b&gt;Heutagogy&lt;/b&gt;&lt;br&gt;learners steer&lt;br&gt;what and how&quot;]:::sys
+  H --&gt; S[&quot;&lt;b&gt;Self-regulated&lt;br&gt;learning&lt;/b&gt;&lt;br&gt;goal, monitor, reflect&quot;]:::sys
+  classDef sys fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f</pre></div><div class="frag" data-f="1"><ul>
+<li><strong>AI-TPACK</strong> (recap from AI in TVET I): knowing what AI can do, how it changes methods and how it changes the content (Ning et al., 2024).</li>
+<li><strong>Personalisation:</strong> benefits for engagement and performance – when <strong>teachers orchestrate</strong> the use (du Plooy et al., 2024; Zhao &amp; Ko, 2024).</li>
+</ul></div><div class="frag" data-f="2"><div class="callout crit"><span class="lab">Performance is not learning</span><p>With general-purpose chatbots, students produce better work – but the advantage disappears or reverses when access is removed in exams. Tools designed with a clear pedagogical purpose show more lasting gains (OECD, 2026).</p></div></div></div></div>
+<aside class="notes">AI-TPACK extends the well-known TPACK model: teachers need to know what AI can do, how it changes teaching methods and how it changes the subject content itself. The OECD Digital Education Outlook 2026 adds an important warning: better performance with a chatbot is not the same as learning.</aside>
+</section>
+
+<section class="slide" data-title="Heutagogy Planner for Your Matrix 🧭">
+<div class="inner"><p class="kicker">Part 1 · Pedagogical Trends</p><h2>Heutagogy Planner for Your Matrix 🧭</h2><div class="body"><p>You met AI-augmented heutagogy (Ng &amp; Lai, 2025) in AI in TVET I. Now <strong>apply</strong> it: which AI paradigm fits each level of <strong>your</strong> competency matrix?</p>
+<p><strong>Acquire level – AI paradigm:</strong> <select class="gap"><option selected>AI-informed</option><option>AI-supported</option><option>AI-empowered</option></select></p>
+<p><strong>Deepen level – AI paradigm:</strong> <select class="gap"><option>AI-informed</option><option selected>AI-supported</option><option>AI-empowered</option></select></p>
+<p><strong>Create level – AI paradigm:</strong> <select class="gap"><option>AI-informed</option><option selected>AI-supported</option><option>AI-empowered</option></select></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.md#7" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Choose a paradigm for each level of your matrix. Learner autonomy should rise from Acquire to Create. The planner warns you if it does not.</aside>
+</section>
+
+<section class="slide" data-title="Self-Regulated Learning with Chatbots 🔁">
+<div class="inner"><p class="kicker">Part 1 · Pedagogical Trends</p><h2>Self-Regulated Learning with Chatbots 🔁</h2><div class="body"><p>AI chatbots can support the SRL cycle – <strong>goal setting, monitoring, feedback, reflection</strong> – if they ask questions instead of giving answers (Chang et al., 2023).</p>
+<p><strong>Decide:</strong> Which design supports self-regulated learning best?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">A chatbot that immediately provides complete solutions.</button><button class="opt" data-ok="1" aria-pressed="false">A chatbot that asks the learner for a goal, gives hints and prompts reflection.</button><button class="opt" data-ok="0" aria-pressed="false">A chatbot that grades every answer without explanation.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Who does the thinking in each design?</p></div><div class="frag" data-f="1"><pre class="code"><code class="lang-text">You are a learning coach for apprentices. Never give the full solution.
+1) Ask the learner for their goal for this task.
+2) Ask what they have tried so far.
+3) Give one hint at a time, then ask them to try again.
+4) At the end, ask: &quot;What will you do differently next time?&quot;</code></pre></div></div></div>
+<aside class="notes">This is the core design question for your sample material: who does the thinking?</aside>
+</section>
+
+<section class="slide" data-title="2. AI for Assessment and Feedback 📝">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>2. AI for Assessment and Feedback 📝</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th></th>
+<th>Formative</th>
+<th>Summative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Support learning</td>
+<td>Certify achievement</td>
+</tr>
+<tr>
+<td>Timing</td>
+<td>During learning</td>
+<td>At the end</td>
+</tr>
+<tr>
+<td>AI role</td>
+<td>Generate tasks, give immediate feedback, adapt practice</td>
+<td>Support only; humans decide</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Over-reliance, generic feedback</td>
+<td>Unfair or wrong decisions; <strong>high risk under the EU AI Act</strong></td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><div class="callout main"><span class="lab">Three feedback questions (Hattie &amp; Timperley, 2007)</span><p><strong>Where am I going?</strong> (goal) · <strong>How am I going?</strong> (progress) · <strong>Where to next?</strong> (next steps)</p></div></div></div></div>
+<aside class="notes">Good feedback answers three questions. Use them as a template whenever you prompt an AI for feedback.</aside>
+</section>
+
+<section class="slide" data-title="What Does Research Say? 🔬">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>What Does Research Say? 🔬</h2><div class="body"><div class="frag" data-f="1"><ul>
+<li>Randomised field experiment, blinded feedback sources (N = 90): students rated LLM and peer feedback as fairer and easier to accept – but <strong>teacher feedback improved their work most</strong>, LLM feedback least (Weidlich et al., 2025).</li>
+<li>LLM grading of exams can deviate considerably from human grading (Flodén, 2025); acceptance depends on perceived fairness (Jones-Jang et al., 2025).</li>
+<li>Teachers' own value judgements change when they know work was AI-assisted (Luo &amp; Dawson, 2025).</li>
+</ul></div><p><strong>Decide:</strong> What follows from Weidlich et al. (2025)?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">Replace teacher feedback with AI feedback – students like it more.</button><button class="opt" data-ok="1" aria-pressed="false">Use AI feedback as an addition, but keep teacher feedback where improvement matters most.</button><button class="opt" data-ok="0" aria-pressed="false">Never use AI feedback.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Acceptance and effect are not the same.</p></div></div></div>
+<aside class="notes">Three findings you should know before you use AI feedback.</aside>
+</section>
+
+<section class="slide" data-title="Try It: Feedback Lab (15 min) 🧪">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>Try It: Feedback Lab (15 min) 🧪</h2><div class="body"><p><strong>Apprentice's fault-diagnosis report</strong> (fictitious):</p>
+<blockquote>
+<p><em>"The machine stopped. I think the motor is broken because it made a noise. I changed the fuse but it did not help. Then I called the master."</em></p>
+</blockquote><div class="frag" data-f="1"><ol>
+<li>Write <strong>your own</strong> feedback (max. 80 words).</li>
+<li>Prompt an AI tool:</li>
+</ol>
+<pre class="code"><code class="lang-text">Give feedback to an apprentice on the following fault-diagnosis report.
+Structure: (1) goal of the task, (2) what is already correct, (3) one or two
+concrete next steps. Do not give the full solution. Max. 120 words.
+Report: &quot;&quot;&quot;&lt;paste report&gt;&quot;&quot;&quot;</code></pre>
+<ol start="3">
+<li>Compare: which feedback is more <strong>specific</strong>, more <strong>motivating</strong>, more <strong>correct</strong>?</li>
+</ol></div><div class="frag" data-f="2"><p><strong>The biggest difference between my feedback and the AI's:</strong></p></div><textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">First write your own feedback, then let the AI write one with this prompt, then compare. Write down the biggest difference. We collect three examples in the plenary.</aside>
+</section>
+
+<section class="slide" data-title="AI-Supported Assessment in Practice ✅">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>AI-Supported Assessment in Practice ✅</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Task</th>
+<th>AI support</th>
+<th>Human check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item generation</td>
+<td>Quiz items from your verified text</td>
+<td>Correctness, difficulty, distractors</td>
+</tr>
+<tr>
+<td>Rubric design</td>
+<td>Draft criteria and levels</td>
+<td>Alignment with learning objective</td>
+</tr>
+<tr>
+<td>Formative feedback</td>
+<td>First feedback draft</td>
+<td>Tone, accuracy, next steps</td>
+</tr>
+<tr>
+<td>Competency-based task</td>
+<td>Workplace scenario variants</td>
+<td>Authenticity, safety</td>
+</tr>
+<tr>
+<td>Summative decision</td>
+<td>none / analysis only</td>
+<td><strong>Teacher decides</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decide:</strong> Under the EU AI Act, AI systems used to <strong>evaluate learning outcomes</strong> are …</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">minimal risk</button><button class="opt" data-ok="1" aria-pressed="false">high risk</button><button class="opt" data-ok="0" aria-pressed="false">always prohibited</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Annex III lists education and vocational training.</p></div></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Try It: Can AI Grade Your Learners? 📏">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>Try It: Can AI Grade Your Learners? 📏</h2><div class="body"><p>In AI in TVET I you discussed <em>whether</em> you would let an AI grade you. Now <strong>test it</strong> with a mini-study (15 min):</p><div class="frag" data-f="1"><ol>
+<li>Write <strong>3 short learner answers</strong> (one good, one medium, one weak) and a <strong>3-level rubric</strong>.</li>
+<li>Let an AI grade each answer <strong>twice</strong> (two new chats, same prompt).</li>
+<li>Grade them <strong>yourself</strong> before you look at the AI grades.</li>
+</ol></div></div></div>
+<aside class="notes">Take three short answers from your topic, write a simple three-level rubric, and let an AI grade each answer twice, in two new chats. Then grade them yourself.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Grading Reliability 📊">
+<div class="inner"><p class="kicker">Part 2 · AI for Assessment and Feedback</p><h2>Playground: Grading Reliability 📊</h2><div class="body"><p><strong>Answers graded:</strong> <input class="rng" type="range" min="1" max="10" step="1" value="3" aria-label="slider"><output class="rngv">3</output></p>
+<p><strong>AI run 1 = AI run 2 (same grade):</strong> <input class="rng" type="range" min="0" max="10" step="1" value="2" aria-label="slider"><output class="rngv">2</output></p>
+<p><strong>AI = your grade (exactly):</strong> <input class="rng" type="range" min="0" max="10" step="1" value="1" aria-label="slider"><output class="rngv">1</output></p>
+<p><strong>AI = your grade (± one level):</strong> <input class="rng" type="range" min="0" max="10" step="1" value="2" aria-label="slider"><output class="rngv">2</output></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.md#14" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Enter your counts. A tool that does not agree with itself cannot be valid. And even high agreement in three answers is no validation: summative decisions stay with the teacher.</aside>
+</section>
+
+<section class="slide" data-title="3. Ethics: Cognitive Offloading 🧠">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>3. Ethics: Cognitive Offloading 🧠</h2><div class="body"><p>If learners let AI do the thinking, learning can suffer:</p><div class="frag" data-f="1"><ul>
+<li>Higher AI tool use was associated with lower critical-thinking scores, mediated by cognitive offloading (Gerlich, 2025).</li>
+<li>In an essay study, LLM users showed lower brain connectivity and weaker recall of their own text than those writing without tools (Kosmyna et al., 2025, preprint).</li>
+</ul></div><div class="frag" data-f="2"><div class="callout crit"><span class="lab">Design consequence</span><p>Plan phases <strong>without</strong> AI · let learners <strong>think first</strong> · use AI as a <strong>sparring partner</strong>, not a solution generator.</p></div></div></div></div>
+<aside class="notes">Two studies are often quoted. Note that the second one is a preprint. The design consequence is simple: plan phases without AI, let learners think first, and use AI as a sparring partner.</aside>
+</section>
+
+<section class="slide" data-title="Ethical Guidelines for Educators 📜">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>Ethical Guidelines for Educators 📜</h2><div class="body"><p>The European Commission (2022) names <strong>four key considerations</strong> for AI and data in teaching:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Consideration</th>
+<th>Question for your design</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Human agency</strong></td>
+<td>Do learners and teachers stay in control of decisions about learning?</td>
+</tr>
+<tr>
+<td><strong>Fairness</strong></td>
+<td>Is everyone treated fairly – incl. language, disability, background?</td>
+</tr>
+<tr>
+<td><strong>Humanity</strong></td>
+<td>Are dignity, identity and well-being respected?</td>
+</tr>
+<tr>
+<td><strong>Justified choice</strong></td>
+<td>Can you justify <em>why</em> AI is used here – with evidence and transparency?</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><div class="callout main"><span class="lab">UNESCO: human-centred mindset</span><p><strong>Human agency</strong> · <strong>human accountability</strong> · <strong>social responsibility</strong> – and teachers remain accountable for grading and pedagogical decisions (UNESCO, 2024).</p></div></div></div></div>
+<aside class="notes">The UNESCO framework puts the human-centred mindset first: human agency, human accountability and social responsibility. It is the lens for every decision in your project.</aside>
+</section>
+
+<section class="slide" data-title="Co-Creating Ethical Rules 🤝">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>Co-Creating Ethical Rules 🤝</h2><div class="body"><p>AI in TVET I: ethical <strong>principles</strong> (UNESCO CFT dimension 2, <em>Acquire</em>). AI in TVET II: <strong>co-creating ethical rules</strong> with learners (dimension 2, <em>Create</em>). Draft an AI agreement for your learning design:</p>
+<p><strong>Learners may use AI for:</strong> <select class="gap"><option selected>explanations and hints only</option><option>drafts they revise and declare</option><option>everything except the assessed part</option></select></p>
+<p><strong>Phase without AI:</strong> <select class="gap"><option selected>first attempt at every task</option><option>the practical skill check</option><option>none</option></select></p>
+<p><strong>Declaration:</strong> <select class="gap"><option selected>one line: tool and purpose</option><option>AI log with prompts</option><option>no declaration</option></select></p>
+<p><strong>Data:</strong> <select class="gap"><option selected>no personal or company data in AI tools</option><option>anonymised data only</option><option>any data</option></select></p>
+<p><strong>Feedback and grades:</strong> <select class="gap"><option selected>AI drafts feedback - the trainer decides on grades</option><option>AI grades - the trainer checks samples</option></select></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/P04_Pedagogy_Assessment_Ethics.md#17" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">This is a draft. Co-creating means: you discuss and revise it with your learners. Put the final version into your sample material.</aside>
+</section>
+
+<section class="slide" data-title="Project Lab: Assessment and Safeguards 🛠️">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>Project Lab: Assessment and Safeguards 🛠️</h2><div class="body"><p>Add two columns to your matrix from S03:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Level</th>
+<th>Assessment / feedback (how do we know learners reached it?)</th>
+<th>Human decision / ethical safeguard (what without AI?)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acquire</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Deepen</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Create</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><ol>
+<li>Which <strong>pedagogical trend</strong> fits your learning objective best – and why?</li>
+<li>Where could AI make learners <strong>passive</strong> in your design? How do you prevent it?</li>
+<li>Which <strong>piece of sample material</strong> will you show in your presentation?</li>
+</ol>
+<p><strong>Our two new columns (or the repository link):</strong></p>
+<textarea class="free" rows="3" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Discuss the three questions in your group. The answers become part of your presentation.</aside>
+</section>
+
+<section class="slide" data-title="Exit Ticket 🎟️">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>Exit Ticket 🎟️</h2><div class="body"><p><strong>Objective 1:</strong> In AI-empowered heutagogy – the right paradigm for the <em>Create</em> level – learners …</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">receive information chosen by the teacher</button><button class="opt" data-ok="1" aria-pressed="false">use AI as a partner for complex, open-ended problems with full autonomy</button><button class="opt" data-ok="0" aria-pressed="false">only practise with adaptive quizzes</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 The highest of the three paradigms.</p></div>
+<p><strong>Objective 2:</strong> Which three questions structure good feedback?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="1" aria-pressed="false">Where am I going? · How am I going? · Where to next?</button><button class="opt" data-ok="0" aria-pressed="false">What? · Who? · When?</button><button class="opt" data-ok="0" aria-pressed="false">Correct? · Wrong? · Grade?</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Hattie and Timperley.</p></div>
+<p><strong>Objective 3:</strong> In our grading mini-study, the AI …</p>
+<div class="poll"><button class="opt" aria-pressed="false">did not even agree with itself</button><button class="opt" aria-pressed="false">was consistent, but differed from my grades</button><button class="opt" aria-pressed="false">was close to my grades</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Objective 4:</strong> One decision in our design that must stay human:</p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Your SCORM Unit and Next Steps 📦">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>Your SCORM Unit and Next Steps 📦</h2><div class="body"><p><strong>Obligatory:</strong> complete the self-learning unit <strong>S04</strong> in Moodle – the study text for today with feedback lab, tool evaluation and your reflection.</p><div class="frag" data-f="1"><ul>
+<li>📦 <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">S04 in Moodle (SCORM)</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/04_Pedagogy_Assessment_and_Ethics/S04_Pedagogy_Assessment_Ethics.md">S04 in LiaScript</a> – all 7 units by <strong>15.02.2027</strong></li>
+<li>⚪ <strong>Christmas break</strong> 21.12.2026 – 01.01.2027</li>
+<li>➡️ <strong>Next: Thursday, 07.01.2027, 🟢 live</strong> – nuggets and micro-credentials · <strong>competency matrix workshop</strong> – bring your extended matrix</li>
+</ul></div></div></div>
+<aside class="notes">Enjoy the Christmas break. In January we turn your matrix into learning nuggets.</aside>
+</section>
+
+<section class="slide" data-title="References">
+<div class="inner"><p class="kicker">Part 3 · Ethics: Cognitive Offloading</p><h2>References</h2><div class="body refs"><ul>
+<li>Chang, D. H., Lin, M. P.-C., Hajian, S., &amp; Wang, Q. Q. (2023). Educational design principles of using AI chatbot that supports self-regulated learning in education: Goal setting, feedback, and personalization. <em>Sustainability, 15</em>(17), 12921. https://doi.org/10.3390/su151712921</li>
+<li>du Plooy, E., Casteleijn, D., &amp; Franzsen, D. (2024). Personalized adaptive learning in higher education: A scoping review of key characteristics and impact on academic performance and engagement. <em>Heliyon, 10</em>(21), e39630. https://doi.org/10.1016/j.heliyon.2024.e39630</li>
+<li>European Commission. (2022). <em>Ethical guidelines on the use of artificial intelligence (AI) and data in teaching and learning for educators</em>. Publications Office of the European Union. https://data.europa.eu/doi/10.2766/153756</li>
+<li>European Union. (2024). <em>Regulation (EU) 2024/1689 (Artificial Intelligence Act)</em>. https://eur-lex.europa.eu/eli/reg/2024/1689/oj</li>
+<li>Flodén, J. (2025). Grading exams using large language models: A comparison between human and AI grading of exams in higher education using ChatGPT. <em>British Educational Research Journal, 51</em>(1), 201–224. https://doi.org/10.1002/berj.4069</li>
+<li>Gerlich, M. (2025). AI tools in society: Impacts on cognitive offloading and the future of critical thinking. <em>Societies, 15</em>(1), 6. https://doi.org/10.3390/soc15010006</li>
+<li>Hattie, J., &amp; Timperley, H. (2007). The power of feedback. <em>Review of Educational Research, 77</em>(1), 81–112. https://doi.org/10.3102/003465430298487</li>
+<li>Jones-Jang, S. M., Chung, M., Choi, J., Kim, N., &amp; Lee, S. (2025). Fairness perceptions of AI in grading systems. <em>Computers and Education: Artificial Intelligence, 8</em>, 100419. https://doi.org/10.1016/j.caeai.2025.100419</li>
+<li>Kosmyna, N., Hauptmann, E., Yuan, Y. T., Situ, J., Liao, X.-H., Beresnitzky, A. V., Braunstein, I., &amp; Maes, P. (2025). <em>Your brain on ChatGPT: Accumulation of cognitive debt when using an AI assistant for essay writing task</em> (arXiv:2506.08872). https://arxiv.org/abs/2506.08872</li>
+<li>Luo, J., &amp; Dawson, P. (2025). Exploring value judgements in grading: Will teachers mark down student work assisted by GenAI, and should they? <em>Studies in Higher Education</em>. https://doi.org/10.1080/03075079.2025.2552825</li>
+<li>Ng, S. H. S., &amp; Lai, J. W. (2025). AI-augmented heutagogy: A framework for fostering self-determined learning and agency in higher education. <em>Higher Education Research &amp; Development</em>. https://doi.org/10.1080/07294360.2025.2564977</li>
+<li>Ning, Y., Zhang, C., Xu, B., Zhou, Y., &amp; Wijaya, T. T. (2024). Teachers’ AI-TPACK: Exploring the relationship between knowledge elements. <em>Sustainability, 16</em>(3), 978. https://doi.org/10.3390/su16030978</li>
+<li>OECD. (2026). <em>OECD digital education outlook 2026</em>. OECD Publishing. https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html</li>
+<li>UNESCO. (2024). <em>AI competency framework for teachers</em>. https://doi.org/10.54675/ZJTE2084</li>
+<li>Weidlich, J., Gotsch, F., Schudel, K., Marusic-Würscher, C., Mazzarella, J., Bolten, H., Bütler, D., Luger, S., Wohlfender, B., &amp; Maag Merki, K. (2025). Teacher, peer, or AI? Comparing effects of feedback sources in higher education. <em>Computers and Education Open, 9</em>, 100300. https://doi.org/10.1016/j.caeo.2025.100300</li>
+<li>Zhao, Y., &amp; Ko, J. (2024). Orchestrating vocational education classrooms for adaptive instruction and collaborative learning. <em>Cogent Education, 11</em>(1). https://doi.org/10.1080/2331186X.2024.2351238</li>
+</ul>
+<p><strong>Tools:</strong> <a target="_blank" rel="noopener" href="https://job-futuromat.iab.de">Job-Futuromat</a></p>
+<p><small>Licence: CC BY 4.0 · Dr. Hannes Tegelbeckers, OVGU Magdeburg · Created with AI support (Claude), checked by the author.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+</main>
+<div class="notes-panel" id="notesPanel" aria-live="polite"><h4>Speaker notes</h4><div id="notesText"></div></div>
+<div class="overview" id="overview" role="dialog" aria-label="Slide overview"><div class="ov-head"><h2>Overview</h2><button class="cbtn" id="ovClose">Close (Esc)</button></div><div class="ov-grid" id="ovGrid"></div></div>
+<nav class="botbar" aria-label="Slide navigation">
+  <div class="progress" id="progress"></div>
+  <button class="cbtn" id="prev" aria-label="Previous">←</button>
+  <span class="counter" id="count"></span>
+  <button class="cbtn" id="next" aria-label="Next">→</button>
+  <span class="steps" id="steps"></span>
+  <span class="stitle" id="stitle"></span>
+  <span class="spacer"></span>
+  <button class="cbtn" id="ovBtn" title="Overview (O)">Overview</button>
+  <button class="cbtn" id="notesBtn" aria-pressed="false" title="Speaker notes (N)">Notes</button>
+  <button class="cbtn" id="scrollBtn" aria-pressed="false" title="Document mode (S)">Document</button>
+  <button class="cbtn" id="fsBtn" title="Full screen (F)">⛶</button>
+</nav>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad:false, securityLevel:"loose", theme:"base", fontFamily:"Barlow, Arial, sans-serif",
+  themeVariables:{ primaryColor:"#f7eef2", primaryBorderColor:"#7a003f", lineColor:"#3e3f40", fontSize:"15px" } });
+try { await mermaid.run({ querySelector:".mermaid" }); } catch (e) { console.warn(e); }
+document.body.classList.remove("prerender");
+window.dispatchEvent(new Event("deck-ready"));
+</script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const slides = $$(".slide");
+  let cur = 0, step = 0;
+  const maxStep = s => Math.max(0, ...$$(".frag", s).map(e => +e.dataset.f || 0));
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle("active", i === cur));
+    const s = slides[cur];
+    $$(".frag", s).forEach(e => e.classList.toggle("on", (+e.dataset.f || 0) <= step));
+    $("#count").textContent = `${cur + 1} / ${slides.length}`;
+    $("#stitle").textContent = s.dataset.title || "";
+    $("#progress").style.width = `${(cur / Math.max(1, slides.length - 1)) * 100}%`;
+    $("#steps").innerHTML = Array.from({ length: maxStep(s) }, (_, k) => `<i class="${k < step ? "on" : ""}"></i>`).join("");
+    $("#notesText").textContent = ($(".notes", s) || {}).textContent || "";
+    history.replaceState(null, "", `#${cur + 1}`);
+  }
+  function go(i, atEnd) { cur = Math.max(0, Math.min(slides.length - 1, i)); step = atEnd ? maxStep(slides[cur]) : 0; $(".inner", slides[cur]).scrollTop = 0; render(); }
+  function next() { if (step < maxStep(slides[cur])) { step++; render(); } else if (cur < slides.length - 1) go(cur + 1); }
+  function prev() { if (step > 0) { step--; render(); } else if (cur > 0) go(cur - 1, true); }
+  $("#next").onclick = next; $("#prev").onclick = prev;
+  const toggleNotes = () => { const p = $("#notesPanel"); p.classList.toggle("open"); $("#notesBtn").setAttribute("aria-pressed", p.classList.contains("open")); };
+  const toggleScroll = () => { document.body.classList.toggle("scroll"); $("#scrollBtn").setAttribute("aria-pressed", document.body.classList.contains("scroll")); if (!document.body.classList.contains("scroll")) go(cur); };
+  const fs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  const ov = $("#overview");
+  $("#ovGrid").innerHTML = slides.map((s, i) => `<button class="ov-item" data-i="${i}"><b>${i + 1}</b>${s.dataset.title}</button>`).join("");
+  $$(".ov-item").forEach(b => b.onclick = () => { ov.classList.remove("open"); go(+b.dataset.i); });
+  const toggleOv = () => { ov.classList.toggle("open"); $$(".ov-item").forEach(b => b.classList.toggle("cur", +b.dataset.i === cur)); };
+  $("#ovBtn").onclick = toggleOv; $("#ovClose").onclick = toggleOv;
+  $("#notesBtn").onclick = toggleNotes; $("#scrollBtn").onclick = toggleScroll; $("#fsBtn").onclick = fs;
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("textarea, input, select") || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Escape") { ov.classList.remove("open"); return; }
+    if (document.body.classList.contains("scroll") && !"sS".includes(e.key)) return;
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); next(); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === "Home") go(0); else if (e.key === "End") go(slides.length - 1);
+    else if ("nN".includes(e.key)) toggleNotes(); else if ("fF".includes(e.key)) fs();
+    else if ("oO".includes(e.key)) toggleOv(); else if ("sS".includes(e.key)) toggleScroll();
+  });
+  let tx = null;
+  $("#deck").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  $("#deck").addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 70 && !e.target.closest("textarea, input, iframe")) (dx < 0 ? next : prev)(); tx = null; });
+  if (window.matchMedia("(max-width: 600px)").matches) toggleScroll();
+
+  /* quizzes */
+  $$(".quiz[data-kind]").forEach(q => {
+    const opts = $$(".opt", q), fb = $(".fb", q), single = q.dataset.kind === "single";
+    let tries = 0;
+    const show = ok => {
+      fb.textContent = ok ? "✔ Correct" : "✘ Not yet – try again"; fb.className = "fb " + (ok ? "ok" : "no");
+      tries += ok ? 0 : 1;
+      if (tries >= 1) $$(".hint", q).forEach(h => h.hidden = false);
+      if (ok || tries >= 2) { const s = $(".sol", q); if (s) s.hidden = false; }
+      if (ok || tries >= 2) opts.forEach(o => o.classList.toggle("right", o.dataset.ok === "1"));
+    };
+    opts.forEach(o => o.onclick = () => {
+      if (single) { opts.forEach(x => { x.setAttribute("aria-pressed", x === o); x.classList.remove("wrong"); }); if (o.dataset.ok !== "1") o.classList.add("wrong"); show(o.dataset.ok === "1"); }
+      else o.setAttribute("aria-pressed", o.getAttribute("aria-pressed") !== "true");
+    });
+    const c = $(".check", q);
+    if (c) c.onclick = () => show(opts.every(o => (o.getAttribute("aria-pressed") === "true") === (o.dataset.ok === "1")));
+  });
+  $$(".quiz.matrix").forEach(q => $(".check", q).onclick = () => {
+    const rows = $$("tr", q).slice(1);
+    const ok = rows.every(r => $$("input", r).every(i => i.checked === (i.dataset.ok === "1")));
+    const fb = $(".fb", q); fb.textContent = ok ? "✔ Correct" : "✘ Not yet"; fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $$(".poll").forEach(p => { const multi = p.classList.contains("multi"); $$(".opt", p).forEach(b => b.onclick = () => {
+    if (multi) b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); else $$(".opt", p).forEach(x => x.setAttribute("aria-pressed", x === b)); }); });
+  $$(".gap[data-answer]").forEach(g => g.addEventListener("change", () => {
+    if (!g.dataset.answer) return;
+    const ok = g.value.trim().toLowerCase() === g.dataset.answer.trim().toLowerCase();
+    g.classList.toggle("right", ok); g.classList.toggle("wrong", !ok);
+  }));
+  $$("input.rng").forEach(r => r.addEventListener("input", () => { r.nextElementSibling.textContent = r.value; }));
+  $$("button.load").forEach(b => b.onclick = () => {
+    const f = document.createElement("iframe"); f.src = b.dataset.src; f.loading = "lazy"; f.allowFullscreen = true;
+    f.title = b.parentElement.querySelector("b").textContent; b.replaceWith(f);
+  });
+  const start = () => go((parseInt(location.hash.slice(1)) || 1) - 1);
+  start();
+  window.addEventListener("deck-ready", () => render());
+})();
+</script>
+</body>
+</html>

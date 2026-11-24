@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en" class="present-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P02 – AI and Prompting Level 2: Reliable Learning Material</title>
+<meta name="description" content="AI in TVET II – Slides for session 2 (self-learning, 03.12.2026, 180 min). Builds on AI in TVET I sessions 1–3: attention and context window, reliability of AI material generators, grounded vs. ungrounded generation, prompt pipelines (few-shot, structured output, chain-of-verification, LLM-as-judge), bias audit, human-centred AI lens applied. Interactive: Transformer Explainer attention task, reliability calculator, pipeline builder, bias audit.">
+<link rel="icon" href="../../assets/ovgu_logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --main:#7a003f; --main-dark:#5c002f; --second:#bc7f9f; --third:#f5ebf0; --ink:#111; --ink-2:#3e3f40; --ink-3:#5f6163;
+  --line:#cfd3d6; --soft:#e7e9ea; --bg:#fff; --bg-2:#f8f8f8; --s1:#2a78d6; --good:#0ca30c; --good-bg:#e2f4e2; --crit:#d03b3b; --crit-bg:#fbe3e3; --warn:#fab219; --hb:3.1rem; --fb:3rem; }
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+html.present-root { font-size: clamp(13px, min(1.1vw, 2.05vh), 30px); }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Barlow","Helvetica Neue",Arial,sans-serif; line-height:1.45; overflow-wrap:anywhere; }
+a { color:var(--main); } a:hover { color:var(--main-dark); }
+h1,h2,h3 { font-family:"Barlow Semi Condensed","Barlow",sans-serif; font-weight:600; line-height:1.12; }
+button,input,textarea,select { font:inherit; }
+:focus-visible { outline:3px solid var(--s1); outline-offset:2px; }
+small,.small { font-size:.82em; } .muted { color:var(--ink-3); }
+.topbar { position:fixed; top:0; left:0; right:0; height:var(--hb); z-index:30; display:flex; align-items:center; gap:.9rem; padding:0 1.1rem; background:#fff; border-bottom:1px solid var(--line); }
+.topbar img { height:2.1rem; display:block; }
+.topbar .deck-title { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; color:var(--main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topbar .lia-link { margin-left:auto; font-size:.85rem; white-space:nowrap; }
+.botbar { position:fixed; left:0; right:0; bottom:0; height:var(--fb); z-index:30; display:flex; align-items:center; gap:.5rem; padding:0 1rem; background:#fff; border-top:1px solid var(--line); }
+.progress { position:absolute; top:-1px; left:0; height:3px; background:var(--main); transition:width .3s; }
+.counter { font-variant-numeric:tabular-nums; font-size:.9rem; color:var(--ink-2); min-width:4.2rem; text-align:center; }
+.steps { display:flex; gap:.25rem; } .steps i { width:.45rem; height:.45rem; border-radius:50%; background:var(--soft); display:block; } .steps i.on { background:var(--main); }
+.spacer { flex:1; } .stitle { font-size:.85rem; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40vw; }
+.cbtn { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:.35rem; padding:.25rem .6rem; font-size:.85rem; cursor:pointer; white-space:nowrap; }
+.cbtn:hover { border-color:var(--main); color:var(--main); } .cbtn[aria-pressed="true"] { background:var(--main); color:#fff; border-color:var(--main); }
+#deck { position:fixed; top:var(--hb); bottom:var(--fb); left:0; right:0; }
+.slide { position:absolute; inset:0; display:none; } .slide.active { display:block; }
+body.prerender .slide { display:block; visibility:hidden; }
+.slide > .inner { height:100%; overflow-y:auto; max-width:80rem; margin:0 auto; padding:1.3rem 2.6rem 1.8rem; }
+.slide .notes { display:none; }
+.notes-panel { position:fixed; left:0; right:0; bottom:var(--fb); z-index:25; max-height:32vh; overflow:auto; background:#fffdf2; border-top:3px solid var(--warn); padding:.7rem 1.4rem; font-size:.95rem; display:none; }
+.notes-panel.open { display:block; } .notes-panel h4 { margin:0 0 .3rem; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+.overview { position:fixed; inset:0; z-index:60; background:rgba(255,255,255,.98); overflow:auto; padding:1.4rem 2rem 2rem; display:none; }
+.overview.open { display:block; } .ov-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; } .overview h2 { margin:0; color:var(--main); }
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(15rem,100%),1fr)); gap:.7rem; }
+.ov-item { text-align:left; border:1px solid var(--line); border-top:4px solid var(--second); background:#fff; border-radius:.3rem; padding:.55rem .7rem; cursor:pointer; font-size:.9rem; }
+.ov-item:hover,.ov-item.cur { border-top-color:var(--main); box-shadow:0 2px 8px rgba(122,0,63,.15); } .ov-item b { display:block; color:var(--ink-3); font-size:.75rem; font-weight:500; }
+.frag { opacity:0; visibility:hidden; transform:translateY(.35rem); transition:opacity .35s, transform .35s, visibility .35s; }
+.frag.on { opacity:1; visibility:visible; transform:none; }
+@media (prefers-reduced-motion: reduce) { .frag,.progress { transition:none; } }
+body.scroll .topbar { position:sticky; } body.scroll #deck { position:static; }
+body.scroll .slide { position:static; display:block; border-bottom:8px solid var(--third); }
+body.scroll .slide > .inner { height:auto; overflow:visible; padding:1.4rem 16px 2.2rem; }
+body.scroll .frag { opacity:1; visibility:visible; transform:none; }
+body.scroll .botbar, body.scroll .notes-panel, body.scroll .hide-scroll { display:none; }
+body.scroll .slide .notes { display:block; max-width:80rem; margin:0 auto 1.2rem; font-size:.9rem; color:var(--ink-3); border-left:3px solid var(--warn); padding:.3rem .8rem; background:#fffdf2; }
+body.scroll .slide .notes:empty { display:none; }
+body.scroll .slide .notes::before { content:"Speaker notes · "; font-weight:600; }
+.kicker { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; color:var(--main); margin:0 0 .25rem; }
+.slide h2 { margin:0 0 .8rem; font-size:2.05rem; color:var(--main); }
+.slide p { margin:0 0 .7rem; } .slide ul,.slide ol { margin:0 0 .7rem; padding-left:1.3rem; } .slide li { margin:.2rem 0; }
+.body > * + *, .frag > * + * { margin-top:.2rem; }
+.card { border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.85rem 1rem; margin:.4rem 0 .8rem; }
+.card.pg { border-left:5px solid var(--main); background:var(--third); } .card.pg p { margin:.3rem 0 .5rem; }
+.callout { border-left:5px solid var(--s1); background:#f1f6fd; padding:.7rem .95rem; border-radius:0 .4rem .4rem 0; margin:.5rem 0 .8rem; }
+.callout.main { border-left-color:var(--main); background:var(--third); } .callout.crit { border-left-color:var(--crit); background:#fdf1f1; }
+.callout .lab { font-weight:600; display:block; margin-bottom:.2rem; } .callout > :last-child { margin-bottom:0; }
+.table-scroll { overflow-x:auto; margin:0 0 .8rem; }
+table.t { width:100%; border-collapse:collapse; font-size:.95rem; }
+table.t th { text-align:left; background:var(--soft); padding:.4rem .6rem; font-weight:600; }
+table.t td { padding:.45rem .6rem; border-bottom:1px solid var(--soft); vertical-align:top; }
+code { background:var(--bg-2); border:1px solid var(--soft); border-radius:.25rem; padding:0 .25rem; font-size:.9em; }
+pre.code { background:#1f1f24; color:#f4f4f5; padding:.8rem 1rem; border-radius:.4rem; overflow:auto; font-size:.85rem; line-height:1.4; margin:.3rem 0 .8rem; white-space:pre-wrap; }
+pre.code code { background:none; border:0; color:inherit; padding:0; }
+.mermaid-box { margin:.4rem 0 .9rem; text-align:center; } .mermaid-box svg { max-width:100%; height:auto; max-height:52vh; }
+body.scroll .mermaid-box svg { max-height:none; }
+.btn { border:1px solid var(--main); background:#fff; color:var(--main); border-radius:.35rem; padding:.35rem .85rem; cursor:pointer; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.35rem; }
+.btn:hover { background:var(--third); } .btn.primary { background:var(--main); color:#fff; } .btn.primary:hover { background:var(--main-dark); } .btn.small { padding:.2rem .6rem; font-size:.85rem; }
+.row-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.4rem 0 .6rem; }
+.quiz, .poll { margin:.3rem 0 .9rem; }
+.opts, .poll { display:flex; flex-direction:column; gap:.35rem; align-items:flex-start; }
+.opt { text-align:left; border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.35rem .8rem; cursor:pointer; min-width:min(28rem,100%); }
+.opt:hover { border-color:var(--main); } .opt[aria-pressed="true"] { border-color:var(--main); background:var(--third); }
+.opt.right { border-color:var(--good); background:var(--good-bg); } .opt.wrong { border-color:var(--crit); background:var(--crit-bg); }
+.fb { font-weight:600; } .fb.ok { color:var(--good); } .fb.no { color:var(--crit); }
+.hint { font-size:.9rem; background:#fff8e1; padding:.3rem .6rem; border-radius:.3rem; }
+.sol { border-left:4px solid var(--good); background:var(--good-bg); padding:.4rem .8rem; border-radius:0 .3rem .3rem 0; font-size:.92rem; }
+.gap { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .35rem; background:#fff; }
+.gap.right { border-color:var(--good); background:var(--good-bg); } .gap.wrong { border-color:var(--crit); background:var(--crit-bg); }
+textarea.free { width:min(40rem,100%); border:1px solid var(--line); border-radius:.35rem; padding:.4rem .6rem; display:block; margin:.2rem 0 .8rem; }
+ul.tasks { list-style:none; padding-left:0; } ul.tasks input { accent-color:var(--main); }
+input.rng { accent-color:var(--main); vertical-align:middle; } .rngv { display:inline-block; min-width:1.5rem; text-align:center; font-weight:600; color:var(--main); }
+input.txt { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .4rem; min-width:14rem; }
+.embed-head { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; justify-content:space-between; margin-bottom:.4rem; }
+.embed iframe { width:100%; height:58vh; border:0; border-radius:.3rem; }
+.refs { font-size:.82rem; } .refs ul { columns:2 22rem; column-gap:1.6rem; } .refs li { break-inside:avoid; }
+.slide.hero { background:var(--main); color:#fff; } .slide.hero a { color:#fff; }
+.hero-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:2rem; align-items:center; min-height:100%; }
+.hero h1 { font-size:3.1rem; margin:.2rem 0 .8rem; } .hero .kicker { color:#fff; opacity:.85; }
+.hero .btn { border-color:#fff; color:#fff; background:transparent; } .hero .btn.primary { background:#fff; color:var(--main); }
+.hero .keys { margin-top:1.4rem; font-size:.85rem; opacity:.85; }
+.hero-badge { justify-self:center; width:min(18rem,30vw); aspect-ratio:1; border-radius:50%; border:3px dashed rgba(255,255,255,.55); display:grid; place-items:center; font-family:"Barlow Semi Condensed",sans-serif; font-size:clamp(3rem,7vw,7rem); font-weight:600; background:rgba(255,255,255,.08); }
+kbd { font-family:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-width:2px; border-radius:.25rem; padding:0 .35rem; background:var(--bg-2); }
+.hero kbd { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.4); color:#fff; }
+@media (max-width:820px) { .hero-grid { grid-template-columns:1fr; } .hero-badge { display:none; } .hero h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .slide > .inner { padding:1rem 1rem 1.6rem; } .stitle { display:none; } }
+@media print { html.present-root { font-size:12px; } .topbar,.botbar,.notes-panel,.overview { display:none !important; } #deck { position:static; }
+  .slide { position:static !important; display:block !important; page-break-after:always; } .slide > .inner { height:auto; overflow:visible; }
+  .frag { opacity:1 !important; visibility:visible !important; transform:none !important; } .slide.hero { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body class="prerender">
+<header class="topbar">
+  <a href="../../index.html" title="Course website"><img src="../../assets/ovgu_logo.svg" alt="Otto von Guericke University Magdeburg – back to the course website"></a>
+  <span class="deck-title">AI in TVET II · P02 – AI and Prompting Level 2: Reliable Learning Material</span>
+  <a class="lia-link" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md" target="_blank" rel="noopener">LiaScript version ↗</a>
+</header>
+<main id="deck" aria-roledescription="slide deck">
+<section class="slide hero" data-title="AI and Prompting Level 2: Reliable Learning Material">
+<div class="inner"><div class="hero-grid"><div><p class="kicker">AI in TVET II · OVGU Magdeburg</p><h1>AI and Prompting Level 2: Reliable Learning Material</h1><p><strong>Session 2 · 03.12.2026 · 🔵 Self-learning</strong> · AI in TVET II, OVGU Magdeburg</p>
+<p>Attention and context · <strong>how reliable is your generator?</strong> · grounded vs. ungrounded · prompt pipelines · bias audit · the human-centred lens applied</p>
+<p><small><a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/S02_Introduction_AI_Prompting.md">Self-learning unit S02</a> · <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">Unit in Moodle (SCORM, obligatory)</a> · <a target="_blank" rel="noopener" href="https://ovgu-vet-teched.github.io/AI_in_TVET_II_WiSe_2026_2027/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.html">HTML slides</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/organisational_overview_slide_AI_in_TVET_II.md">Organisational overview</a></small></p><div class="row-actions"><a class="btn primary" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md" target="_blank" rel="noopener">LiaScript version · classroom polls ↗</a></div><p class="keys hide-scroll"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> navigate · <kbd>O</kbd> overview · <kbd>N</kbd> notes · <kbd>S</kbd> document mode · <kbd>F</kbd> full screen</p></div><div class="hero-badge" aria-hidden="true">P02</div></div></div>
+<aside class="notes">Today I am travelling, so you work with these slides and the self-learning unit S02. In AI in TVET one you learned how a language model writes and how to prompt it. Today you test how reliable it is when it produces learning material, and you build a prompt pipeline that catches its errors.</aside>
+</section>
+
+<section class="slide" data-title="Check-in: What Do You Bring From AI in TVET I? 🎒">
+<div class="inner"><h2>Check-in: What Do You Bring From AI in TVET I? 🎒</h2><div class="body"><p><strong>Which of these could you explain to a colleague right now?</strong> (AI in TVET I, sessions 1–3)</p>
+<div class="poll multi"><button class="opt" aria-pressed="false">Tokens and next-token prediction</button><button class="opt" aria-pressed="false">Temperature</button><button class="opt" aria-pressed="false">The five prompt building blocks</button><button class="opt" aria-pressed="false">The CLEAR framework</button><button class="opt" aria-pressed="false">Prompt patterns (persona, template, fact-check …)</button><button class="opt" aria-pressed="false">Why AI references must be checked</button><button class="opt" aria-pressed="false">Human-centred AI</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Which one is shaky?</strong></p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">Everything on this list comes from AI in TVET one. If one item is shaky, revisit the slides of AI in TVET one, sessions one to three. Today assumes this knowledge and goes further.</aside>
+</section>
+
+<section class="slide" data-title="Where We Are 🧭">
+<div class="inner"><h2>Where We Are 🧭</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  S1[&quot;&lt;b&gt;1 · 26.11.&lt;/b&gt;&lt;br&gt;Kick-off and&lt;br&gt;LiaScript Level 2&quot;]:::done
+  S1 --&gt; S2[&quot;&lt;b&gt;2 · 03.12.&lt;/b&gt; 🔵&lt;br&gt;AI and prompting&lt;br&gt;Level 2&quot;]:::now
+  S2 --&gt; S3[&quot;&lt;b&gt;3 · 10.12.&lt;/b&gt; 🔵&lt;br&gt;Vocabulary and&lt;br&gt;workflows&quot;]:::self
+  S3 --&gt; S4[&quot;&lt;b&gt;4 · 17.12.&lt;/b&gt;&lt;br&gt;Pedagogy, assessment,&lt;br&gt;ethics&quot;]:::live
+  S4 --&gt; S5[&quot;&lt;b&gt;5 · 07.01.&lt;/b&gt;&lt;br&gt;Nuggets and&lt;br&gt;matrix workshop&quot;]:::live
+  S5 --&gt; S6[&quot;&lt;b&gt;6 · 14.01.&lt;/b&gt; ⚪&lt;br&gt;Project and peer review&lt;br&gt;format tbc&quot;]:::tbc
+  S6 --&gt; S7[&quot;&lt;b&gt;7 · 21.01.&lt;/b&gt;&lt;br&gt;Final&lt;br&gt;presentations&quot;]:::live
+  classDef live fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef self fill:#e8f0fb,stroke:#1565c0,stroke-width:1.5px,color:#1f1f1f
+  classDef tbc fill:#fff8e1,stroke:#b7791f,stroke-width:1.5px,stroke-dasharray:4 3,color:#1f1f1f
+  classDef now fill:#7a003f,stroke:#7a003f,stroke-width:2px,color:#ffffff
+  classDef done fill:#eeeeee,stroke:#9ca3af,stroke-width:1px,color:#5f6163</pre></div>
+<p><strong>Building block today:</strong> your <strong>AI workflow</strong> – a tested prompt pipeline for your group's sample material, documented in the AI tools log.</p></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Objectives 🎯">
+<div class="inner"><h2>Today's Objectives 🎯</h2><div class="body"><p>By the end of today you can …</p><div class="frag" data-f="1"><ol>
+<li><strong>explain</strong> how attention, context window and sampling affect AI-generated learning material,</li>
+<li><strong>measure</strong> the reliability of an AI material generator and <strong>audit</strong> its output for bias,</li>
+<li><strong>compare</strong> grounded and ungrounded generation with an authoritative source,</li>
+</ol></div><div class="frag" data-f="2"><ol start="4">
+<li><strong>design</strong> a prompt pipeline for learning material: few-shot, structured output, verification, rubric check,</li>
+<li><strong>justify</strong> the human checkpoints of your pipeline with the human-centred AI lens.</li>
+</ol></div></div></div>
+<aside class="notes">First, why AI-generated material is unreliable – and how to measure it. Second, how to build a pipeline that catches the errors – and where humans stay in control.</aside>
+</section>
+
+<section class="slide" data-title="Suggested Time Plan 🗓️">
+<div class="inner"><h2>Suggested Time Plan 🗓️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00</td>
+<td>Check-in · attention and context window</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>0:30</td>
+<td>Reliability experiment: same prompt, five runs</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>1:00</td>
+<td>Grounded vs. ungrounded generation</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>1:30</td>
+<td>Break</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>1:45</td>
+<td>Prompt pipeline: build and run</td>
+<td>Group (online)</td>
+</tr>
+<tr>
+<td>2:25</td>
+<td>Bias audit · human-centred checkpoints</td>
+<td>Group</td>
+</tr>
+<tr>
+<td>2:50</td>
+<td>Unit S02 entries · exit ticket</td>
+<td>Individual</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes">This is a suggestion. Questions go to the Moodle forum; we discuss them at the start of session four.</aside>
+</section>
+
+<section class="slide" data-title="1. Attention: What Does the Model Look At? 👀">
+<div class="inner"><p class="kicker">Part 1 · Attention: What Does the Model Look At</p><h2>1. Attention: What Does the Model Look At? 👀</h2><div class="body"><p>In AI in TVET I you watched the <strong>next-token</strong> prediction. Now look one layer deeper: <strong>attention</strong> decides which earlier tokens shape the next one.</p>
+<div class="embed card"><div class="embed-head"><b>🧪 Transformer Explainer – Polo Club, Georgia Tech</b><a class="btn small" href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Open in new tab ↗</a></div><button class="btn small load" data-src="https://poloclub.github.io/transformer-explainer/">Load here</button></div><div class="frag" data-f="1"><p><strong>Task (10 min):</strong> type <em>"The apprentice replaced the fuse because it was broken"</em> and open the <strong>attention</strong> view.</p>
+<ol>
+<li>Which tokens does <em>"it"</em> attend to most?</li>
+<li>Change <em>"broken"</em> to <em>"cheap"</em>. Does the attention shift?</li>
+</ol>
+<p><strong>What does this mean for long technical instructions with many "it", "this", "the part"?</strong></p>
+<textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Type the sentence below and open the attention view. Which word does &quot;it&quot; attend to? This is how the model resolves references, and where it can go wrong in technical texts.</aside>
+</section>
+
+<section class="slide" data-title="Context Window: Lost in the Middle 📚">
+<div class="inner"><p class="kicker">Part 1 · Attention: What Does the Model Look At</p><h2>Context Window: Lost in the Middle 📚</h2><div class="body"><p>Long contexts are not read evenly: models use information at the <strong>beginning and end</strong> of a long input better than in the <strong>middle</strong> (Liu et al., 2024).</p><div class="frag" data-f="1"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>If you …</th>
+<th>Risk</th>
+<th>Better</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paste a 60-page regulation and ask for a quiz</td>
+<td>key rules in the middle are ignored</td>
+<td>paste only the relevant section</td>
+</tr>
+<tr>
+<td>put the instructions before a long text</td>
+<td>instructions "forgotten"</td>
+<td>instructions <strong>before and after</strong> the source</td>
+</tr>
+<tr>
+<td>ask about many topics at once</td>
+<td>shallow, generic items</td>
+<td>one topic per prompt (→ pipeline)</td>
+</tr>
+</tbody>
+</table></div></div><p><strong>Decide:</strong> You need quiz items on section 7 of a 40-page safety regulation. Best input?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">The whole regulation – more context is always better.</button><button class="opt" data-ok="1" aria-pressed="false">Section 7 only, delimited, with the instruction repeated after it.</button><button class="opt" data-ok="0" aria-pressed="false">No source – the model knows the regulation.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Remember "lost in the middle".</p></div></div></div>
+<aside class="notes">This has direct consequences for how you give a model your source material.</aside>
+</section>
+
+<section class="slide" data-title="2. How Reliable Is Your Generator? 🎲">
+<div class="inner"><p class="kicker">Part 2 · How Reliable Is Your Generator</p><h2>2. How Reliable Is Your Generator? 🎲</h2><div class="body"><p>Sampling makes every run different. For learning material this is a <strong>quality problem</strong>: the same prompt can give a correct answer key today and a wrong one tomorrow.</p><div class="frag" data-f="1"><p><strong>Experiment (20 min):</strong> run <strong>the same prompt five times</strong> in new chats:</p>
+<pre class="code"><code class="lang-text">Create 4 single-choice items (4 options each) with answer key on: &lt;your topic&gt;.
+Target group: &lt;…&gt;. Format: LiaScript - [( )] / - [(X)].</code></pre>
+<p>Count: <strong>(a)</strong> items with a <strong>correct</strong> answer key, <strong>(b)</strong> items whose key is the <strong>same</strong> across runs (for comparable questions).</p></div></div></div>
+<aside class="notes">Run a small experiment. It takes twenty minutes and tells you more about AI-generated material than any article.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Reliability Calculator 📏">
+<div class="inner"><p class="kicker">Part 2 · How Reliable Is Your Generator</p><h2>Playground: Reliability Calculator 📏</h2><div class="body"><p><strong>Runs:</strong> <input class="rng" type="range" min="2" max="10" step="1" value="5" aria-label="slider"><output class="rngv">5</output></p>
+<p><strong>Items per run:</strong> <input class="rng" type="range" min="1" max="10" step="1" value="4" aria-label="slider"><output class="rngv">4</output></p>
+<p><strong>Items with a correct key (all runs together):</strong> <input class="rng" type="range" min="0" max="100" step="1" value="16" aria-label="slider"><output class="rngv">16</output></p>
+<p><strong>Comparable items with the same key in every run:</strong> <input class="rng" type="range" min="0" max="10" step="1" value="2" aria-label="slider"><output class="rngv">2</output></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md#9" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Enter your counts. Even ninety percent correct keys means: in a quiz of ten items, one teaches something wrong. That is why every pipeline needs a verification step and a human check.</aside>
+</section>
+
+<section class="slide" data-title="3. Grounded vs. Ungrounded Generation 📎">
+<div class="inner"><p class="kicker">Part 3 · Grounded vs Ungrounded Generation</p><h2>3. Grounded vs. Ungrounded Generation 📎</h2><div class="body"><p>In AI in TVET I you met NotebookLM as a tool. Now <strong>test</strong> what grounding changes.</p><div class="frag" data-f="1"><p><strong>Experiment (25 min):</strong></p>
+<ol>
+<li>Take <strong>one authoritative source</strong> for your topic (e.g. a manufacturer manual, an occupational safety rule, a curriculum section).</li>
+<li>Upload it to <a target="_blank" rel="noopener" href="https://notebooklm.google.com">NotebookLM</a> (grounded) – ask the same questions in a normal chat (ungrounded).</li>
+<li>Ask <strong>5 questions</strong>, including <strong>one that the source cannot answer</strong>.</li>
+</ol>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Question</th>
+<th>Ungrounded: correct?</th>
+<th>Grounded: correct?</th>
+<th>Grounded: cites the passage?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 … 4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5 (not in the source)</td>
+<td>invented?</td>
+<td>"not in the source"?</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div></div><p><strong>Decide:</strong> Question 5 is not covered by the source. Which answer shows good grounding?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">A confident answer with general knowledge.</button><button class="opt" data-ok="1" aria-pressed="false">"The source does not cover this" – possibly with a suggestion where to look.</button><button class="opt" data-ok="0" aria-pressed="false">A made-up quotation from the source.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 What should a grounded system do when the source is silent?</p></div></div></div>
+<aside class="notes">Choose an authoritative source for your topic, ask the same five questions with and without the source, and count the errors.</aside>
+</section>
+
+<section class="slide" data-title="4. From Prompt to Pipeline 🔗">
+<div class="inner"><p class="kicker">Part 4 · From Prompt to Pipeline</p><h2>4. From Prompt to Pipeline 🔗</h2><div class="body"><p>A single prompt does everything at once. A <strong>pipeline</strong> splits the work – and adds checks between the steps.</p>
+<div class="mermaid-box"><pre class="mermaid">flowchart LR
+  A[&quot;1 Outline&lt;br&gt;from objective&lt;br&gt;and source&quot;]:::sys --&gt; B[&quot;2 Items&lt;br&gt;few-shot,&lt;br&gt;structured output&quot;]:::sys
+  B --&gt; C[&quot;3 Verification&lt;br&gt;questions per&lt;br&gt;claim&quot;]:::sys
+  C --&gt; D[&quot;4 Rubric check&lt;br&gt;AI as judge&quot;]:::sys
+  D --&gt; E[&quot;5 Human review&lt;br&gt;facts, didactics,&lt;br&gt;bias&quot;]:::human
+  classDef sys fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef human fill:#ffffff,stroke:#d03b3b,stroke-width:2px,color:#1f1f1f</pre></div><div class="frag" data-f="1"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Step</th>
+<th>Technique</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><strong>Few-shot</strong> with one model item you wrote</td>
+<td>Quality and style follow your example</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Structured output</strong> (LiaScript syntax or JSON schema)</td>
+<td>Output can be tested and reused</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Chain-of-verification:</strong> the model writes check questions for each claim, answers them independently, then revises</td>
+<td>Fewer hallucinations (Dhuliawala et al., 2023)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>LLM-as-judge</strong> with your rubric</td>
+<td>Fast screening – but judges prefer long answers and their own style (Zheng et al., 2023)</td>
+</tr>
+<tr>
+<td>all</td>
+<td><strong>Reusable assistant</strong> with a system prompt (Custom GPT, Claude Project, Gemini Gem)</td>
+<td>The group uses the same rules every time</td>
+</tr>
+</tbody>
+</table></div></div></div></div>
+<aside class="notes">Each step uses a technique that goes beyond the prompt patterns of AI in TVET one.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Pipeline Builder 🛠️">
+<div class="inner"><p class="kicker">Part 4 · From Prompt to Pipeline</p><h2>Playground: Pipeline Builder 🛠️</h2><div class="body"><p><strong>Objective:</strong> <input class="txt" type="text" value="Apprentices check a chatbot answer on a safety rule against the regulation" aria-label="input"></p>
+<p><strong>Target group:</strong> <input class="txt" type="text" value="second-year apprentices, electrical trades, English B1" aria-label="input"></p>
+<p><strong>Source:</strong> <input class="txt" type="text" value="DGUV Regulation 3, section 5 (pasted below the prompt)" aria-label="input"></p>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md#12" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Enter your own objective and source. Copy the four prompts one after another into the same chat, together with your source text. Step five, the human review, is yours.</aside>
+</section>
+
+<section class="slide" data-title="Try It: Run Your Pipeline (25 min) 🧪">
+<div class="inner"><p class="kicker">Part 4 · From Prompt to Pipeline</p><h2>Try It: Run Your Pipeline (25 min) 🧪</h2><div class="body"><p>Run the four steps for <strong>one objective from your shortlist</strong> – ideally in a <strong>reusable assistant</strong> (Custom GPT, Claude Project or Gemini Gem) with your group's rules as system prompt.</p><div class="frag" data-f="1"><p><strong>Compare:</strong> errors in the single-prompt version vs. after step 3 and 4.</p>
+<div class="poll"><button class="opt" aria-pressed="false">Clearly fewer errors</button><button class="opt" aria-pressed="false">About the same</button><button class="opt" aria-pressed="false">More errors or new problems</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Which error did step 3 or 4 catch – and which one only you?</strong></p>
+<textarea class="free" rows="2" placeholder="Your answer (stays in this browser)"></textarea></div></div></div>
+<aside class="notes">Then compare with the reliability experiment: did the pipeline reduce the errors?</aside>
+</section>
+
+<section class="slide" data-title="5. Audit Your Generator for Bias ⚖️">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>5. Audit Your Generator for Bias ⚖️</h2><div class="body"><p>In AI in TVET I you saw that models carry the bias of their data (e.g. <em>Quick, Draw!</em>). Now <strong>measure</strong> it in your own material.</p>
+<p><strong>Task:</strong> generate <strong>10 short workplace cases</strong> for your occupation (<em>"Write a 60-word workplace case for apprentices in …"</em>). Count:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Count in your 10 cases</th>
+<th>Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Women as protagonists</td>
+<td><input class="rng" type="range" min="0" max="10" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+<tr>
+<td>Women in the expert role (master, engineer, trainer)</td>
+<td><input class="rng" type="range" min="0" max="10" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>Names not typical for the majority population</td>
+<td><input class="rng" type="range" min="0" max="10" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>Cases where the learner, not the expert, solves the problem</td>
+<td><input class="rng" type="range" min="0" max="10" step="1" value="3" aria-label="slider"><output class="rngv">3</output></td>
+</tr>
+</tbody>
+</table></div>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md#14" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Count honestly. If you find a pattern, write a rule into your assistant&#x27;s system prompt and repeat the audit. That before-and-after comparison is excellent material for your AI workflow slide.</aside>
+</section>
+
+<section class="slide" data-title="The Human-Centred Lens – Applied 🔎">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>The Human-Centred Lens – Applied 🔎</h2><div class="body"><p>You know human-centred AI from AI in TVET I. Now <strong>apply</strong> the three elements (Schmager et al., 2025) to your pipeline:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Element</th>
+<th>Question for your pipeline</th>
+<th>Your decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong> – augmentation vs. automation</td>
+<td>Which steps does AI do, which steps does it only support?</td>
+<td>e.g. AI drafts and screens, humans decide</td>
+</tr>
+<tr>
+<td><strong>Values</strong> – ethical, protection, performance</td>
+<td>Where could the pipeline harm fairness, privacy or safety?</td>
+<td>e.g. bias audit, no learner data</td>
+</tr>
+<tr>
+<td><strong>Properties</strong> – oversight, comprehension, integrity</td>
+<td>Where can a human see, check and override?</td>
+<td>e.g. step 5, logged in the AI tools log</td>
+</tr>
+</tbody>
+</table></div><div class="frag" data-f="1"><p><strong>Our three decisions (purpose · values · properties):</strong></p></div><textarea class="free" rows="3" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">Write down your three decisions. They become the human-role part of your final presentation.</aside>
+</section>
+
+<section class="slide" data-title="Learn More: Free Courses for Educators 🎓">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>Learn More: Free Courses for Educators 🎓</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Provider</th>
+<th>Course</th>
+<th>Goes beyond AI in TVET I with …</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td><a target="_blank" rel="noopener" href="https://anthropic.skilljar.com/ai-fluency-for-educators">AI Fluency for Educators</a></td>
+<td>the 4D framework: Delegation, Description, Discernment, Diligence</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/training/paths/ai-education/">AI for educators (Microsoft Learn)</a></td>
+<td>classroom scenarios with Copilot</td>
+</tr>
+<tr>
+<td>Google</td>
+<td><a target="_blank" rel="noopener" href="https://grow.google/ai-for-educators/">Generative AI for Educators</a></td>
+<td>prompting for lesson planning</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes">These courses are optional. Look at them also as examples of self-learning design by large providers, and ask whose tools they promote.</aside>
+</section>
+
+<section class="slide" data-title="Project Lab 🛠️">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>Project Lab 🛠️</h2><div class="body"><p>As a group (online):</p>
+<ul class="tasks"><li><label><input type="checkbox"> <span>set up a <strong>reusable assistant</strong> for your group (system prompt: objective, target group, template, rules from the bias audit)</span></label></li><li><label><input type="checkbox"> <span>run the <strong>pipeline</strong> once for your sample material</span></label></li><li><label><input type="checkbox"> <span>add the results of the <strong>reliability</strong>, <strong>grounding</strong> and <strong>bias</strong> experiments to your AI tools log</span></label></li></ul><div class="frag" data-f="1"><p><strong>Our assistant's system prompt (short):</strong></p></div><textarea class="free" rows="3" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">Paste your system prompt into the unit. It is the core of the AI workflow slide in January.</aside>
+</section>
+
+<section class="slide" data-title="Exit Ticket 🎟️">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>Exit Ticket 🎟️</h2><div class="body"><p><strong>Objective 1:</strong> Why should you paste only the relevant section of a long regulation?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="1" aria-pressed="false">Information in the middle of long inputs is used less reliably.</button><button class="opt" data-ok="0" aria-pressed="false">Long inputs are always refused.</button><button class="opt" data-ok="0" aria-pressed="false">Shorter prompts are cheaper, nothing else changes.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Lost in the middle.</p></div>
+<p><strong>Objective 2:</strong> 18 of 20 generated answer keys are correct. What follows?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">Good enough – use the quiz as it is.</button><button class="opt" data-ok="1" aria-pressed="false">Every item needs a human check; one in ten teaches something wrong.</button><button class="opt" data-ok="0" aria-pressed="false">Increase the temperature.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Remember the reliability calculator.</p></div>
+<p><strong>Objective 3:</strong> In our grounding test, the source-silent question was …</p>
+<div class="poll"><button class="opt" aria-pressed="false">answered with "not in the source"</button><button class="opt" aria-pressed="false">answered with invented content</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Objective 4:</strong> What does chain-of-verification add?</p>
+<div class="quiz" data-kind="single"><div class="opts"><button class="opt" data-ok="0" aria-pressed="false">More creative distractors.</button><button class="opt" data-ok="1" aria-pressed="false">Check questions per claim, answered independently, then a revision.</button><button class="opt" data-ok="0" aria-pressed="false">A higher temperature for each step.</button></div><div class="row-actions"><span class="fb" aria-live="polite"></span></div><p class="hint" hidden>💡 Dhuliawala et al. (2023).</p></div>
+<p><strong>Objective 5:</strong> One step of our pipeline that must stay human:</p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Your SCORM Unit and Next Steps 📦">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>Your SCORM Unit and Next Steps 📦</h2><div class="body"><p><strong>Obligatory:</strong> complete the self-learning unit <strong>S02</strong> in Moodle – the study text for today with your experiment results.</p><div class="frag" data-f="1"><ul>
+<li>📦 <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">S02 in Moodle (SCORM)</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/S02_Introduction_AI_Prompting.md">S02 in LiaScript</a> – all 7 units by <strong>15.02.2027</strong></li>
+<li>➡️ <strong>Next: Thursday, 10.12.2026, 🔵 self-learning</strong> – AI vocabulary, models and workflows · <strong>choose your learning objective</strong> · first competency matrix</li>
+<li>📤 <strong>Group hand-in inside unit S03: 16.12.2026, 23:59</strong></li>
+<li>📖 Readings for session 3: Chen et al. (2025) on prompt engineering · <em>Agentic AI in Higher Education and TVET</em> (AI-generated report) – Moodle</li>
+</ul></div></div></div>
+<aside class="notes">Next week is self-learning again, with the first group hand-in.</aside>
+</section>
+
+<section class="slide" data-title="References">
+<div class="inner"><p class="kicker">Part 5 · Audit Your Generator for Bias</p><h2>References</h2><div class="body refs"><ul>
+<li>Chen, B., Zhang, Z., Langrené, N., &amp; Zhu, S. (2025). Unleashing the potential of prompt engineering for large language models. <em>Patterns, 6</em>, 101260. https://doi.org/10.1016/j.patter.2025.101260</li>
+<li>Dhuliawala, S., Komeili, M., Xu, J., Raileanu, R., Li, X., Celikyilmaz, A., &amp; Weston, J. (2023). <em>Chain-of-verification reduces hallucination in large language models</em> (arXiv:2309.11495). https://arxiv.org/abs/2309.11495</li>
+<li>Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., &amp; Liang, P. (2024). Lost in the middle: How language models use long contexts. <em>Transactions of the Association for Computational Linguistics, 12</em>, 157–173. https://doi.org/10.1162/tacl_a_00638</li>
+<li>Polo Club of Data Science. (n.d.). <em>Transformer Explainer</em> [Interactive visualisation]. Georgia Institute of Technology. https://poloclub.github.io/transformer-explainer/</li>
+<li>Schmager, S., Pappas, I. O., &amp; Vassilakopoulou, P. (2025). Understanding human-centred AI: A review of its defining elements and a research agenda. <em>Behaviour &amp; Information Technology, 44</em>(15), 3771–3810. https://doi.org/10.1080/0144929X.2024.2448719</li>
+<li>UNESCO. (2023). <em>Guidance for generative AI in education and research</em>. https://doi.org/10.54675/EWZM9535</li>
+<li>Zheng, L., Chiang, W.-L., Sheng, Y., Zhuang, S., Wu, Z., Zhuang, Y., Lin, Z., Li, Z., Li, D., Xing, E. P., Zhang, H., Gonzalez, J. E., &amp; Stoica, I. (2023). Judging LLM-as-a-judge with MT-Bench and Chatbot Arena. In <em>Advances in Neural Information Processing Systems 36</em> (NeurIPS 2023). https://arxiv.org/abs/2306.05685</li>
+</ul>
+<p><strong>Builds on:</strong> AI in TVET I, sessions 1–3 (LLM basics, prompting, limitations, human-centred AI) – <a target="_blank" rel="noopener" href="https://ovgu-vet-teched.github.io/AI_in_TVET_I_WiSe_2026_2027/">course website</a></p>
+<p><small>Licence: CC BY 4.0 · Dr. Hannes Tegelbeckers, OVGU Magdeburg · Created with AI support (Claude), checked by the author. Linked tools: their own licences apply.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+</main>
+<div class="notes-panel" id="notesPanel" aria-live="polite"><h4>Speaker notes</h4><div id="notesText"></div></div>
+<div class="overview" id="overview" role="dialog" aria-label="Slide overview"><div class="ov-head"><h2>Overview</h2><button class="cbtn" id="ovClose">Close (Esc)</button></div><div class="ov-grid" id="ovGrid"></div></div>
+<nav class="botbar" aria-label="Slide navigation">
+  <div class="progress" id="progress"></div>
+  <button class="cbtn" id="prev" aria-label="Previous">←</button>
+  <span class="counter" id="count"></span>
+  <button class="cbtn" id="next" aria-label="Next">→</button>
+  <span class="steps" id="steps"></span>
+  <span class="stitle" id="stitle"></span>
+  <span class="spacer"></span>
+  <button class="cbtn" id="ovBtn" title="Overview (O)">Overview</button>
+  <button class="cbtn" id="notesBtn" aria-pressed="false" title="Speaker notes (N)">Notes</button>
+  <button class="cbtn" id="scrollBtn" aria-pressed="false" title="Document mode (S)">Document</button>
+  <button class="cbtn" id="fsBtn" title="Full screen (F)">⛶</button>
+</nav>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad:false, securityLevel:"loose", theme:"base", fontFamily:"Barlow, Arial, sans-serif",
+  themeVariables:{ primaryColor:"#f7eef2", primaryBorderColor:"#7a003f", lineColor:"#3e3f40", fontSize:"15px" } });
+try { await mermaid.run({ querySelector:".mermaid" }); } catch (e) { console.warn(e); }
+document.body.classList.remove("prerender");
+window.dispatchEvent(new Event("deck-ready"));
+</script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const slides = $$(".slide");
+  let cur = 0, step = 0;
+  const maxStep = s => Math.max(0, ...$$(".frag", s).map(e => +e.dataset.f || 0));
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle("active", i === cur));
+    const s = slides[cur];
+    $$(".frag", s).forEach(e => e.classList.toggle("on", (+e.dataset.f || 0) <= step));
+    $("#count").textContent = `${cur + 1} / ${slides.length}`;
+    $("#stitle").textContent = s.dataset.title || "";
+    $("#progress").style.width = `${(cur / Math.max(1, slides.length - 1)) * 100}%`;
+    $("#steps").innerHTML = Array.from({ length: maxStep(s) }, (_, k) => `<i class="${k < step ? "on" : ""}"></i>`).join("");
+    $("#notesText").textContent = ($(".notes", s) || {}).textContent || "";
+    history.replaceState(null, "", `#${cur + 1}`);
+  }
+  function go(i, atEnd) { cur = Math.max(0, Math.min(slides.length - 1, i)); step = atEnd ? maxStep(slides[cur]) : 0; $(".inner", slides[cur]).scrollTop = 0; render(); }
+  function next() { if (step < maxStep(slides[cur])) { step++; render(); } else if (cur < slides.length - 1) go(cur + 1); }
+  function prev() { if (step > 0) { step--; render(); } else if (cur > 0) go(cur - 1, true); }
+  $("#next").onclick = next; $("#prev").onclick = prev;
+  const toggleNotes = () => { const p = $("#notesPanel"); p.classList.toggle("open"); $("#notesBtn").setAttribute("aria-pressed", p.classList.contains("open")); };
+  const toggleScroll = () => { document.body.classList.toggle("scroll"); $("#scrollBtn").setAttribute("aria-pressed", document.body.classList.contains("scroll")); if (!document.body.classList.contains("scroll")) go(cur); };
+  const fs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  const ov = $("#overview");
+  $("#ovGrid").innerHTML = slides.map((s, i) => `<button class="ov-item" data-i="${i}"><b>${i + 1}</b>${s.dataset.title}</button>`).join("");
+  $$(".ov-item").forEach(b => b.onclick = () => { ov.classList.remove("open"); go(+b.dataset.i); });
+  const toggleOv = () => { ov.classList.toggle("open"); $$(".ov-item").forEach(b => b.classList.toggle("cur", +b.dataset.i === cur)); };
+  $("#ovBtn").onclick = toggleOv; $("#ovClose").onclick = toggleOv;
+  $("#notesBtn").onclick = toggleNotes; $("#scrollBtn").onclick = toggleScroll; $("#fsBtn").onclick = fs;
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("textarea, input, select") || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Escape") { ov.classList.remove("open"); return; }
+    if (document.body.classList.contains("scroll") && !"sS".includes(e.key)) return;
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); next(); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === "Home") go(0); else if (e.key === "End") go(slides.length - 1);
+    else if ("nN".includes(e.key)) toggleNotes(); else if ("fF".includes(e.key)) fs();
+    else if ("oO".includes(e.key)) toggleOv(); else if ("sS".includes(e.key)) toggleScroll();
+  });
+  let tx = null;
+  $("#deck").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  $("#deck").addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 70 && !e.target.closest("textarea, input, iframe")) (dx < 0 ? next : prev)(); tx = null; });
+  if (window.matchMedia("(max-width: 600px)").matches) toggleScroll();
+
+  /* quizzes */
+  $$(".quiz[data-kind]").forEach(q => {
+    const opts = $$(".opt", q), fb = $(".fb", q), single = q.dataset.kind === "single";
+    let tries = 0;
+    const show = ok => {
+      fb.textContent = ok ? "✔ Correct" : "✘ Not yet – try again"; fb.className = "fb " + (ok ? "ok" : "no");
+      tries += ok ? 0 : 1;
+      if (tries >= 1) $$(".hint", q).forEach(h => h.hidden = false);
+      if (ok || tries >= 2) { const s = $(".sol", q); if (s) s.hidden = false; }
+      if (ok || tries >= 2) opts.forEach(o => o.classList.toggle("right", o.dataset.ok === "1"));
+    };
+    opts.forEach(o => o.onclick = () => {
+      if (single) { opts.forEach(x => { x.setAttribute("aria-pressed", x === o); x.classList.remove("wrong"); }); if (o.dataset.ok !== "1") o.classList.add("wrong"); show(o.dataset.ok === "1"); }
+      else o.setAttribute("aria-pressed", o.getAttribute("aria-pressed") !== "true");
+    });
+    const c = $(".check", q);
+    if (c) c.onclick = () => show(opts.every(o => (o.getAttribute("aria-pressed") === "true") === (o.dataset.ok === "1")));
+  });
+  $$(".quiz.matrix").forEach(q => $(".check", q).onclick = () => {
+    const rows = $$("tr", q).slice(1);
+    const ok = rows.every(r => $$("input", r).every(i => i.checked === (i.dataset.ok === "1")));
+    const fb = $(".fb", q); fb.textContent = ok ? "✔ Correct" : "✘ Not yet"; fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $$(".poll").forEach(p => { const multi = p.classList.contains("multi"); $$(".opt", p).forEach(b => b.onclick = () => {
+    if (multi) b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); else $$(".opt", p).forEach(x => x.setAttribute("aria-pressed", x === b)); }); });
+  $$(".gap[data-answer]").forEach(g => g.addEventListener("change", () => {
+    if (!g.dataset.answer) return;
+    const ok = g.value.trim().toLowerCase() === g.dataset.answer.trim().toLowerCase();
+    g.classList.toggle("right", ok); g.classList.toggle("wrong", !ok);
+  }));
+  $$("input.rng").forEach(r => r.addEventListener("input", () => { r.nextElementSibling.textContent = r.value; }));
+  $$("button.load").forEach(b => b.onclick = () => {
+    const f = document.createElement("iframe"); f.src = b.dataset.src; f.loading = "lazy"; f.allowFullscreen = true;
+    f.title = b.parentElement.querySelector("b").textContent; b.replaceWith(f);
+  });
+  const start = () => go((parseInt(location.hash.slice(1)) || 1) - 1);
+  start();
+  window.addEventListener("deck-ready", () => render());
+})();
+</script>
+</body>
+</html>

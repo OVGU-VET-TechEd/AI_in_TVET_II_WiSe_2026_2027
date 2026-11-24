@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en" class="present-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P07 – Final Group Presentations and Reflection</title>
+<meta name="description" content="AI in TVET II – Slides for session 7 (live, 21.01.2027, 180 min): stage rules and criteria, 20-minute group presentations with discussion, audience feedback, UNESCO AI CFT self-check repeated, red line of the seminar, final submission and SCORM checklist, course feedback. Interactive: audience card, quick rating, CFT radar, submission checklist.">
+<link rel="icon" href="../../assets/ovgu_logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --main:#7a003f; --main-dark:#5c002f; --second:#bc7f9f; --third:#f5ebf0; --ink:#111; --ink-2:#3e3f40; --ink-3:#5f6163;
+  --line:#cfd3d6; --soft:#e7e9ea; --bg:#fff; --bg-2:#f8f8f8; --s1:#2a78d6; --good:#0ca30c; --good-bg:#e2f4e2; --crit:#d03b3b; --crit-bg:#fbe3e3; --warn:#fab219; --hb:3.1rem; --fb:3rem; }
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+html.present-root { font-size: clamp(13px, min(1.1vw, 2.05vh), 30px); }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Barlow","Helvetica Neue",Arial,sans-serif; line-height:1.45; overflow-wrap:anywhere; }
+a { color:var(--main); } a:hover { color:var(--main-dark); }
+h1,h2,h3 { font-family:"Barlow Semi Condensed","Barlow",sans-serif; font-weight:600; line-height:1.12; }
+button,input,textarea,select { font:inherit; }
+:focus-visible { outline:3px solid var(--s1); outline-offset:2px; }
+small,.small { font-size:.82em; } .muted { color:var(--ink-3); }
+.topbar { position:fixed; top:0; left:0; right:0; height:var(--hb); z-index:30; display:flex; align-items:center; gap:.9rem; padding:0 1.1rem; background:#fff; border-bottom:1px solid var(--line); }
+.topbar img { height:2.1rem; display:block; }
+.topbar .deck-title { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; color:var(--main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.topbar .lia-link { margin-left:auto; font-size:.85rem; white-space:nowrap; }
+.botbar { position:fixed; left:0; right:0; bottom:0; height:var(--fb); z-index:30; display:flex; align-items:center; gap:.5rem; padding:0 1rem; background:#fff; border-top:1px solid var(--line); }
+.progress { position:absolute; top:-1px; left:0; height:3px; background:var(--main); transition:width .3s; }
+.counter { font-variant-numeric:tabular-nums; font-size:.9rem; color:var(--ink-2); min-width:4.2rem; text-align:center; }
+.steps { display:flex; gap:.25rem; } .steps i { width:.45rem; height:.45rem; border-radius:50%; background:var(--soft); display:block; } .steps i.on { background:var(--main); }
+.spacer { flex:1; } .stitle { font-size:.85rem; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40vw; }
+.cbtn { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:.35rem; padding:.25rem .6rem; font-size:.85rem; cursor:pointer; white-space:nowrap; }
+.cbtn:hover { border-color:var(--main); color:var(--main); } .cbtn[aria-pressed="true"] { background:var(--main); color:#fff; border-color:var(--main); }
+#deck { position:fixed; top:var(--hb); bottom:var(--fb); left:0; right:0; }
+.slide { position:absolute; inset:0; display:none; } .slide.active { display:block; }
+body.prerender .slide { display:block; visibility:hidden; }
+.slide > .inner { height:100%; overflow-y:auto; max-width:80rem; margin:0 auto; padding:1.3rem 2.6rem 1.8rem; }
+.slide .notes { display:none; }
+.notes-panel { position:fixed; left:0; right:0; bottom:var(--fb); z-index:25; max-height:32vh; overflow:auto; background:#fffdf2; border-top:3px solid var(--warn); padding:.7rem 1.4rem; font-size:.95rem; display:none; }
+.notes-panel.open { display:block; } .notes-panel h4 { margin:0 0 .3rem; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+.overview { position:fixed; inset:0; z-index:60; background:rgba(255,255,255,.98); overflow:auto; padding:1.4rem 2rem 2rem; display:none; }
+.overview.open { display:block; } .ov-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; } .overview h2 { margin:0; color:var(--main); }
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(15rem,100%),1fr)); gap:.7rem; }
+.ov-item { text-align:left; border:1px solid var(--line); border-top:4px solid var(--second); background:#fff; border-radius:.3rem; padding:.55rem .7rem; cursor:pointer; font-size:.9rem; }
+.ov-item:hover,.ov-item.cur { border-top-color:var(--main); box-shadow:0 2px 8px rgba(122,0,63,.15); } .ov-item b { display:block; color:var(--ink-3); font-size:.75rem; font-weight:500; }
+.frag { opacity:0; visibility:hidden; transform:translateY(.35rem); transition:opacity .35s, transform .35s, visibility .35s; }
+.frag.on { opacity:1; visibility:visible; transform:none; }
+@media (prefers-reduced-motion: reduce) { .frag,.progress { transition:none; } }
+body.scroll .topbar { position:sticky; } body.scroll #deck { position:static; }
+body.scroll .slide { position:static; display:block; border-bottom:8px solid var(--third); }
+body.scroll .slide > .inner { height:auto; overflow:visible; padding:1.4rem 16px 2.2rem; }
+body.scroll .frag { opacity:1; visibility:visible; transform:none; }
+body.scroll .botbar, body.scroll .notes-panel, body.scroll .hide-scroll { display:none; }
+body.scroll .slide .notes { display:block; max-width:80rem; margin:0 auto 1.2rem; font-size:.9rem; color:var(--ink-3); border-left:3px solid var(--warn); padding:.3rem .8rem; background:#fffdf2; }
+body.scroll .slide .notes:empty { display:none; }
+body.scroll .slide .notes::before { content:"Speaker notes · "; font-weight:600; }
+.kicker { font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.08em; font-size:.82rem; color:var(--main); margin:0 0 .25rem; }
+.slide h2 { margin:0 0 .8rem; font-size:2.05rem; color:var(--main); }
+.slide p { margin:0 0 .7rem; } .slide ul,.slide ol { margin:0 0 .7rem; padding-left:1.3rem; } .slide li { margin:.2rem 0; }
+.body > * + *, .frag > * + * { margin-top:.2rem; }
+.card { border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.85rem 1rem; margin:.4rem 0 .8rem; }
+.card.pg { border-left:5px solid var(--main); background:var(--third); } .card.pg p { margin:.3rem 0 .5rem; }
+.callout { border-left:5px solid var(--s1); background:#f1f6fd; padding:.7rem .95rem; border-radius:0 .4rem .4rem 0; margin:.5rem 0 .8rem; }
+.callout.main { border-left-color:var(--main); background:var(--third); } .callout.crit { border-left-color:var(--crit); background:#fdf1f1; }
+.callout .lab { font-weight:600; display:block; margin-bottom:.2rem; } .callout > :last-child { margin-bottom:0; }
+.table-scroll { overflow-x:auto; margin:0 0 .8rem; }
+table.t { width:100%; border-collapse:collapse; font-size:.95rem; }
+table.t th { text-align:left; background:var(--soft); padding:.4rem .6rem; font-weight:600; }
+table.t td { padding:.45rem .6rem; border-bottom:1px solid var(--soft); vertical-align:top; }
+code { background:var(--bg-2); border:1px solid var(--soft); border-radius:.25rem; padding:0 .25rem; font-size:.9em; }
+pre.code { background:#1f1f24; color:#f4f4f5; padding:.8rem 1rem; border-radius:.4rem; overflow:auto; font-size:.85rem; line-height:1.4; margin:.3rem 0 .8rem; white-space:pre-wrap; }
+pre.code code { background:none; border:0; color:inherit; padding:0; }
+.mermaid-box { margin:.4rem 0 .9rem; text-align:center; } .mermaid-box svg { max-width:100%; height:auto; max-height:52vh; }
+body.scroll .mermaid-box svg { max-height:none; }
+.btn { border:1px solid var(--main); background:#fff; color:var(--main); border-radius:.35rem; padding:.35rem .85rem; cursor:pointer; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.35rem; }
+.btn:hover { background:var(--third); } .btn.primary { background:var(--main); color:#fff; } .btn.primary:hover { background:var(--main-dark); } .btn.small { padding:.2rem .6rem; font-size:.85rem; }
+.row-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.4rem 0 .6rem; }
+.quiz, .poll { margin:.3rem 0 .9rem; }
+.opts, .poll { display:flex; flex-direction:column; gap:.35rem; align-items:flex-start; }
+.opt { text-align:left; border:1px solid var(--line); background:#fff; border-radius:.4rem; padding:.35rem .8rem; cursor:pointer; min-width:min(28rem,100%); }
+.opt:hover { border-color:var(--main); } .opt[aria-pressed="true"] { border-color:var(--main); background:var(--third); }
+.opt.right { border-color:var(--good); background:var(--good-bg); } .opt.wrong { border-color:var(--crit); background:var(--crit-bg); }
+.fb { font-weight:600; } .fb.ok { color:var(--good); } .fb.no { color:var(--crit); }
+.hint { font-size:.9rem; background:#fff8e1; padding:.3rem .6rem; border-radius:.3rem; }
+.sol { border-left:4px solid var(--good); background:var(--good-bg); padding:.4rem .8rem; border-radius:0 .3rem .3rem 0; font-size:.92rem; }
+.gap { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .35rem; background:#fff; }
+.gap.right { border-color:var(--good); background:var(--good-bg); } .gap.wrong { border-color:var(--crit); background:var(--crit-bg); }
+textarea.free { width:min(40rem,100%); border:1px solid var(--line); border-radius:.35rem; padding:.4rem .6rem; display:block; margin:.2rem 0 .8rem; }
+ul.tasks { list-style:none; padding-left:0; } ul.tasks input { accent-color:var(--main); }
+input.rng { accent-color:var(--main); vertical-align:middle; } .rngv { display:inline-block; min-width:1.5rem; text-align:center; font-weight:600; color:var(--main); }
+input.txt { border:1px solid var(--line); border-radius:.3rem; padding:.1rem .4rem; min-width:14rem; }
+.embed-head { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; justify-content:space-between; margin-bottom:.4rem; }
+.embed iframe { width:100%; height:58vh; border:0; border-radius:.3rem; }
+.refs { font-size:.82rem; } .refs ul { columns:2 22rem; column-gap:1.6rem; } .refs li { break-inside:avoid; }
+.slide.hero { background:var(--main); color:#fff; } .slide.hero a { color:#fff; }
+.hero-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:2rem; align-items:center; min-height:100%; }
+.hero h1 { font-size:3.1rem; margin:.2rem 0 .8rem; } .hero .kicker { color:#fff; opacity:.85; }
+.hero .btn { border-color:#fff; color:#fff; background:transparent; } .hero .btn.primary { background:#fff; color:var(--main); }
+.hero .keys { margin-top:1.4rem; font-size:.85rem; opacity:.85; }
+.hero-badge { justify-self:center; width:min(18rem,30vw); aspect-ratio:1; border-radius:50%; border:3px dashed rgba(255,255,255,.55); display:grid; place-items:center; font-family:"Barlow Semi Condensed",sans-serif; font-size:clamp(3rem,7vw,7rem); font-weight:600; background:rgba(255,255,255,.08); }
+kbd { font-family:inherit; font-size:.85em; border:1px solid var(--line); border-bottom-width:2px; border-radius:.25rem; padding:0 .35rem; background:var(--bg-2); }
+.hero kbd { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.4); color:#fff; }
+@media (max-width:820px) { .hero-grid { grid-template-columns:1fr; } .hero-badge { display:none; } .hero h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .slide > .inner { padding:1rem 1rem 1.6rem; } .stitle { display:none; } }
+@media print { html.present-root { font-size:12px; } .topbar,.botbar,.notes-panel,.overview { display:none !important; } #deck { position:static; }
+  .slide { position:static !important; display:block !important; page-break-after:always; } .slide > .inner { height:auto; overflow:visible; }
+  .frag { opacity:1 !important; visibility:visible !important; transform:none !important; } .slide.hero { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body class="prerender">
+<header class="topbar">
+  <a href="../../index.html" title="Course website"><img src="../../assets/ovgu_logo.svg" alt="Otto von Guericke University Magdeburg – back to the course website"></a>
+  <span class="deck-title">AI in TVET II · P07 – Final Group Presentations and Reflection</span>
+  <a class="lia-link" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.md" target="_blank" rel="noopener">LiaScript version ↗</a>
+</header>
+<main id="deck" aria-roledescription="slide deck">
+<section class="slide hero" data-title="Final Group Presentations and Reflection">
+<div class="inner"><div class="hero-grid"><div><p class="kicker">AI in TVET II · OVGU Magdeburg</p><h1>Final Group Presentations and Reflection</h1><p><strong>Session 7 · 21.01.2027 · 🟢 Live · 09:00–12:00</strong> · AI in TVET II, OVGU Magdeburg</p>
+<p>🎤 <strong>Your presentations</strong> · discussion · how far did you come? · final submission and SCORM checklist</p>
+<p><small><a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/S07_Final_Presentations_Reflection.md">Self-learning unit S07</a> · <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/section.php?id=202215">Unit in Moodle (SCORM, obligatory)</a> · <a target="_blank" rel="noopener" href="https://ovgu-vet-teched.github.io/AI_in_TVET_II_WiSe_2026_2027/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.html">HTML slides</a> · <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/organisational_overview_slide_AI_in_TVET_II.md">Organisational overview</a></small></p><div class="row-actions"><a class="btn primary" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.md" target="_blank" rel="noopener">LiaScript version · classroom polls ↗</a></div><p class="keys hide-scroll"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> navigate · <kbd>O</kbd> overview · <kbd>N</kbd> notes · <kbd>S</kbd> document mode · <kbd>F</kbd> full screen</p></div><div class="hero-badge" aria-hidden="true">P07</div></div></div>
+<aside class="notes">Welcome to our final session. Today the stage is yours. Every group presents its learning concept for one UNESCO learning objective, and at the end we look back at how far you have come since November.</aside>
+</section>
+
+<section class="slide" data-title="How Do You Feel? 🚦">
+<div class="inner"><h2>How Do You Feel? 🚦</h2><div class="body"><p><strong>Right now I feel …</strong></p>
+<div class="poll"><button class="opt" aria-pressed="false">😱 nervous</button><button class="opt" aria-pressed="false">🙂 ready</button><button class="opt" aria-pressed="false">🚀 can't wait</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Our presentation …</strong></p>
+<div class="poll"><button class="opt" aria-pressed="false">🛠️ still has a small issue</button><button class="opt" aria-pressed="false">✅ is tested via the LiaScript link</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div></div></div>
+<aside class="notes">A little nervousness is normal. Open your presentation via your LiaScript link once more before your turn.</aside>
+</section>
+
+<section class="slide" data-title="Where We Are 🧭">
+<div class="inner"><h2>Where We Are 🧭</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  S1[&quot;&lt;b&gt;1 · 26.11.&lt;/b&gt;&lt;br&gt;Kick-off and&lt;br&gt;LiaScript Level 2&quot;]:::done
+  S1 --&gt; S2[&quot;&lt;b&gt;2 · 03.12.&lt;/b&gt; 🔵&lt;br&gt;AI and prompting&lt;br&gt;Level 2&quot;]:::done
+  S2 --&gt; S3[&quot;&lt;b&gt;3 · 10.12.&lt;/b&gt; 🔵&lt;br&gt;Vocabulary and&lt;br&gt;workflows&quot;]:::done
+  S3 --&gt; S4[&quot;&lt;b&gt;4 · 17.12.&lt;/b&gt;&lt;br&gt;Pedagogy, assessment,&lt;br&gt;ethics&quot;]:::done
+  S4 --&gt; S5[&quot;&lt;b&gt;5 · 07.01.&lt;/b&gt;&lt;br&gt;Nuggets and&lt;br&gt;matrix workshop&quot;]:::done
+  S5 --&gt; S6[&quot;&lt;b&gt;6 · 14.01.&lt;/b&gt; ⚪&lt;br&gt;Project and peer review&lt;br&gt;format tbc&quot;]:::done
+  S6 --&gt; S7[&quot;&lt;b&gt;7 · 21.01.&lt;/b&gt;&lt;br&gt;Final&lt;br&gt;presentations&quot;]:::now
+  classDef live fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef self fill:#e8f0fb,stroke:#1565c0,stroke-width:1.5px,color:#1f1f1f
+  classDef tbc fill:#fff8e1,stroke:#b7791f,stroke-width:1.5px,stroke-dasharray:4 3,color:#1f1f1f
+  classDef now fill:#7a003f,stroke:#7a003f,stroke-width:2px,color:#ffffff
+  classDef done fill:#eeeeee,stroke:#9ca3af,stroke-width:1px,color:#5f6163</pre></div>
+<p><strong>Today all building blocks come together:</strong> learning objective · competency matrix · sample material · AI workflow · human role.</p></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Objectives 🎯">
+<div class="inner"><h2>Today's Objectives 🎯</h2><div class="body"><p>By the end of today you can …</p><div class="frag" data-f="1"><ol>
+<li><strong>present</strong> your group's design – objective, matrix, sample material, AI workflow – in 20 minutes,</li>
+<li><strong>ask</strong> and <strong>answer</strong> argued questions in the discussion,</li>
+</ol></div><div class="frag" data-f="2"><ol start="3">
+<li><strong>reflect</strong> on your competency development with the UNESCO AI CFT,</li>
+<li><strong>complete</strong> your final submission and all SCORM units.</li>
+</ol></div></div></div>
+<aside class="notes">First, presenting and discussing. Then, looking back and finishing well.</aside>
+</section>
+
+<section class="slide" data-title="Today&#x27;s Agenda 🗓️">
+<div class="inner"><h2>Today's Agenda 🗓️</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:00</td>
+<td>Set-up, running order, stage rules</td>
+<td>Plenary</td>
+</tr>
+<tr>
+<td>09:10</td>
+<td>Presentations 1–3 (25 min each)</td>
+<td>Groups present</td>
+</tr>
+<tr>
+<td>10:25</td>
+<td>Break</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>10:35</td>
+<td>Presentations 4–5 (25 min each)</td>
+<td>Groups present</td>
+</tr>
+<tr>
+<td>11:25</td>
+<td>How far did you come? CFT self-check</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>11:40</td>
+<td>Anonymous course feedback in Moodle</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>11:50</td>
+<td>Final submission · SCORM checklist · thank you</td>
+<td>Plenary</td>
+</tr>
+</tbody>
+</table></div>
+<p><small>Running order and number of slots are confirmed in Moodle the day before.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Criteria for Your Presentation 🏆">
+<div class="inner"><h2>Criteria for Your Presentation 🏆</h2><div class="body"><div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Expectation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content</td>
+<td>Learning objective, matrix and sample material are consistent</td>
+</tr>
+<tr>
+<td>Pedagogy</td>
+<td>Progression Acquire → Deepen → Create is visible</td>
+</tr>
+<tr>
+<td>LiaScript use</td>
+<td>Slides, step-by-step animations, at least one interactive element</td>
+</tr>
+<tr>
+<td>Reflection</td>
+<td>Critical view on AI output and your human contribution</td>
+</tr>
+<tr>
+<td>Sources and AI</td>
+<td>References (APA 7), licences, AI use declared</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<aside class="notes">These are the criteria you know from the kick-off and from the peer review. Nothing new today.</aside>
+</section>
+
+<section class="slide" data-title="🎤 Stage Rules">
+<div class="inner"><h2>🎤 Stage Rules</h2><div class="body"><ol>
+<li>Open your presentation via <strong>your LiaScript link</strong>.</li>
+<li>Start the <strong>classroom</strong> so the audience can answer your quiz or poll.</li>
+<li><strong>20 minutes</strong> – I show a sign at 15 and at 19 minutes ⏰</li>
+<li><strong>5 minutes discussion</strong> – every group member answers at least one question.</li>
+</ol><div class="frag" data-f="1"><div class="callout main"><span class="lab">Audience task</span><p>For every group: note <strong>one strength</strong> and <strong>one question</strong>. Ask your question in the discussion.</p></div></div></div></div>
+<aside class="notes">The audience has a task too.</aside>
+</section>
+
+<section class="slide" data-title="Audience Card 🗳️ (repeat for each group)">
+<div class="inner"><h2>Audience Card 🗳️ (repeat for each group)</h2><div class="body"><p><strong>Group:</strong> <input class="txt" type="text" value="Group 1" aria-label="input"></p>
+<p><strong>Would you use this design with your own learners?</strong></p>
+<div class="poll"><button class="opt" aria-pressed="false">Yes, as presented</button><button class="opt" aria-pressed="false">Yes, with changes</button><button class="opt" aria-pressed="false">Not yet</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Strongest point:</strong></p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea>
+<p><strong>Question for the group:</strong></p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea></div></div>
+<aside class="notes">Use this slide for every group: change the group name, vote, and write your strongest point and your question.</aside>
+</section>
+
+<section class="slide" data-title="Playground: Quick Rating ⭐">
+<div class="inner"><h2>Playground: Quick Rating ⭐</h2><div class="body"><p>Rate the last presentation from 1 to 5:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content</td>
+<td><input class="rng" type="range" min="1" max="5" step="1" value="4" aria-label="slider"><output class="rngv">4</output></td>
+</tr>
+<tr>
+<td>Pedagogy</td>
+<td><input class="rng" type="range" min="1" max="5" step="1" value="4" aria-label="slider"><output class="rngv">4</output></td>
+</tr>
+<tr>
+<td>LiaScript use</td>
+<td><input class="rng" type="range" min="1" max="5" step="1" value="4" aria-label="slider"><output class="rngv">4</output></td>
+</tr>
+<tr>
+<td>Reflection</td>
+<td><input class="rng" type="range" min="1" max="5" step="1" value="4" aria-label="slider"><output class="rngv">4</output></td>
+</tr>
+<tr>
+<td>Sources and AI</td>
+<td><input class="rng" type="range" min="1" max="5" step="1" value="4" aria-label="slider"><output class="rngv">4</output></td>
+</tr>
+</tbody>
+</table></div>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.md#9" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div>
+<p><small>Informal peer feedback only – grading is done by the lecturer.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="1. Looking Back: The Red Line 🧵">
+<div class="inner"><p class="kicker">Part 1 · Looking Back: The Red Line</p><h2>1. Looking Back: The Red Line 🧵</h2><div class="body"><div class="mermaid-box"><pre class="mermaid">flowchart LR
+  A[&quot;&lt;b&gt;1&lt;/b&gt; LiaScript Level 2&lt;br&gt;nugget, repository&quot;]:::sys --&gt; B[&quot;&lt;b&gt;2&lt;/b&gt; Reliability, pipeline,&lt;br&gt;bias audit&quot;]:::sys
+  B --&gt; C[&quot;&lt;b&gt;3&lt;/b&gt; Architecture, objective,&lt;br&gt;matrix draft&quot;]:::sys
+  C --&gt; D[&quot;&lt;b&gt;4&lt;/b&gt; Grading study,&lt;br&gt;ethical rules&quot;]:::sys
+  D --&gt; E[&quot;&lt;b&gt;5&lt;/b&gt; Alignment, sample&lt;br&gt;material, licence&quot;]:::sys
+  E --&gt; F[&quot;&lt;b&gt;6&lt;/b&gt; Peer review&lt;br&gt;on GitHub&quot;]:::sys
+  F --&gt; G[&quot;&lt;b&gt;7&lt;/b&gt; Presentation&lt;br&gt;and reflection&quot;]:::now
+  classDef sys fill:#f7eef2,stroke:#7a003f,stroke-width:1.5px,color:#1f1f1f
+  classDef now fill:#7a003f,stroke:#7a003f,stroke-width:2px,color:#ffffff</pre></div><div class="frag" data-f="1"><p><strong>Which building block helped your group most?</strong></p></div><div class="poll"><button class="opt" aria-pressed="false">LiaScript Level 2 and GitHub workflow</button><button class="opt" aria-pressed="false">Reliability experiment, pipeline and bias audit</button><button class="opt" aria-pressed="false">Architecture choice, workflow map and matrix draft</button><button class="opt" aria-pressed="false">Grading study and ethical rules</button><button class="opt" aria-pressed="false">Alignment, matrix workshop and licensing</button><button class="opt" aria-pressed="false">Peer review on GitHub</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div></div></div>
+<aside class="notes">Every session added one building block. Which one was the most important for your group?</aside>
+</section>
+
+<section class="slide" data-title="Playground: How Far Did You Come? 🕸️">
+<div class="inner"><p class="kicker">Part 1 · Looking Back: The Red Line</p><h2>Playground: How Far Did You Come? 🕸️</h2><div class="body"><p>Rate yourself now and compare with your baseline from session 1 (= your end of AI in TVET I) – growth across both seminars. <strong>0</strong> = not yet · <strong>1</strong> = Acquire · <strong>2</strong> = Deepen · <strong>3</strong> = Create</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Your level now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Human-centred mindset</td>
+<td><input class="rng" type="range" min="0" max="3" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+<tr>
+<td>2 Ethics of AI</td>
+<td><input class="rng" type="range" min="0" max="3" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+<tr>
+<td>3 AI foundations and applications</td>
+<td><input class="rng" type="range" min="0" max="3" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+<tr>
+<td>4 AI pedagogy</td>
+<td><input class="rng" type="range" min="0" max="3" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+<tr>
+<td>5 AI for professional development</td>
+<td><input class="rng" type="range" min="0" max="3" step="1" value="2" aria-label="slider"><output class="rngv">2</output></td>
+</tr>
+</tbody>
+</table></div>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.md#11" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Compare this radar with your screenshot from the kick-off. Where did you move, and what is your evidence? You need this for the reflection in unit S07.</aside>
+</section>
+
+<section class="slide" data-title="2. Course Feedback (10 min) 📝">
+<div class="inner"><p class="kicker">Part 2 · Course Feedback (10 min)</p><h2>2. Course Feedback (10 min) 📝</h2><div class="body"><p>Please complete the <strong>anonymous feedback in Moodle</strong> – before grades are published.</p><div class="frag" data-f="1"><ul>
+<li>For each seminar competency: <em>before the seminar</em> and <em>now</em> (1–5)</li>
+<li>Two open questions: what helped you most · what should change</li>
+<li>Three questions on workload, self-learning units and assessment criteria</li>
+</ul>
+<p>👉 <a target="_blank" rel="noopener" href="https://elearning.ovgu.de/course/view.php?id=21949">Moodle course</a> → <em>Course feedback</em></p></div></div></div>
+<aside class="notes">For every competency of the seminar you rate where you were before and where you are now. It takes ten minutes and directly improves the next run.</aside>
+</section>
+
+<section class="slide" data-title="3. Final Submission: 15.02.2027 📦">
+<div class="inner"><p class="kicker">Part 3 · Final Submission: 15022027</p><h2>3. Final Submission: 15.02.2027 📦</h2><div class="body"><p><strong>To pass, you need all three</strong> (see the <a target="_blank" rel="noopener" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/organisational_overview_slide_AI_in_TVET_II.md">organisational overview</a>):</p>
+<ul class="tasks"><li><label><input type="checkbox"> <span><strong>All 7 SCORM units completed in Moodle</strong> (obligatory) – S01 … S07</span></label></li><li><label><input type="checkbox"> <span><strong>Group presentation</strong> held today ✅</span></label></li><li><label><input type="checkbox"> <span><strong>GitHub link</strong> to your group's final LiaScript presentation (incl. competency matrix) in Moodle – revised after today's discussion</span></label></li></ul><div class="frag" data-f="1"><p><strong>In the final file:</strong> licence line · AI declaration · references in APA 7 · image credits (TASL) · AI tools log (last slide or appendix)</p></div></div></div>
+<aside class="notes">Check the details of your final file.</aside>
+</section>
+
+<section class="slide" data-title="Playground: SCORM Checklist ✅">
+<div class="inner"><p class="kicker">Part 3 · Final Submission: 15022027</p><h2>Playground: SCORM Checklist ✅</h2><div class="body"><p>Set each unit you have <strong>completed in Moodle</strong> to 1:</p>
+<div class="table-scroll"><table class="t">
+<thead>
+<tr>
+<th>Unit</th>
+<th>Done?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S01 Kick-off and LiaScript Level 2</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>S02 AI and prompting Level 2</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>S03 Vocabulary and workflows (hand-in)</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>S04 Pedagogy, assessment, ethics</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="0" aria-label="slider"><output class="rngv">0</output></td>
+</tr>
+<tr>
+<td>S05 Nuggets and matrix</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="0" aria-label="slider"><output class="rngv">0</output></td>
+</tr>
+<tr>
+<td>S06 Peer review (hand-in)</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="1" aria-label="slider"><output class="rngv">1</output></td>
+</tr>
+<tr>
+<td>S07 Final presentations and reflection</td>
+<td><input class="rng" type="range" min="0" max="1" step="1" value="0" aria-label="slider"><output class="rngv">0</output></td>
+</tr>
+</tbody>
+</table></div>
+<div class="card pg"><b>▶ Interactive playground</b><p>This part computes live in LiaScript (sliders, inputs, charts).</p><a class="btn primary small" href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/07_Final_Presentations_and_Reflection/P07_Final_Presentations_Reflection.md#14" target="_blank" rel="noopener">Open this slide in LiaScript ↗</a></div></div></div>
+<aside class="notes">Set each completed unit to one. If anything is red, plan it now: without all seven units you cannot pass.</aside>
+</section>
+
+<section class="slide" data-title="Exit Ticket 🎟️">
+<div class="inner"><p class="kicker">Part 3 · Final Submission: 15022027</p><h2>Exit Ticket 🎟️</h2><div class="body"><p><strong>Objective 1:</strong> The part of our presentation that worked best:</p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea>
+<p><strong>Objective 2:</strong> The best question we were asked:</p>
+<textarea class="free" rows="1" placeholder="Your answer (stays in this browser)"></textarea>
+<p><strong>Objective 3:</strong> The CFT dimension where I moved most:</p>
+<div class="poll"><button class="opt" aria-pressed="false">Human-centred mindset</button><button class="opt" aria-pressed="false">Ethics of AI</button><button class="opt" aria-pressed="false">AI foundations and applications</button><button class="opt" aria-pressed="false">AI pedagogy</button><button class="opt" aria-pressed="false">AI for professional development</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div>
+<p><strong>Objective 4:</strong> SCORM units still open for me:</p>
+<div class="poll"><button class="opt" aria-pressed="false">none</button><button class="opt" aria-pressed="false">one</button><button class="opt" aria-pressed="false">two or more</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div></div></div>
+<aside class="notes"></aside>
+</section>
+
+<section class="slide" data-title="Thank You and Outlook 🎉">
+<div class="inner"><p class="kicker">Part 3 · Final Submission: 15022027</p><h2>Thank You and Outlook 🎉</h2><div class="body"><p><strong>AI in TVET II – done!</strong> 🎓</p><div class="frag" data-f="1"><ul>
+<li>🌍 <strong>Share your work</strong> as OER – your repository is public and CC BY licensed.</li>
+<li>📚 <strong>Keep learning:</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.54675/ZJTE2084">UNESCO AI CFT for Teachers</a> · <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/training/paths/ai-education/">Microsoft Learn: AI for educators</a> · <a target="_blank" rel="noopener" href="https://anthropic.skilljar.com/ai-fluency-for-educators">Anthropic: AI Fluency for Educators</a> · <a target="_blank" rel="noopener" href="https://www.elementsofai.com/">Elements of AI</a></li>
+<li>🧪 <strong>Play on:</strong> <a target="_blank" rel="noopener" href="https://teachablemachine.withgoogle.com/">Teachable Machine</a> · <a target="_blank" rel="noopener" href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a> · <a target="_blank" rel="noopener" href="https://lmstudio.ai">LM Studio</a> · <a target="_blank" rel="noopener" href="https://esco.ec.europa.eu/en">ESCO</a></li>
+</ul></div><div class="frag" data-f="2"><p><strong>How would you rate this seminar overall?</strong></p>
+<div class="poll"><button class="opt" aria-pressed="false">⭐</button><button class="opt" aria-pressed="false">⭐⭐</button><button class="opt" aria-pressed="false">⭐⭐⭐</button><button class="opt" aria-pressed="false">⭐⭐⭐⭐</button><button class="opt" aria-pressed="false">⭐⭐⭐⭐⭐</button><p class="small muted">Survey – your choice stays in this browser. Live results: classroom in the LiaScript version.</p></div></div></div></div>
+<aside class="notes">Your presentations are open educational resources. Publish them, share them with colleagues, and keep improving them. One last vote: how would you rate the seminar overall?</aside>
+</section>
+
+<section class="slide" data-title="References">
+<div class="inner"><p class="kicker">Part 3 · Final Submission: 15022027</p><h2>References</h2><div class="body refs"><ul>
+<li>Council of the European Union. (2022). <em>Council Recommendation of 16 June 2022 on a European approach to micro-credentials for lifelong learning and employability</em> (2022/C 243/02). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022H0627(02)</li>
+<li>LiaScript. (n.d.). <em>LiaScript documentation</em>. https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md</li>
+<li>UNESCO. (2019). <em>Recommendation on Open Educational Resources (OER)</em>. https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer</li>
+<li>UNESCO. (2024). <em>AI competency framework for teachers</em>. https://doi.org/10.54675/ZJTE2084</li>
+</ul>
+<p><small>Licence: CC BY 4.0 · Dr. Hannes Tegelbeckers, OVGU Magdeburg · Created with AI support (Claude), checked by the author.</small></p></div></div>
+<aside class="notes"></aside>
+</section>
+</main>
+<div class="notes-panel" id="notesPanel" aria-live="polite"><h4>Speaker notes</h4><div id="notesText"></div></div>
+<div class="overview" id="overview" role="dialog" aria-label="Slide overview"><div class="ov-head"><h2>Overview</h2><button class="cbtn" id="ovClose">Close (Esc)</button></div><div class="ov-grid" id="ovGrid"></div></div>
+<nav class="botbar" aria-label="Slide navigation">
+  <div class="progress" id="progress"></div>
+  <button class="cbtn" id="prev" aria-label="Previous">←</button>
+  <span class="counter" id="count"></span>
+  <button class="cbtn" id="next" aria-label="Next">→</button>
+  <span class="steps" id="steps"></span>
+  <span class="stitle" id="stitle"></span>
+  <span class="spacer"></span>
+  <button class="cbtn" id="ovBtn" title="Overview (O)">Overview</button>
+  <button class="cbtn" id="notesBtn" aria-pressed="false" title="Speaker notes (N)">Notes</button>
+  <button class="cbtn" id="scrollBtn" aria-pressed="false" title="Document mode (S)">Document</button>
+  <button class="cbtn" id="fsBtn" title="Full screen (F)">⛶</button>
+</nav>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad:false, securityLevel:"loose", theme:"base", fontFamily:"Barlow, Arial, sans-serif",
+  themeVariables:{ primaryColor:"#f7eef2", primaryBorderColor:"#7a003f", lineColor:"#3e3f40", fontSize:"15px" } });
+try { await mermaid.run({ querySelector:".mermaid" }); } catch (e) { console.warn(e); }
+document.body.classList.remove("prerender");
+window.dispatchEvent(new Event("deck-ready"));
+</script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const slides = $$(".slide");
+  let cur = 0, step = 0;
+  const maxStep = s => Math.max(0, ...$$(".frag", s).map(e => +e.dataset.f || 0));
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle("active", i === cur));
+    const s = slides[cur];
+    $$(".frag", s).forEach(e => e.classList.toggle("on", (+e.dataset.f || 0) <= step));
+    $("#count").textContent = `${cur + 1} / ${slides.length}`;
+    $("#stitle").textContent = s.dataset.title || "";
+    $("#progress").style.width = `${(cur / Math.max(1, slides.length - 1)) * 100}%`;
+    $("#steps").innerHTML = Array.from({ length: maxStep(s) }, (_, k) => `<i class="${k < step ? "on" : ""}"></i>`).join("");
+    $("#notesText").textContent = ($(".notes", s) || {}).textContent || "";
+    history.replaceState(null, "", `#${cur + 1}`);
+  }
+  function go(i, atEnd) { cur = Math.max(0, Math.min(slides.length - 1, i)); step = atEnd ? maxStep(slides[cur]) : 0; $(".inner", slides[cur]).scrollTop = 0; render(); }
+  function next() { if (step < maxStep(slides[cur])) { step++; render(); } else if (cur < slides.length - 1) go(cur + 1); }
+  function prev() { if (step > 0) { step--; render(); } else if (cur > 0) go(cur - 1, true); }
+  $("#next").onclick = next; $("#prev").onclick = prev;
+  const toggleNotes = () => { const p = $("#notesPanel"); p.classList.toggle("open"); $("#notesBtn").setAttribute("aria-pressed", p.classList.contains("open")); };
+  const toggleScroll = () => { document.body.classList.toggle("scroll"); $("#scrollBtn").setAttribute("aria-pressed", document.body.classList.contains("scroll")); if (!document.body.classList.contains("scroll")) go(cur); };
+  const fs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  const ov = $("#overview");
+  $("#ovGrid").innerHTML = slides.map((s, i) => `<button class="ov-item" data-i="${i}"><b>${i + 1}</b>${s.dataset.title}</button>`).join("");
+  $$(".ov-item").forEach(b => b.onclick = () => { ov.classList.remove("open"); go(+b.dataset.i); });
+  const toggleOv = () => { ov.classList.toggle("open"); $$(".ov-item").forEach(b => b.classList.toggle("cur", +b.dataset.i === cur)); };
+  $("#ovBtn").onclick = toggleOv; $("#ovClose").onclick = toggleOv;
+  $("#notesBtn").onclick = toggleNotes; $("#scrollBtn").onclick = toggleScroll; $("#fsBtn").onclick = fs;
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("textarea, input, select") || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "Escape") { ov.classList.remove("open"); return; }
+    if (document.body.classList.contains("scroll") && !"sS".includes(e.key)) return;
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); next(); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === "Home") go(0); else if (e.key === "End") go(slides.length - 1);
+    else if ("nN".includes(e.key)) toggleNotes(); else if ("fF".includes(e.key)) fs();
+    else if ("oO".includes(e.key)) toggleOv(); else if ("sS".includes(e.key)) toggleScroll();
+  });
+  let tx = null;
+  $("#deck").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  $("#deck").addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 70 && !e.target.closest("textarea, input, iframe")) (dx < 0 ? next : prev)(); tx = null; });
+  if (window.matchMedia("(max-width: 600px)").matches) toggleScroll();
+
+  /* quizzes */
+  $$(".quiz[data-kind]").forEach(q => {
+    const opts = $$(".opt", q), fb = $(".fb", q), single = q.dataset.kind === "single";
+    let tries = 0;
+    const show = ok => {
+      fb.textContent = ok ? "✔ Correct" : "✘ Not yet – try again"; fb.className = "fb " + (ok ? "ok" : "no");
+      tries += ok ? 0 : 1;
+      if (tries >= 1) $$(".hint", q).forEach(h => h.hidden = false);
+      if (ok || tries >= 2) { const s = $(".sol", q); if (s) s.hidden = false; }
+      if (ok || tries >= 2) opts.forEach(o => o.classList.toggle("right", o.dataset.ok === "1"));
+    };
+    opts.forEach(o => o.onclick = () => {
+      if (single) { opts.forEach(x => { x.setAttribute("aria-pressed", x === o); x.classList.remove("wrong"); }); if (o.dataset.ok !== "1") o.classList.add("wrong"); show(o.dataset.ok === "1"); }
+      else o.setAttribute("aria-pressed", o.getAttribute("aria-pressed") !== "true");
+    });
+    const c = $(".check", q);
+    if (c) c.onclick = () => show(opts.every(o => (o.getAttribute("aria-pressed") === "true") === (o.dataset.ok === "1")));
+  });
+  $$(".quiz.matrix").forEach(q => $(".check", q).onclick = () => {
+    const rows = $$("tr", q).slice(1);
+    const ok = rows.every(r => $$("input", r).every(i => i.checked === (i.dataset.ok === "1")));
+    const fb = $(".fb", q); fb.textContent = ok ? "✔ Correct" : "✘ Not yet"; fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $$(".poll").forEach(p => { const multi = p.classList.contains("multi"); $$(".opt", p).forEach(b => b.onclick = () => {
+    if (multi) b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); else $$(".opt", p).forEach(x => x.setAttribute("aria-pressed", x === b)); }); });
+  $$(".gap[data-answer]").forEach(g => g.addEventListener("change", () => {
+    if (!g.dataset.answer) return;
+    const ok = g.value.trim().toLowerCase() === g.dataset.answer.trim().toLowerCase();
+    g.classList.toggle("right", ok); g.classList.toggle("wrong", !ok);
+  }));
+  $$("input.rng").forEach(r => r.addEventListener("input", () => { r.nextElementSibling.textContent = r.value; }));
+  $$("button.load").forEach(b => b.onclick = () => {
+    const f = document.createElement("iframe"); f.src = b.dataset.src; f.loading = "lazy"; f.allowFullscreen = true;
+    f.title = b.parentElement.querySelector("b").textContent; b.replaceWith(f);
+  });
+  const start = () => go((parseInt(location.hash.slice(1)) || 1) - 1);
+  start();
+  window.addEventListener("deck-ready", () => render());
+})();
+</script>
+</body>
+</html>
