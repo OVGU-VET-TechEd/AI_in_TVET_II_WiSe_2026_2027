@@ -144,13 +144,13 @@ These five architectures can be combined, for example a local model with groundi
 
 ## Playground: Architecture Chooser 🧭
 
-**Does the material contain personal or company data?** <script input="select" options="no,yes" value="no" output="a1">@input</script>
+**Does the material contain personal or company data?** <script input="select" options="no|yes" value="no" output="a1">`@input`</script>
 
-**Must the content follow a specific, changing source (regulation, manual)?** <script input="select" options="yes,no" value="yes" output="a2">@input</script>
+**Must the content follow a specific, changing source (regulation, manual)?** <script input="select" options="yes|no" value="yes" output="a2">`@input`</script>
 
-**Does the task need several steps with tools (search, files, formatting)?** <script input="select" options="no,yes" value="no" output="a3">@input</script>
+**Does the task need several steps with tools (search, files, formatting)?** <script input="select" options="no|yes" value="no" output="a3">`@input`</script>
 
-**Do you need a stable special style for thousands of items?** <script input="select" options="no,yes" value="no" output="a4">@input</script>
+**Do you need a stable special style for thousands of items?** <script input="select" options="no|yes" value="no" output="a4">`@input`</script>
 
 <script modify="false" style="display:block">
 const y = s => `${s}`.trim() === "yes";
@@ -306,15 +306,15 @@ At the Create level of competency five, teachers build AI solutions for their ow
 
 In AI in TVET I you watched an agent build a nugget. Now **design** one – for teachers' professional development (competency 5, *Create*):
 
-**Goal:** <script input="text" value="Keep our automotive trainers up to date on high-voltage vehicle safety" output="g" input-always-active>@input</script>
+**Goal:** <script input="text" value="Keep our automotive trainers up to date on high-voltage vehicle safety" output="g" input-always-active>`@input`</script>
 
-**Tools and sources:** <script input="text" value="web search on manufacturer bulletins, our training manual, the LMS" output="tl" input-always-active>@input</script>
+**Tools and sources:** <script input="text" value="web search on manufacturer bulletins, our training manual, the LMS" output="tl" input-always-active>`@input`</script>
 
-**Human checkpoints:** <script input="text" value="sources approved by head of training; final release by trainer" output="hc" input-always-active>@input</script>
+**Human checkpoints:** <script input="text" value="sources approved by head of training; final release by trainer" output="hc" input-always-active>`@input`</script>
 
-**Stop condition:** <script input="text" value="stop and ask when a source contradicts the manual" output="st" input-always-active>@input</script>
+**Stop condition:** <script input="text" value="stop and ask when a source contradicts the manual" output="st" input-always-active>`@input`</script>
 
-**Success check:** <script input="text" value="trainers rate usefulness monthly; error log reviewed" output="ev" input-always-active>@input</script>
+**Success check:** <script input="text" value="trainers rate usefulness monthly; error log reviewed" output="ev" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const e = s => `${s}`.replace(/</g,"&lt;").trim();
@@ -424,17 +424,17 @@ On which level do learners design their own AI-supported products or workflows?
 
 ## Playground: Matrix Builder 🧮
 
-**Acquire – content:** <script input="text" value="What an AI chatbot is and how it can be wrong" output="m1" input-always-active>@input</script>
+**Acquire – content:** <script input="text" value="What an AI chatbot is and how it can be wrong" output="m1" input-always-active>`@input`</script>
 
-**Acquire – AI tool:** <script input="text" value="explanation chatbot + quiz" output="t1" input-always-active>@input</script>
+**Acquire – AI tool:** <script input="text" value="explanation chatbot + quiz" output="t1" input-always-active>`@input`</script>
 
-**Deepen – content:** <script input="text" value="Check a chatbot answer on a safety rule in a workplace case" output="m2" input-always-active>@input</script>
+**Deepen – content:** <script input="text" value="Check a chatbot answer on a safety rule in a workplace case" output="m2" input-always-active>`@input`</script>
 
-**Deepen – AI tool:** <script input="text" value="case generator + feedback" output="t2" input-always-active>@input</script>
+**Deepen – AI tool:** <script input="text" value="case generator + feedback" output="t2" input-always-active>`@input`</script>
 
-**Create – content:** <script input="text" value="Design rules for chatbot use in the workshop" output="m3" input-always-active>@input</script>
+**Create – content:** <script input="text" value="Design rules for chatbot use in the workshop" output="m3" input-always-active>`@input`</script>
 
-**Create – AI tool:** <script input="text" value="learners configure a grounded assistant" output="t3" input-always-active>@input</script>
+**Create – AI tool:** <script input="text" value="learners configure a grounded assistant" output="t3" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const e = s => s.replace(/\|/g,"/").replace(/</g,"&lt;");

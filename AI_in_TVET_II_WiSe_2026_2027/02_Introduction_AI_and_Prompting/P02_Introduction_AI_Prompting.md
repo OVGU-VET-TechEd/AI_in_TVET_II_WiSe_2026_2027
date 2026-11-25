@@ -258,11 +258,11 @@ Each step uses a technique that goes beyond the prompt patterns of AI in TVET on
 
 ## Playground: Pipeline Builder 🛠️
 
-**Objective:** <script input="text" value="Apprentices check a chatbot answer on a safety rule against the regulation" output="o" input-always-active>@input</script>
+**Objective:** <script input="text" value="Apprentices check a chatbot answer on a safety rule against the regulation" output="o" input-always-active>`@input`</script>
 
-**Target group:** <script input="text" value="second-year apprentices, electrical trades, English B1" output="t" input-always-active>@input</script>
+**Target group:** <script input="text" value="second-year apprentices, electrical trades, English B1" output="t" input-always-active>`@input`</script>
 
-**Source:** <script input="text" value="DGUV Regulation 3, section 5 (pasted below the prompt)" output="q" input-always-active>@input</script>
+**Source:** <script input="text" value="DGUV Regulation 3, section 5 (pasted below the prompt)" output="q" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const e = s => s.replace(/</g,"&lt;");

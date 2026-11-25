@@ -141,11 +141,11 @@ The OECD Digital Education Outlook 2026 adds an important warning: better perfor
 
 You met AI-augmented heutagogy (Ng & Lai, 2025) in AI in TVET I. Now **apply** it: which AI paradigm fits each level of **your** competency matrix?
 
-**Acquire level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-informed" output="h1">@input</script>
+**Acquire level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-informed" output="h1">`@input`</script>
 
-**Deepen level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-supported" output="h2">@input</script>
+**Deepen level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-supported" output="h2">`@input`</script>
 
-**Create level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-supported" output="h3">@input</script>
+**Create level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-supported" output="h3">`@input`</script>
 
 <script modify="false" style="display:block">
 const rank = {"AI-informed":1,"AI-supported":2,"AI-empowered":3};
@@ -361,15 +361,15 @@ The UNESCO framework puts the human-centred mindset first: human agency, human a
 
 AI in TVET I: ethical **principles** (UNESCO CFT dimension 2, *Acquire*). AI in TVET II: **co-creating ethical rules** with learners (dimension 2, *Create*). Draft an AI agreement for your learning design:
 
-**Learners may use AI for:** <script input="select" options="explanations and hints only,drafts they revise and declare,everything except the assessed part" value="explanations and hints only" output="r1">@input</script>
+**Learners may use AI for:** <script input="select" options="explanations and hints only|drafts they revise and declare|everything except the assessed part" value="explanations and hints only" output="r1">`@input`</script>
 
-**Phase without AI:** <script input="select" options="first attempt at every task,the practical skill check,none" value="first attempt at every task" output="r2">@input</script>
+**Phase without AI:** <script input="select" options="first attempt at every task|the practical skill check|none" value="first attempt at every task" output="r2">`@input`</script>
 
-**Declaration:** <script input="select" options="one line: tool and purpose,AI log with prompts,no declaration" value="one line: tool and purpose" output="r3">@input</script>
+**Declaration:** <script input="select" options="one line: tool and purpose|AI log with prompts|no declaration" value="one line: tool and purpose" output="r3">`@input`</script>
 
-**Data:** <script input="select" options="no personal or company data in AI tools,anonymised data only,any data" value="no personal or company data in AI tools" output="r4">@input</script>
+**Data:** <script input="select" options="no personal or company data in AI tools|anonymised data only|any data" value="no personal or company data in AI tools" output="r4">`@input`</script>
 
-**Feedback and grades:** <script input="select" options="AI drafts feedback - the trainer decides on grades,AI grades - the trainer checks samples" value="AI drafts feedback - the trainer decides on grades" output="r5">@input</script>
+**Feedback and grades:** <script input="select" options="AI drafts feedback - the trainer decides on grades|AI grades - the trainer checks samples" value="AI drafts feedback - the trainer decides on grades" output="r5">`@input`</script>
 
 <script modify="false" style="display:block">
 const g = k => `${k}`.trim();

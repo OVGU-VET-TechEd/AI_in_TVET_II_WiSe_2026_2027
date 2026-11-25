@@ -461,13 +461,13 @@ Three habits make your group repository professional: a clear structure, review 
 
 ## Playground: Link Builder Level 2 🔗
 
-**User or organisation:** <script input="text" value="OVGU-VET-TechEd" output="gU" input-always-active>@input</script>
+**User or organisation:** <script input="text" value="OVGU-VET-TechEd" output="gU" input-always-active>`@input`</script>
 
-**Repository:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027" output="gR" input-always-active>@input</script>
+**Repository:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027" output="gR" input-always-active>`@input`</script>
 
-**Branch or commit hash:** <script input="text" value="main" output="gB" input-always-active>@input</script>
+**Branch or commit hash:** <script input="text" value="main" output="gB" input-always-active>`@input`</script>
 
-**File path:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027/01_Kick-off_and_LiaScript_Live/P01_Kick-off_LiaScript_Live.md" output="gF" input-always-active>@input</script>
+**File path:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027/01_Kick-off_and_LiaScript_Live/P01_Kick-off_LiaScript_Live.md" output="gF" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const c = s => s.trim().replace(/^\/+|\/+$/g,"").replace(/\s/g,"%20").replace(/[<>"]/g,"");
@@ -538,29 +538,30 @@ Do not rewrite the file. """<paste file>"""
 
 ## Playground: Prompt Builder Level 2 🧰
 
-**Learning objective:** <script input="text" value="Apprentices check a chatbot answer on a safety rule against the regulation" output="pO" input-always-active>@input</script>
+**Learning objective:** <script input="text" value="Apprentices check a chatbot answer on a safety rule against the regulation" output="pO" input-always-active>`@input`</script>
 
-**Target group:** <script input="text" value="second-year apprentices, electrical trades, English B1" output="pT" input-always-active>@input</script>
+**Target group:** <script input="text" value="second-year apprentices, electrical trades, English B1" output="pT" input-always-active>`@input`</script>
 
-**Level:** <script input="select" options="Acquire,Deepen,Create" value="Deepen" output="pL">@input</script>
+**Level:** <script input="select" options="Acquire|Deepen|Create" value="Deepen" output="pL">`@input`</script>
 
-**Level-2 feature:** <script input="select" options="quiz with hints and solution,script-checked text answer,slider playground,Mermaid diagram,embedded explorable" value="quiz with hints and solution" output="pE">@input</script>
+**Level-2 feature:** <script input="select" options="quiz with hints and solution|script-checked text answer|slider playground|Mermaid diagram|embedded explorable" value="quiz with hints and solution" output="pE">`@input`</script>
 
 <script modify="false" style="display:block">
 const esc = s => s.replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const o = esc(`@input(`pO`)`), t = esc(`@input(`pT`)`), l = `@input(`pL`)`, e = `@input(`pE`)`;
+const lt = String.fromCharCode(60), gt = String.fromCharCode(62);
+const o = `@input(`pO`)`, t = `@input(`pT`)`, l = `@input(`pL`)`, e = `@input(`pE`)`;
 const verbs = {"Acquire":"recognise and explain","Deepen":"apply and check in a realistic case","Create":"design their own solution"};
 const p = `You are an instructional designer for vocational education (TVET).
 Use the attached LiaScript template file as the pattern for syntax and structure.
 Create a LiaScript nugget (mode: Presentation, 4–5 slides) for this objective:
 "${o}" – UNESCO level: ${l} (learners ${verbs[l]}).
 Target group: ${t}.
-Level-2 feature: ${e}. Every quiz: <!-- data-hint-button="1" data-solution-button="2" -->,
+Level-2 feature: ${e}. Every quiz: ${lt}!-- data-hint-button="1" data-solution-button="2" --${gt},
 hints [[?]] and a *** solution block with an explanation.
 Speaker notes --{{0}}-- on every slide; licence line via the macro @AIdeclaration.
 Rules: never indent text by 4 or more spaces; do not invent sources or statistics;
-mark uncertain facts with <!-- CHECK -->.`;
-`HTML: <pre style="white-space:pre-wrap;background:#f7eef2;border-left:4px solid #7a003f;padding:10px;font-size:0.85em">${p}</pre><p>📎 Attach the <a href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/Template_LiaScript_Presentation.md" target="_blank" rel="noopener">presentation template</a> or one of your working slides as the template file.</p>`
+mark uncertain facts with ${lt}!-- CHECK --${gt}.`;
+`HTML: <pre style="white-space:pre-wrap;background:#f7eef2;border-left:4px solid #7a003f;padding:10px;font-size:0.85em">${esc(p)}</pre><p>📎 Attach the <a href="https://liascript.github.io/course/?https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/00_Organisation/Template_LiaScript_Presentation.md" target="_blank" rel="noopener">presentation template</a> or one of your working slides as the template file.</p>`
 </script>
 
 ## Try It: Level Up Your AI in TVET I Nugget (25 min) 🧪

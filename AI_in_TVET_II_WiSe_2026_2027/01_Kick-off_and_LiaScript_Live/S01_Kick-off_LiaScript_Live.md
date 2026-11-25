@@ -288,13 +288,13 @@ A raw link with `main` always shows the newest version – good while working, r
 
 **Build your links:**
 
-**User or organisation:** <script input="text" value="OVGU-VET-TechEd" output="gU" input-always-active>@input</script>
+**User or organisation:** <script input="text" value="OVGU-VET-TechEd" output="gU" input-always-active>`@input`</script>
 
-**Repository:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027" output="gR" input-always-active>@input</script>
+**Repository:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027" output="gR" input-always-active>`@input`</script>
 
-**Branch or commit hash:** <script input="text" value="main" output="gB" input-always-active>@input</script>
+**Branch or commit hash:** <script input="text" value="main" output="gB" input-always-active>`@input`</script>
 
-**File path:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027/01_Kick-off_and_LiaScript_Live/S01_Kick-off_LiaScript_Live.md" output="gF" input-always-active>@input</script>
+**File path:** <script input="text" value="AI_in_TVET_II_WiSe_2026_2027/01_Kick-off_and_LiaScript_Live/S01_Kick-off_LiaScript_Live.md" output="gF" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const c = s => s.trim().replace(/^\/+|\/+$/g,"").replace(/\s/g,"%20").replace(/[<>"]/g,"");

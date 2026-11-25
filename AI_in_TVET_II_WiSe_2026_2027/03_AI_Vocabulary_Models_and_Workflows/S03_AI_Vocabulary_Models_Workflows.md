@@ -59,13 +59,13 @@ These architectures can be combined – e.g. a local model with grounding.
 
 Answer the four questions for your group's sample material. The generated sentence is a first draft of the design argument on your workflow slide – check whether you agree.
 
-**Does the material contain personal or company data?** <script input="select" options="no,yes" value="no" output="a1">@input</script>
+**Does the material contain personal or company data?** <script input="select" options="no|yes" value="no" output="a1">`@input`</script>
 
-**Must the content follow a specific, changing source (regulation, manual)?** <script input="select" options="yes,no" value="yes" output="a2">@input</script>
+**Must the content follow a specific, changing source (regulation, manual)?** <script input="select" options="yes|no" value="yes" output="a2">`@input`</script>
 
-**Does the task need several steps with tools (search, files, formatting)?** <script input="select" options="no,yes" value="no" output="a3">@input</script>
+**Does the task need several steps with tools (search, files, formatting)?** <script input="select" options="no|yes" value="no" output="a3">`@input`</script>
 
-**Do you need a stable special style for thousands of items?** <script input="select" options="no,yes" value="no" output="a4">@input</script>
+**Do you need a stable special style for thousands of items?** <script input="select" options="no|yes" value="no" output="a4">`@input`</script>
 
 <script modify="false" style="display:block">
 const y = s => `${s}`.trim() === "yes";
@@ -213,15 +213,15 @@ The report describes six design steps (OpenAI, 2025) – use them for your own p
 
 In AI in TVET I you watched an agent build a nugget. Now **design** one. A complete specification has five parts: goal, tools and sources, human checkpoints, a stop condition (when must the agent ask a human?) and a success check (how do you know it helps?). Specify an agent for teachers' professional development in your field – competency 5 at the *Create* level:
 
-**Goal:** <script input="text" value="Keep our automotive trainers up to date on high-voltage vehicle safety" output="g" input-always-active>@input</script>
+**Goal:** <script input="text" value="Keep our automotive trainers up to date on high-voltage vehicle safety" output="g" input-always-active>`@input`</script>
 
-**Tools and sources:** <script input="text" value="web search on manufacturer bulletins, our training manual, the LMS" output="tl" input-always-active>@input</script>
+**Tools and sources:** <script input="text" value="web search on manufacturer bulletins, our training manual, the LMS" output="tl" input-always-active>`@input`</script>
 
-**Human checkpoints:** <script input="text" value="sources approved by head of training; final release by trainer" output="hc" input-always-active>@input</script>
+**Human checkpoints:** <script input="text" value="sources approved by head of training; final release by trainer" output="hc" input-always-active>`@input`</script>
 
-**Stop condition:** <script input="text" value="stop and ask when a source contradicts the manual" output="st" input-always-active>@input</script>
+**Stop condition:** <script input="text" value="stop and ask when a source contradicts the manual" output="st" input-always-active>`@input`</script>
 
-**Success check:** <script input="text" value="trainers rate usefulness monthly; error log reviewed" output="ev" input-always-active>@input</script>
+**Success check:** <script input="text" value="trainers rate usefulness monthly; error log reviewed" output="ev" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const e = s => `${s}`.replace(/</g,"&lt;").trim();

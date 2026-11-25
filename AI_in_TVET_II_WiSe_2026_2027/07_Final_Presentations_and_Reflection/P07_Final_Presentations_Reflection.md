@@ -132,7 +132,7 @@ The audience has a task too.
 
 ## Audience Card 🗳️ (repeat for each group)
 
-**Group:** <script input="text" value="Group 1" output="grp" input-always-active>@input</script>
+**Group:** <script input="text" value="Group 1" output="grp" input-always-active>`@input`</script>
 
 **Would you use this design with your own learners?**
 
@@ -155,6 +155,8 @@ Use this slide for every group: change the group name, vote, and write your stro
 
 Rate the last presentation from 1 to 5:
 
+**Group:** <script input="text" value="Group 1" output="qgrp" input-always-active>`@input`</script>
+
 | Criterion | Rating |
 | --- | --- |
 | Content | <script input="range" min="1" max="5" step="1" value="4" output="r1">@input</script> |
@@ -168,7 +170,7 @@ const n = ["Content","Pedagogy","LiaScript use","Reflection","Sources and AI"];
 const v = [@input(`r1`),@input(`r2`),@input(`r3`),@input(`r4`),@input(`r5`)].map(Number);
 const avg = v.reduce((a,b) => a+b, 0) / 5;
 const best = n[v.indexOf(Math.max(...v))], tip = n[v.indexOf(Math.min(...v))];
-const g = `@input(`grp`)`.replace(/</g,"&lt;");
+const g = `@input(`qgrp`)`.replace(/</g,"&lt;");
 `HTML: <div style="border:2px solid #7a003f;border-radius:12px;padding:10px;max-width:480px"><b>${g}</b><div style="font-size:1.6em;color:#7a003f">${"★".repeat(Math.round(avg))}${"☆".repeat(5-Math.round(avg))} <small>${avg.toFixed(1)}</small></div><p>👍 Strongest: <b>${best}</b><br>🔧 Work on: <b>${tip}</b></p></div>`
 </script>
 

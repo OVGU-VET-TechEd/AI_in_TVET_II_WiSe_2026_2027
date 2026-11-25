@@ -64,11 +64,11 @@ AI's computational strengths should complement the emotional and ethical dimensi
 
 You met these paradigms in AI in TVET I. Now **apply** them: which paradigm fits each level of **your** competency matrix? Learner autonomy should rise from Acquire to Create.
 
-**Acquire level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-informed" output="h1">@input</script>
+**Acquire level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-informed" output="h1">`@input`</script>
 
-**Deepen level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-supported" output="h2">@input</script>
+**Deepen level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-supported" output="h2">`@input`</script>
 
-**Create level – AI paradigm:** <script input="select" options="AI-informed,AI-supported,AI-empowered" value="AI-supported" output="h3">@input</script>
+**Create level – AI paradigm:** <script input="select" options="AI-informed|AI-supported|AI-empowered" value="AI-supported" output="h3">`@input`</script>
 
 <script modify="false" style="display:block">
 const rank = {"AI-informed":1,"AI-supported":2,"AI-empowered":3};
@@ -255,15 +255,15 @@ The European Commission (2022) names four key considerations for the ethical use
 
 In AI in TVET I you learned ethical **principles** – UNESCO CFT dimension 2 at the *Acquire* level. The *Create* level of the same dimension is **co-creating ethical rules**: teachers develop rules for AI use together with learners and colleagues. Draft an AI agreement for your learning design – then discuss and revise it with learners.
 
-**Learners may use AI for:** <script input="select" options="explanations and hints only,drafts they revise and declare,everything except the assessed part" value="explanations and hints only" output="r1">@input</script>
+**Learners may use AI for:** <script input="select" options="explanations and hints only|drafts they revise and declare|everything except the assessed part" value="explanations and hints only" output="r1">`@input`</script>
 
-**Phase without AI:** <script input="select" options="first attempt at every task,the practical skill check,none" value="first attempt at every task" output="r2">@input</script>
+**Phase without AI:** <script input="select" options="first attempt at every task|the practical skill check|none" value="first attempt at every task" output="r2">`@input`</script>
 
-**Declaration:** <script input="select" options="one line: tool and purpose,AI log with prompts,no declaration" value="one line: tool and purpose" output="r3">@input</script>
+**Declaration:** <script input="select" options="one line: tool and purpose|AI log with prompts|no declaration" value="one line: tool and purpose" output="r3">`@input`</script>
 
-**Data:** <script input="select" options="no personal or company data in AI tools,anonymised data only,any data" value="no personal or company data in AI tools" output="r4">@input</script>
+**Data:** <script input="select" options="no personal or company data in AI tools|anonymised data only|any data" value="no personal or company data in AI tools" output="r4">`@input`</script>
 
-**Feedback and grades:** <script input="select" options="AI drafts feedback - the trainer decides on grades,AI grades - the trainer checks samples" value="AI drafts feedback - the trainer decides on grades" output="r5">@input</script>
+**Feedback and grades:** <script input="select" options="AI drafts feedback - the trainer decides on grades|AI grades - the trainer checks samples" value="AI drafts feedback - the trainer decides on grades" output="r5">`@input`</script>
 
 <script modify="false" style="display:block">
 const g = k => `${k}`.trim();

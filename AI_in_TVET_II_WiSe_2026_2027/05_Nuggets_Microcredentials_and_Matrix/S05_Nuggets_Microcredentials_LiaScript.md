@@ -55,11 +55,11 @@ In AI in TVET I you described your micro-credential with the mandatory elements 
 
 Test one nugget of your matrix:
 
-**Nugget outcome:** <script input="text" value="Apprentices check a chatbot answer against the regulation" output="ao" input-always-active>@input</script>
+**Nugget outcome:** <script input="text" value="Apprentices check a chatbot answer against the regulation" output="ao" input-always-active>`@input`</script>
 
-**Learning activity:** <script input="select" options="read an explanation,answer a quiz,work on a realistic case,design an own product" value="answer a quiz" output="aa">@input</script>
+**Learning activity:** <script input="select" options="read an explanation|answer a quiz|work on a realistic case|design an own product" value="answer a quiz" output="aa">`@input`</script>
 
-**Assessment / evidence:** <script input="select" options="single-choice quiz,case analysis with justification,product with criteria-based review,attendance" value="single-choice quiz" output="ae">@input</script>
+**Assessment / evidence:** <script input="select" options="single-choice quiz|case analysis with justification|product with criteria-based review|attendance" value="single-choice quiz" output="ae">`@input`</script>
 
 <script modify="false" style="display:block">
 const o = `@input(`ao`)`.toLowerCase();
@@ -100,11 +100,11 @@ For **learner-facing** objectives, the [UNESCO AI Competency Framework for Stude
 
 Each level must **build on** the previous one. The action verbs show it: *recognise / explain* (Acquire) → *apply / analyse / check* (Deepen) → *evaluate / design / create* (Create) (Anderson & Krathwohl, 2001). Test your three objectives:
 
-**Acquire objective:** <script input="text" value="Apprentices explain why an AI chatbot can give a wrong safety rule" output="o1" input-always-active>@input</script>
+**Acquire objective:** <script input="text" value="Apprentices explain why an AI chatbot can give a wrong safety rule" output="o1" input-always-active>`@input`</script>
 
-**Deepen objective:** <script input="text" value="Apprentices check a chatbot answer against the regulation in a workplace case" output="o2" input-always-active>@input</script>
+**Deepen objective:** <script input="text" value="Apprentices check a chatbot answer against the regulation in a workplace case" output="o2" input-always-active>`@input`</script>
 
-**Create objective:** <script input="text" value="Apprentices design rules for chatbot use in the training workshop" output="o3" input-always-active>@input</script>
+**Create objective:** <script input="text" value="Apprentices design rules for chatbot use in the training workshop" output="o3" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const lv = [
@@ -196,13 +196,13 @@ AI in TVET I covered Creative Commons licences, TASL attribution and the copyrig
 
 Check your own material:
 
-**Adapted CC BY-SA material (e.g. a Wikipedia figure you changed):** <script input="select" options="no,yes" value="no" output="c1">@input</script>
+**Adapted CC BY-SA material (e.g. a Wikipedia figure you changed):** <script input="select" options="no|yes" value="no" output="c1">`@input`</script>
 
-**CC BY-NC material copied into your file:** <script input="select" options="no,yes" value="no" output="c2">@input</script>
+**CC BY-NC material copied into your file:** <script input="select" options="no|yes" value="no" output="c2">`@input`</script>
 
-**All-rights-reserved image copied into your file:** <script input="select" options="no,yes" value="no" output="c3">@input</script>
+**All-rights-reserved image copied into your file:** <script input="select" options="no|yes" value="no" output="c3">`@input`</script>
 
-**Third-party websites or videos only embedded or linked (??[…], !?[…]):** <script input="select" options="yes,no" value="yes" output="c4">@input</script>
+**Third-party websites or videos only embedded or linked (??[…], !?[…]):** <script input="select" options="yes|no" value="yes" output="c4">`@input`</script>
 
 <script modify="false" style="display:block">
 const y = k => `${k}`.trim() === "yes";

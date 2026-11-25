@@ -1,0 +1,25 @@
+id: aitvet2p018d99ce93
+createdBy: ovgu-vet-teched
+dateCreated: 1795637821770
+name: 'AI in TVET II · P01 – Kick-off and LiaScript Live'
+meta:
+  description: >-
+    AI in TVET II (OVGU, WiSe 2026/27) – live classroom for session P01. The
+    LiaScript slides run in classroom mode: quiz and survey answers of all
+    participants are synchronised and can be evaluated together.
+  selfAssign: false
+  defaultNumberOfRooms: 0
+members:
+  teacher: []
+  student: []
+modules:
+  - url: https://edrys-labs.github.io/module-liascript/
+    config:
+      classroom: true
+      course: https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/01_Kick-off_and_LiaScript_Live/P01_Kick-off_LiaScript_Live.md
+    studentConfig: ''
+    teacherConfig: ''
+    stationConfig: ''
+    showInCustom: lobby
+    width: full
+    height: huge

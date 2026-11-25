@@ -158,7 +158,7 @@ These are the same criteria that will be used for your own presentation. Reviewi
 
 ## Playground: Peer-Review Rubric ⭐
 
-**Partner group:** <script input="text" value="Group X" output="pg" input-always-active>@input</script>
+**Partner group:** <script input="text" value="Group X" output="pg" input-always-active>`@input`</script>
 
 | Criterion | 0 = – · 1 = + · 2 = ++ |
 | --- | --- |

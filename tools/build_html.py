@@ -70,6 +70,7 @@ def convert_inline(s, store):
         codes.append(m.group(0))
         return f"⁤C{len(codes) - 1}⁤"
 
+    s = s.replace(">`@input`</script>", ">@input</script>")  # quoted input scripts (text/select)
     s = re.sub(r"`[^`]+`", keep, s)
     # inline input scripts → value chip
     def inp(m):
@@ -83,10 +84,10 @@ def convert_inline(s, store):
             return store.put(f'<input class="rng" type="range" min="{esc(mn.group(1) if mn else "0")}" max="{esc(mx.group(1) if mx else "10")}" step="{esc(st.group(1) if st else "1")}" value="{esc(v)}" aria-label="slider"><output class="rngv">{esc(v)}</output>')
         if kind and kind.group(1) == "select":
             opts = re.search(r'options="([^"]*)"', attrs)
-            o = "".join(f'<option{" selected" if x == v else ""}>{esc(x)}</option>' for x in (opts.group(1).split(",") if opts else [v]))
+            o = "".join(f'<option{" selected" if x == v else ""}>{esc(x)}</option>' for x in (opts.group(1).split("|" if "|" in opts.group(1) else ",") if opts else [v]))
             return store.put(f'<select class="gap">{o}</select>')
         return store.put(f'<input class="txt" type="text" value="{esc(v)}" aria-label="input">')
-    s = re.sub(r"<script([^>]*input=[^>]*)>@input</script>", inp, s)
+    s = re.sub(r"<script([^>]*input=[^>]*)>`?@input`?</script>", inp, s)
     # images, videos, embeds
     s = re.sub(r"\?\?\[([^\]]*)\]\(([^)\s]+)[^)]*\)", lambda m: store.put(embed(m.group(1), m.group(2))), s)
     s = re.sub(r"!\?\[([^\]]*)\]\(([^)\s]+)[^)]*\)", lambda m: store.put(video(m.group(1), m.group(2))), s)

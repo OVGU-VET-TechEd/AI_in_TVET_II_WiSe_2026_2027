@@ -131,11 +131,11 @@ Each level of your matrix can become one or two nuggets. Together they could for
 
 In AI in TVET I you filled in the EU micro-credential card (outcomes, workload, assessment …). Level 2: **does each nugget really lead to its outcome?** Outcome, learning activity and evidence must be on the same level (Biggs & Tang, 2011).
 
-**Nugget outcome:** <script input="text" value="Apprentices check a chatbot answer against the regulation" output="ao" input-always-active>@input</script>
+**Nugget outcome:** <script input="text" value="Apprentices check a chatbot answer against the regulation" output="ao" input-always-active>`@input`</script>
 
-**Learning activity:** <script input="select" options="read an explanation,answer a quiz,work on a realistic case,design an own product" value="answer a quiz" output="aa">@input</script>
+**Learning activity:** <script input="select" options="read an explanation|answer a quiz|work on a realistic case|design an own product" value="answer a quiz" output="aa">`@input`</script>
 
-**Assessment / evidence:** <script input="select" options="single-choice quiz,case analysis with justification,product with criteria-based review,attendance" value="single-choice quiz" output="ae">@input</script>
+**Assessment / evidence:** <script input="select" options="single-choice quiz|case analysis with justification|product with criteria-based review|attendance" value="single-choice quiz" output="ae">`@input`</script>
 
 <script modify="false" style="display:block">
 const o = `@input(`ao`)`.toLowerCase();
@@ -195,11 +195,11 @@ Check that the action verbs rise from level to level. The progression checker on
 
 ## Playground: Progression Checker 📶
 
-**Acquire objective:** <script input="text" value="Apprentices explain why an AI chatbot can give a wrong safety rule" output="o1" input-always-active>@input</script>
+**Acquire objective:** <script input="text" value="Apprentices explain why an AI chatbot can give a wrong safety rule" output="o1" input-always-active>`@input`</script>
 
-**Deepen objective:** <script input="text" value="Apprentices check a chatbot answer against the regulation in a workplace case" output="o2" input-always-active>@input</script>
+**Deepen objective:** <script input="text" value="Apprentices check a chatbot answer against the regulation in a workplace case" output="o2" input-always-active>`@input`</script>
 
-**Create objective:** <script input="text" value="Apprentices design rules for chatbot use in the training workshop" output="o3" input-always-active>@input</script>
+**Create objective:** <script input="text" value="Apprentices design rules for chatbot use in the training workshop" output="o3" input-always-active>`@input`</script>
 
 <script modify="false" style="display:block">
 const lv = [
@@ -318,13 +318,13 @@ AI in TVET I: CC licences, TASL, AI output and copyright. Level 2: your sample m
 
 ## Playground: Licence Compatibility Checker 🧩
 
-**Adapted CC BY-SA material (e.g. a Wikipedia figure you changed):** <script input="select" options="no,yes" value="no" output="c1">@input</script>
+**Adapted CC BY-SA material (e.g. a Wikipedia figure you changed):** <script input="select" options="no|yes" value="no" output="c1">`@input`</script>
 
-**CC BY-NC material copied into your file:** <script input="select" options="no,yes" value="no" output="c2">@input</script>
+**CC BY-NC material copied into your file:** <script input="select" options="no|yes" value="no" output="c2">`@input`</script>
 
-**All-rights-reserved image copied into your file:** <script input="select" options="no,yes" value="no" output="c3">@input</script>
+**All-rights-reserved image copied into your file:** <script input="select" options="no|yes" value="no" output="c3">`@input`</script>
 
-**Third-party websites or videos only embedded or linked (??[…], !?[…]):** <script input="select" options="yes,no" value="yes" output="c4">@input</script>
+**Third-party websites or videos only embedded or linked (??[…], !?[…]):** <script input="select" options="yes|no" value="yes" output="c4">`@input`</script>
 
 <script modify="false" style="display:block">
 const y = k => `${k}`.trim() === "yes";

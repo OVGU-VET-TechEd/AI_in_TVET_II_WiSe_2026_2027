@@ -1,0 +1,25 @@
+id: aitvet2p026c79bca3
+createdBy: ovgu-vet-teched
+dateCreated: 1795637821770
+name: 'AI in TVET II · P02 – AI and Prompting Level 2: Reliable Learning Material'
+meta:
+  description: >-
+    AI in TVET II (OVGU, WiSe 2026/27) – live classroom for session P02. The
+    LiaScript slides run in classroom mode: quiz and survey answers of all
+    participants are synchronised and can be evaluated together.
+  selfAssign: false
+  defaultNumberOfRooms: 0
+members:
+  teacher: []
+  student: []
+modules:
+  - url: https://edrys-labs.github.io/module-liascript/
+    config:
+      classroom: true
+      course: https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/AI_in_TVET_II_WiSe_2026_2027/02_Introduction_AI_and_Prompting/P02_Introduction_AI_Prompting.md
+    studentConfig: ''
+    teacherConfig: ''
+    stationConfig: ''
+    showInCustom: lobby
+    width: full
+    height: huge
