@@ -1,6 +1,6 @@
 # Edrys Classrooms for the Live Sessions
 
-Each session deck (P01–P07) has an Edrys configuration ([edrys-Lite](https://edrys-labs.github.io) with the module [module-liascript](https://github.com/edrys-labs/module-liascript)). The LiaScript slides run inside it with `classroom: true`: quiz and survey answers of all participants are synchronised and can be evaluated together up front.
+Each session deck (P01–P07, plus the P01 version with the UNESCO-UNEVOC guide introduction) has an Edrys configuration ([edrys-Lite](https://edrys-labs.github.io) with the module [module-liascript](https://github.com/edrys-labs/module-liascript)). The LiaScript slides run inside it with `classroom: true`: quiz and survey answers of all participants are synchronised and can be evaluated together up front.
 
 ## Procedure (lecturer)
 
@@ -16,6 +16,7 @@ Sessions 2 and 3 are self-learning (🔵); their classrooms are only needed if t
 | Session | Create | Configuration |
 | --- | --- | --- |
 | P01 – Kick-off and LiaScript Live | [Create classroom](https://edrys-labs.github.io/?/deploy/https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/edrys/P01.yaml) | [`P01.yaml`](P01.yaml) |
+| P01 – Kick-off, **UNESCO-UNEVOC Guide** and LiaScript Live (version with the guide introduction) | [Create classroom](https://edrys-labs.github.io/?/deploy/https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/edrys/P01_UNESCO_Guide.yaml) | [`P01_UNESCO_Guide.yaml`](P01_UNESCO_Guide.yaml) |
 | P02 – AI and Prompting Level 2: Reliable Learning Material | [Create classroom](https://edrys-labs.github.io/?/deploy/https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/edrys/P02.yaml) | [`P02.yaml`](P02.yaml) |
 | P03 – AI Vocabulary, Models and Workflows | [Create classroom](https://edrys-labs.github.io/?/deploy/https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/edrys/P03.yaml) | [`P03.yaml`](P03.yaml) |
 | P04 – Pedagogy, Assessment and Ethics in AI-Supported TVET | [Create classroom](https://edrys-labs.github.io/?/deploy/https://raw.githubusercontent.com/OVGU-VET-TechEd/AI_in_TVET_II_WiSe_2026_2027/main/edrys/P04.yaml) | [`P04.yaml`](P04.yaml) |
